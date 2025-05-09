@@ -15,6 +15,8 @@ import ViewJavascript from './Pages/ViewJavascript';
 import AddJavascript from './Pages/AddJavascript';
 import AddNode from './Pages/AddNode';
 import ViewNode from './Pages/ViewNode';
+import Viewwordpress from './Pages/Viewwordpress';
+import Addwordpress from './Pages/Addwordpress ';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -26,6 +28,14 @@ const router = createBrowserRouter([
   {
     path: "dashboard",
     element: <Dashboard />
+  },
+  {
+    path: "Addwordpress/:id?",
+    element: <Addwordpress />
+  },
+  {
+    path: "Viewwordpress",
+    element: <Viewwordpress />
   },
   {
     path: "addReact/:id?",

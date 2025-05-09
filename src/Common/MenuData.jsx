@@ -6,7 +6,7 @@ import {
   faVideo,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { FaNodeJs, FaReact } from "react-icons/fa";
+import { FaNodeJs, FaReact, FaWordpress } from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io";
 
 export const data = [
@@ -39,12 +39,12 @@ export const data = [
   },
   {
     id: 4,
-    icon: <FontAwesomeIcon icon={faPeopleGroup} />,
-    uid: "All FAQs",
-    sub1: "Add Team",
-    sub2: "View Team",
-    link1: "/addteam",
-    link2: "/viewteam",
+    icon: <FaWordpress/>,
+    uid: "WordPress",
+    sub1: "Add WordPress",
+    sub2: "View WordPress",
+    link1: "/Addwordpress",
+    link2: "/Viewwordpress",
   },
   {
     id: 5,
@@ -64,3 +64,6 @@ export const nodebaseurl =
 
 export const reactbaseurl =
   "https://rss-feed-node-js.onrender.com/api/backend/ReactNotes";
+
+export const WordPressUrl =
+  "https://rss-feed-node-js.onrender.com/api/backend/WordPress";
