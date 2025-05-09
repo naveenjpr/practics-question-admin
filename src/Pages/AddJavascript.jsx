@@ -81,8 +81,11 @@ function AddJavascript() {
     }
   }, []);
 
-  useEffect(() => {}, [formsubmit]);
-
+useEffect(() => {
+    if (formsubmit == true) {
+      navigate("/view-Javascript");
+    }
+  }, [formsubmit]); 
   return (
     <div>
       <Header />

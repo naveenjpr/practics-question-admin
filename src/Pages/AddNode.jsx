@@ -79,7 +79,12 @@ function AddNode() {
     }
   }, []);
 
-  useEffect(() => {}, [formsubmit]);
+  useEffect(() => {
+    if (formsubmit == true) {
+      navigate("/view-Node");
+    }
+  }, [formsubmit]); 
+  
   return (
     <div>
       <Header />

@@ -77,7 +77,12 @@ export default function Addwordpress() {
     }
   }, []);
 
-  useEffect(() => {}, [formsubmit]);
+useEffect(() => {
+    if (formsubmit == true) {
+      navigate("/Viewwordpress");
+    }
+  }, [formsubmit]); 
+  
   return (
     <div>
       <Header />
