@@ -8,7 +8,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
 import { javascriptbaseurl } from "../Common/MenuData";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { Api } from "@mui/icons-material";
 
 function AddJavascript() {
@@ -80,6 +80,7 @@ function AddJavascript() {
         });
     }
   }, []);
+  let navigate = useNavigate();
 
 useEffect(() => {
     if (formsubmit == true) {

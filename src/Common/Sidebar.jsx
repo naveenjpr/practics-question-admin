@@ -5,9 +5,9 @@ import { mainContext } from "../Context";
 function Sidebar() {
   let { changemenu } = useContext(mainContext);
   return (
-    <>
+    < >
       <div
-        className={`duration-[0.2s] ${
+        className={`duration-[0.2s]  ${
           changemenu == true ? "w-[5%]" : "w-[16%]"
         }  bg-white`}
       >

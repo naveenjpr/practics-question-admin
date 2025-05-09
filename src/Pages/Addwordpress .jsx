@@ -6,7 +6,7 @@ import Footer from "../Common/Footer";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { WordPressUrl } from "../Common/MenuData";
 export default function Addwordpress() {
   let { changemenu } = useContext(mainContext);
@@ -76,6 +76,8 @@ export default function Addwordpress() {
         });
     }
   }, []);
+
+  let navigate = useNavigate();
 
 useEffect(() => {
     if (formsubmit == true) {

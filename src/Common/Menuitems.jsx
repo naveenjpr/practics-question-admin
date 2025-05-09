@@ -81,7 +81,7 @@ function Menuitems() {
                 <ul
                   className={`text-white text-[14px] ease-in-out px-[50px] duration-[0.8s] ${
                     v.id == menu
-                      ? " py-3 h-[90px] opacity-[1] visible  bg-[#4B49AC]"
+                      ? " py-1 h-[110px] opacity-[1] visible  bg-[#4B49AC]"
                       : "opacity-0 h-0 invisible"
                   }`}
                 >

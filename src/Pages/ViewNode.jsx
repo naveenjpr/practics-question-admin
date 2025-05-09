@@ -113,13 +113,11 @@ function ViewNode() {
                                   <span>Date</span> {v.created_at.slice(0, 10)}
                                 </span>
                               </div>
-                              <button className="text-lg font-medium text-left w-full flex items-center bg-[#00ffff] ">
+                              <button className="text-lg font-medium text-left w-full flex items-center bg-[blue]  ">
                                 <span className="mx-[5px]">{i + 1} </span>
                                 {v.Question}
                               </button>
-                              {/* <span>
-                                <img src={Imagepath + v.image} />
-                              </span> */}
+                          
                             </div>
                           </div>
                           <div className="p-2 mt-1 text-white bg-black">

@@ -86,7 +86,7 @@ export default function Viewwordpress() {
               } relative px-[30px] py-[50px] h-[92vh] bg-[#F5F7FF]`}
             >
               <h1 className="text-[25px] font-[500] mb-[10px]">
-                Welcome To Admin Panel
+                Welcome To wordpress Admin Panel
               </h1>
               <div className="">
                 <div className="bg-white w-[100%] mb-[50px] p-4 h-full rounded-[20px]">
@@ -105,13 +105,11 @@ export default function Viewwordpress() {
                                     <span>Date</span> {v.created_at.slice(0, 10)}
                                   </span>
                                 </div>
-                                <button className="text-lg font-medium text-left w-full flex items-center bg-[#00ffff] ">
+                                <button className="text-lg font-medium text-left w-full flex items-center bg-[blue] ">
                                   <span className="mx-[5px]">{i + 1} </span>
                                   {v.Question}
                                 </button>
-                                <span>
-                                  <img src={Imagepath + v.image} />
-                                </span>
+                              
                               </div>
                             </div>
                             <div className="p-2 mt-1 text-white bg-black">

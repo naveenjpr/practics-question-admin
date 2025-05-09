@@ -4,7 +4,7 @@ import Header from "../Common/Header";
 import Sidebar from "../Common/Sidebar";
 import Footer from "../Common/Footer";
 import prev from "../img/generic-image-file-icon-hi.png";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import { nodebaseurl } from "../Common/MenuData";
@@ -12,7 +12,6 @@ import { nodebaseurl } from "../Common/MenuData";
 function AddNode() {
   let { changemenu } = useContext(mainContext);
   let params = useParams();
-  console.log("parama", params.id);
 
   const [formsubmit, setformsubmit] = useState(false);
   let [input, setinput] = useState({ Question: "", Answers: "", status: 1 });
@@ -78,6 +77,8 @@ function AddNode() {
         });
     }
   }, []);
+
+  let navigate = useNavigate();
 
   useEffect(() => {
     if (formsubmit == true) {
