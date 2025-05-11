@@ -3,7 +3,7 @@ import { mainContext } from "../Context";
 import Header from "../Common/Header";
 import Sidebar from "../Common/Sidebar";
 import Footer from "../Common/Footer";
-import { nodebaseurl } from "../Common/MenuData";
+import { Loading, nodebaseurl } from "../Common/MenuData";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import { Link } from "react-router-dom";
@@ -162,7 +162,8 @@ function ViewNode() {
                         </div>
                       );
                     })
-                  : ""}
+                  :                 <Loading/>
+                  }
               </div>
             </div>
             {/* <Footer /> */}

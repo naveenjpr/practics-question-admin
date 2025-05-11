@@ -6,7 +6,7 @@ import Footer from "../Common/Footer";
 import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
-import { reactbaseurl } from "../Common/MenuData";
+import { Loading, reactbaseurl } from "../Common/MenuData";
 
 function ViewReact() {
   let { changemenu } = useContext(mainContext);
@@ -144,7 +144,8 @@ function ViewReact() {
                       </div>
                     );
                   })
-                : ""}
+                : <Loading/>
+                }
             </div>
           </div>
           {/* <Footer /> */}
