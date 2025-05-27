@@ -20,10 +20,9 @@ function Dashboard(){
         <h1 className='text-[25px] font-[500] mb-[30px]'>
         Welcome To Admin Panel
         </h1>
-        <div className='grid grid-cols-4 gap-5'>
+        <div className='grid grid-cols-1 gap-5'>
           <DashboardItems/>
         </div>
-      <Footer/>
       </div>
     </div>
     

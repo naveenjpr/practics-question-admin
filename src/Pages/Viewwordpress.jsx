@@ -81,8 +81,8 @@ export default function Viewwordpress() {
 
         <div
           className={` ${
-            changemenu == true ? "w-[95%]" : "w-[84%]"
-          } relative px-[30px] py-[50px] h-[92vh] bg-[#F5F7FF]`}
+            changemenu == true ? "w-[95%]" : "w-[100%]"
+          } relative px-[10px] py-[10px] h-[92vh] bg-[#F5F7FF]`}
         >
           <h1 className="text-[25px] font-[500] mb-[10px]">
             Welcome To wordpress Admin Panel
@@ -91,17 +91,16 @@ export default function Viewwordpress() {
             <div className="bg-white w-[100%] mb-[50px] p-4 h-full rounded-[20px]">
               {javascriptview.length > 0 ? (
                 javascriptview.map((v, i) => {
-                  console.log("v", v);
                   return (
                     <div className="p-4 border-[2px]  text-white" key={i}>
                       <div className="flex items-start justify-between">
                         <div className="flex-1">
                           <div className="flex items-center mb-2">
                             <span className="text-xs font-medium mr-2 px-2.5 py-0.5 rounded tag-react text-[red]">
-                              javascript
+                              wordpress
                             </span>
                             <span className="text-xs text-left text-red-700">
-                              <span>Date</span> {v.created_at.slice(0, 10)}
+                              <span>Date</span> {v.created_at.slice(0, 10).split("-").reverse().join("-")}
                             </span>
                           </div>
                           <button className="text-lg font-medium text-left w-full flex items-center bg-[blue] ">
@@ -150,7 +149,7 @@ export default function Viewwordpress() {
                   );
                 })
               ) : (
-                <Loading />
+                ""
               )}
             </div>
           </div>

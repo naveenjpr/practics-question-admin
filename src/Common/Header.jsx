@@ -4,6 +4,7 @@ import minlogo from '../img/logo-mini.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { mainContext } from '../Context'
+import { Link } from 'react-router-dom'
 
 function Header() {
 
@@ -14,15 +15,22 @@ function Header() {
   return (
     <>
       <header>
-    <nav className="bg-white border-gray-200  py-2.5 bg-white shadow-lg relative z-[999]">
+    <nav className="bg-white border-gray-200  py-2.5  shadow-lg relative z-[999]">
         <div className="flex  justify-between items-center mx-auto ">
             <div className={` duration-[0.5s] mx-5  ${changemenu==true ? 'w-[3%] ':'w-[16%]'}`}>
             <a href="#" className="flex items-center">
               {
                 changemenu==true ?
+                <Link to="/dashboard">
+                
                 <img src={minlogo} className="mr-3 h-6 sm:h-9"  />
+                </Link>
                 :
+
+                <Link to="/dashboard">
+
                 <img src={logo} className="mr-3 h-6 sm:h-9"  />
+                </Link>
 
               }
               

@@ -19,7 +19,6 @@ function ViewJavascript() {
     axios
       .post(`${Api}/view`)
       .then((result) => {
-        console.log(result.data.imagePath);
         if (result.data.status == true) {
           setjavascriptview(result.data.data);
         } else {
@@ -27,7 +26,7 @@ function ViewJavascript() {
         }
       })
       .catch((error) => {});
-  }, [deleteororstatus, javascriptview]);
+  }, [deleteororstatus]);
 
   let deletecoure = (id) => {
     const confirmed = window.confirm(
@@ -39,6 +38,7 @@ function ViewJavascript() {
       .then((result) => {
         if (result.data.status === true) {
           setdeleteororstatus(!deleteororstatus);
+
         } else {
           toast.success(result.data.message);
         }
@@ -50,7 +50,7 @@ function ViewJavascript() {
   };
 
   let statuschange = (id, staus) => {
-    console.log(id, staus);
+    // console.log(id, staus);
     const data = {
       id: id,
       status: !staus,
@@ -79,17 +79,14 @@ function ViewJavascript() {
 
         <div
           className={` ${
-            changemenu == true ? "w-[95%]" : "w-[84%]"
-          } relative px-[30px] py-[50px] h-[92vh] bg-[#F5F7FF]`}
+            changemenu == true ? "w-[95%]" : "w-[100%]"
+          } relative px-[10px] py-[10px] h-[92vh] bg-[#F5F7FF]`}
         >
-          <h1 className="text-[25px] font-[500] mb-[10px]">
-            Welcome To javascript Admin Panel
-          </h1>
+         
           <div className="">
             <div className="bg-white w-[100%] mb-[50px] p-4 h-full rounded-[20px]">
               {javascriptview.length > 0 ? (
                 javascriptview.map((v, i) => {
-                  console.log("v", v);
                   return (
                     <div className="p-4 border-[2px]  text-white" key={i}>
                       <div className="flex items-start justify-between">
@@ -99,7 +96,7 @@ function ViewJavascript() {
                               javascript
                             </span>
                             <span className="text-xs text-left text-red-700">
-                              <span>Date</span> {v.created_at.slice(0, 10)}
+                              <span>Date</span> {v.created_at.slice(0, 10).split("-").reverse().join("-")}
                             </span>
                           </div>
                           <button className="text-lg font-medium text-left w-full flex items-center bg-[blue]  ">
@@ -148,7 +145,7 @@ function ViewJavascript() {
                   );
                 })
               ) : (
-                <Loading/>
+                ""
               )}
             </div>
           </div>
