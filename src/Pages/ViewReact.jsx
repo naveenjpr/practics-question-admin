@@ -15,23 +15,20 @@ function ViewReact() {
   let Api = reactbaseurl;
   let showdata = () => {
     axios
-    .post(`${Api}/view`)
-    .then((result) => {
-      console.log(result.data.imagePath);
-      if (result.data.status == true) {
-        setjavascriptview(result.data.data);
-      } else {
-        setjavascriptview([]);
-      }
-    })
-    .catch((error) => {});
-
-
+      .post(`${Api}/view`)
+      .then((result) => {
+        console.log(result.data.imagePath);
+        if (result.data.status == true) {
+          setjavascriptview(result.data.data);
+        } else {
+          setjavascriptview([]);
+        }
+      })
+      .catch((error) => {});
   };
 
   useEffect(() => {
-    showdata()
-  
+    showdata();
   }, [deleteororstatus]);
 
   let deletecoure = (id) => {
@@ -47,8 +44,7 @@ function ViewReact() {
         } else {
           toast.success(result.data.message);
         }
-        showdata()
-
+        showdata();
       })
       .catch((err) => {
         console.error(err);
@@ -82,16 +78,18 @@ function ViewReact() {
 
       <div className="flex  bg-[#F5F7FF]">
         <Sidebar />
- <ToastContainer
-        position="top-right"
-        autoClose={500} // 1 सेकंड (1000 मिलीसेकंड) में बंद हो
-      />
+        <ToastContainer
+          position="top-right"
+          autoClose={500} // 1 सेकंड (1000 मिलीसेकंड) में बंद हो
+        />
         <div
           className={` ${
             changemenu == true ? "w-[95%]" : "w-[100%]"
           } relative px-[10px] py-[10px] h-[92vh] bg-[#F5F7FF]`}
         >
-          <h1 className="text-[25px] font-[500] mb-[10px]">react admin panel</h1>
+          <h1 className="text-[25px] font-[500] mb-[10px]">
+            <u>react</u> 
+          </h1>
           <div className="">
             <div className="bg-white w-[100%] mb-[50px] p-4 h-full rounded-[20px]">
               {javascriptview.length > 0
@@ -105,14 +103,18 @@ function ViewReact() {
                                 React
                               </span>
                               <span className="text-xs text-left text-red-700">
-                                <span>Date</span> {v.created_at.slice(0, 10).split("-").reverse().join("-")}
+                                <span>Date</span>{" "}
+                                {v.created_at
+                                  .slice(0, 10)
+                                  .split("-")
+                                  .reverse()
+                                  .join("-")}
                               </span>
                             </div>
                             <button className="text-lg font-medium text-left w-full flex items-center bg-[blue]  ">
                               <span className="mx-[5px]">{i + 1} </span>
                               {v.Question}
                             </button>
-                          
                           </div>
                         </div>
                         <div className="p-2 mt-1 text-white bg-black">
@@ -153,8 +155,7 @@ function ViewReact() {
                       </div>
                     );
                   })
-                : ""
-                }
+                : ""}
             </div>
           </div>
           {/* <Footer /> */}

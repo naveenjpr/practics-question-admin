@@ -91,8 +91,11 @@ function ViewNode() {
           } relative px-[30px] py-[50px] h-[92vh] bg-[#F5F7FF]`}
         >
           <h1 className="text-[25px] font-[500] mb-[10px]">
-            {" "}
+            <u>
+
             node js question
+
+            </u>
           </h1>
           <div
             className={` ${

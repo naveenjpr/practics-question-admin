@@ -95,7 +95,7 @@ export default function ViewHTML_CSS() {
           } relative px-[10px] py-[10px] h-[92vh] bg-[#F5F7FF]`}
         >
           <h1 className="text-[25px] font-[500] mb-[10px]">
-            Welcome To wordpress Admin Panel
+            <u className="">  HTML OR CSS </u> 
           </h1>
           <div className="">
             <div className="bg-white w-[100%] mb-[50px] p-4 h-full rounded-[20px]">
@@ -107,7 +107,7 @@ export default function ViewHTML_CSS() {
                           <div className="flex-1">
                             <div className="flex items-center mb-2">
                               <span className="text-xs font-medium mr-2 px-2.5 py-0.5 rounded tag-react text-[red]">
-                                wordpress
+                                html or css
                               </span>
                               <span className="text-xs text-left text-red-700">
                                 <span>Date</span>{" "}
