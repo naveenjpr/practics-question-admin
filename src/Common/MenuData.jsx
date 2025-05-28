@@ -48,6 +48,15 @@ export const data = [
   },
   {
     id: 5,
+    icon: <FaWordpress />,
+    uid: "HTML CSS",
+    sub1: "Add HTML_CSS",
+    sub2: "View HTML_CSS",
+    link1: "/AddHTML_CSS",
+    link2: "/ViewHTML_CSS",
+  },
+  {
+    id: 6,
     icon: <FontAwesomeIcon icon={faUsers} />,
     uid: "User",
     sub1: "View User",
@@ -67,6 +76,8 @@ export const reactbaseurl =
 
 export const WordPressUrl =
   "https://rss-feed-node-js.onrender.com/api/backend/WordPress";
+export const HTML_CSSUrl =
+  "https://rss-feed-node-js.onrender.com/api/backend/HTML_CSS";
 
 //
 

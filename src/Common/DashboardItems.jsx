@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
+  HTML_CSSUrl,
   javascriptbaseurl,
   nodebaseurl,
   reactbaseurl,
@@ -12,6 +13,7 @@ function DashboardItems() {
   const [nodebaseurltotalrecord, setnodebaseurltotalrecord] = useState(null);
   const [reactApitotalrecord, setreactApitotalrecord] = useState(null);
   const [wordpresstotalrecord, setwordpresstotalrecord] = useState(null);
+  const [HTML_CSS, setHTML_CSS] = useState(null);
 
   let Api = javascriptbaseurl;
   useEffect(() => {
@@ -56,6 +58,17 @@ function DashboardItems() {
       .catch((error) => {});
   }, []);
 
+  let HTML_CSSApi = HTML_CSSUrl;
+  useEffect(() => {
+    axios
+      .post(`${HTML_CSSApi}/view`)
+      .then((result) => {
+        console.log(result.data.totalRecords);
+        setHTML_CSS(result.data.totalRecords);
+      })
+      .catch((error) => {});
+  }, []);
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {/* JavaScript */}
@@ -95,6 +108,14 @@ function DashboardItems() {
         </h3>
         <h1 className="text-4xl font-bold text-purple-900">
           {wordpresstotalrecord ?? "Loading..."}
+        </h1>
+      </div>
+      <div className="bg-gradient-to-r from-purple-100 to-purple-200 border-purple-400 border-2 rounded-2xl p-6 text-center shadow-md hover:shadow-xl transition">
+        <h3 className="text-lg font-semibold text-purple-700 mb-2">
+          html or css Total Questions
+        </h3>
+        <h1 className="text-4xl font-bold text-purple-900">
+          {HTML_CSS ?? "Loading..."}
         </h1>
       </div>
     </div>
