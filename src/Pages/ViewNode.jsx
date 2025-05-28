@@ -14,8 +14,7 @@ function ViewNode() {
   const [Imagepath, setImagepath] = useState();
   const [deleteororstatus, setdeleteororstatus] = useState(false);
   let Api = nodebaseurl;
-
-  useEffect(() => {
+  let showdata = () => {
     axios
       .post(`${Api}/view`)
       .then((result) => {
@@ -28,7 +27,11 @@ function ViewNode() {
         }
       })
       .catch((error) => {});
-  }, [deleteororstatus, javascriptview]);
+  };
+
+  useEffect(() => {
+    showdata();
+  }, [deleteororstatus]);
 
   let deletecoure = (id) => {
     const confirmed = window.confirm(
@@ -43,6 +46,7 @@ function ViewNode() {
         } else {
           toast.success(result.data.message);
         }
+        showdata();
       })
       .catch((err) => {
         console.error(err);
@@ -77,8 +81,10 @@ function ViewNode() {
 
       <div className="flex  bg-[#F5F7FF]">
         <Sidebar />
-        <ToastContainer />
-
+ <ToastContainer
+        position="top-right"
+        autoClose={500} // 1 सेकंड (1000 मिलीसेकंड) में बंद हो
+      />
         <div
           className={` ${
             changemenu == true ? "w-[95%]" : "w-[84%]"
@@ -93,7 +99,6 @@ function ViewNode() {
               changemenu == true ? "w-[95%]" : "w-[100%]"
             } relative px-[10px] py-[10px] h-[92vh] bg-[#F5F7FF]`}
           >
-         
             <div className="">
               <div className="bg-white w-[100%] mb-[50px] p-4 h-full rounded-[20px]">
                 {javascriptview.length > 0

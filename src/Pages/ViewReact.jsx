@@ -13,20 +13,26 @@ function ViewReact() {
   const [javascriptview, setjavascriptview] = useState([]);
   const [deleteororstatus, setdeleteororstatus] = useState(false);
   let Api = reactbaseurl;
+  let showdata = () => {
+    axios
+    .post(`${Api}/view`)
+    .then((result) => {
+      console.log(result.data.imagePath);
+      if (result.data.status == true) {
+        setjavascriptview(result.data.data);
+      } else {
+        setjavascriptview([]);
+      }
+    })
+    .catch((error) => {});
+
+
+  };
 
   useEffect(() => {
-    axios
-      .post(`${Api}/view`)
-      .then((result) => {
-        console.log(result.data.imagePath);
-        if (result.data.status == true) {
-          setjavascriptview(result.data.data);
-        } else {
-          setjavascriptview([]);
-        }
-      })
-      .catch((error) => {});
-  }, [deleteororstatus,javascriptview]);
+    showdata()
+  
+  }, [deleteororstatus]);
 
   let deletecoure = (id) => {
     const confirmed = window.confirm(
@@ -41,6 +47,8 @@ function ViewReact() {
         } else {
           toast.success(result.data.message);
         }
+        showdata()
+
       })
       .catch((err) => {
         console.error(err);
@@ -74,8 +82,10 @@ function ViewReact() {
 
       <div className="flex  bg-[#F5F7FF]">
         <Sidebar />
-        <ToastContainer />
-
+ <ToastContainer
+        position="top-right"
+        autoClose={500} // 1 सेकंड (1000 मिलीसेकंड) में बंद हो
+      />
         <div
           className={` ${
             changemenu == true ? "w-[95%]" : "w-[100%]"
