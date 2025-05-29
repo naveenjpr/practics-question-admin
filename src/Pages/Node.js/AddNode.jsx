@@ -1,26 +1,23 @@
 import React, { useContext, useEffect, useState } from "react";
-import Header from "../Common/Header";
-import Sidebar from "../Common/Sidebar";
-import { mainContext } from "../Context";
-import prev from "../img/generic-image-file-icon-hi.png";
-import { toast, ToastContainer } from "react-toastify";
-import { reactbaseurl } from "../Common/MenuData";
+import { mainContext } from "../../Context";
+import Header from "../../Common/Header";
+import Sidebar from "../../Common/Sidebar";
+import Footer from "../../Common/Footer";
 import { useNavigate, useParams } from "react-router";
 import axios from "axios";
-// import AdminForms from '../Common/AdminForms'
+import { toast, ToastContainer } from "react-toastify";
+import { nodebaseurl } from "../../Common/MenuData";
 
-function AddReact() {
+function AddNode() {
   let { changemenu } = useContext(mainContext);
   let params = useParams();
-
-  let navigate = useNavigate();
 
   const [formsubmit, setformsubmit] = useState(false);
   let [input, setinput] = useState({ Question: "", Answers: "", status: 1 });
 
   let submitHandler = (event) => {
     event.preventDefault();
-    let Api = reactbaseurl;
+    let Api = nodebaseurl;
     let form = new FormData(event.target);
 
     if (params.id == undefined) {
@@ -38,7 +35,7 @@ function AddReact() {
         .catch((error) => {
           toast.error("something went wrong");
         });
-    } else {
+    }else {
       axios
         .put(`${Api}/update/${params.id}`, form)
         .then((resutl) => {
@@ -63,7 +60,7 @@ function AddReact() {
   };
 
   useEffect(() => {
-    let Api = reactbaseurl;
+    let Api = nodebaseurl;
     if (params.id != undefined) {
       axios
         .post(`${Api}/details/${params.id}`)
@@ -80,17 +77,21 @@ function AddReact() {
     }
   }, []);
 
+  let navigate = useNavigate();
+
   useEffect(() => {
     if (formsubmit == true) {
-      navigate("/viewReact");
+      navigate("/view-Node");
     }
-  }, [formsubmit]);
+  }, [formsubmit]); 
+  
   return (
     <div>
       <Header />
-      <ToastContainer />
 
       <div className="flex  bg-[#F5F7FF]">
+        <ToastContainer />
+
         <Sidebar />
 
         <div
@@ -99,7 +100,7 @@ function AddReact() {
           } relative px-[30px] pt-[20px] pb-[60px]  bg-[#F5F7FF]`}
         >
           <h1 className="text-[25px] font-[500] mb-[10px]">
-            React question add
+            node.js question add
           </h1>
           <div className="w-full">
             <div className="w-full p-6 mb-12 bg-white shadow-sm rounded-2xl">
@@ -125,12 +126,8 @@ function AddReact() {
                     className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 min-h-24"
                     placeholder="Enter the answer"
                     rows="9"
-                  >
-                  
-                  </textarea>
+                  ></textarea>
                 </div>
-
-              
 
                 <div>
                   <label className="block mb-2 text-gray-700">
@@ -189,11 +186,11 @@ function AddReact() {
               </form>
             </div>
           </div>
-          {/* <Footer className /> */}
+          <Footer />
         </div>
       </div>
     </div>
   );
 }
 
-export default AddReact;
+export default AddNode;

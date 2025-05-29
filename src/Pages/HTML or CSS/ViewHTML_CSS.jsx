@@ -1,38 +1,34 @@
 import React, { useContext, useEffect, useState } from "react";
-import { mainContext } from "../Context";
-import Header from "../Common/Header";
-import Sidebar from "../Common/Sidebar";
-import Footer from "../Common/Footer";
+
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import { Link } from "react-router-dom";
-import { Loading, WordPressUrl } from "../Common/MenuData";
-export default function Viewwordpress() {
+import { Loading, HTML_CSSUrl } from "../../Common/MenuData";
+import Sidebar from "../../Common/Sidebar";
+import Header from "../../Common/Header";
+import { mainContext } from "../../Context";
+export default function ViewHTML_CSS() {
   let { changemenu } = useContext(mainContext);
 
-  const [javascriptview, setjavascriptview] = useState([]);
+  const [html_cssview, sethtml_cssview] = useState([]);
   const [Imagepath, setImagepath] = useState();
   const [deleteororstatus, setdeleteororstatus] = useState(false);
 
-  let Api = WordPressUrl;
+  let Api = HTML_CSSUrl;
+
   let showdata = () => {
     axios
       .post(`${Api}/view`)
       .then((result) => {
-        console.log(result.data.imagePath);
         if (result.data.status == true) {
           setImagepath(result.data.imagePath); // ✅ correct key
-          setjavascriptview(result.data.data);
+          sethtml_cssview(result.data.data);
         } else {
-          setjavascriptview([]);
+          sethtml_cssview([]);
         }
       })
       .catch((error) => {});
   };
-
-  useEffect(() => {
-    showdata();
-  }, [deleteororstatus]);
 
   let deletecoure = (id) => {
     const confirmed = window.confirm(
@@ -42,15 +38,18 @@ export default function Viewwordpress() {
     axios
       .delete(`${Api}/delete/${id}`)
       .then((result) => {
-        if (result.data.status === true) {
-          setdeleteororstatus(!deleteororstatus);
-        } else {
+        if (result.data.status == true) {
           toast.success(result.data.message);
+        } else {
+          toast.error(result.data.message);
+
         }
-        showdata();
+        showdata()
+
       })
+
       .catch((err) => {
-        console.error(err);
+        console.error("Delete Error:", err);
         toast.error("Something went wrong");
       });
   };
@@ -64,8 +63,9 @@ export default function Viewwordpress() {
     axios
       .put(`${Api}/change-status`, data)
       .then((result) => {
-        if (result.data.status === true) {
+        if (result.data.status == true) {
           setdeleteororstatus(!deleteororstatus);
+          toast.success("Status changed successfully"); // ✅ Add this line
         } else {
           toast.error(result.data.message);
         }
@@ -75,13 +75,16 @@ export default function Viewwordpress() {
         toast.error("Something went wrong");
       });
   };
+  useEffect(() => {
+    showdata();
+  }, [deleteororstatus]);
 
   return (
     <div>
-      <Header />
+      <Header/>
 
       <div className="flex  bg-[#F5F7FF]">
-        <Sidebar />
+        <Sidebar/>
         <ToastContainer
           position="top-right"
           autoClose={500} // 1 सेकंड (1000 मिलीसेकंड) में बंद हो
@@ -92,19 +95,19 @@ export default function Viewwordpress() {
           } relative px-[10px] py-[10px] h-[92vh] bg-[#F5F7FF]`}
         >
           <h1 className="text-[25px] font-[500] mb-[10px]">
-            Welcome To<u>wordpress</u> Admin Panel
+            <u className="">  HTML OR CSS </u> 
           </h1>
           <div className="">
             <div className="bg-white w-[100%] mb-[50px] p-4 h-full rounded-[20px]">
-              {javascriptview.length > 0
-                ? javascriptview.map((v, i) => {
+              {html_cssview.length > 0
+                ? html_cssview.map((v, i) => {
                     return (
                       <div className="p-4 border-[2px]  text-white" key={i}>
                         <div className="flex items-start justify-between">
                           <div className="flex-1">
                             <div className="flex items-center mb-2">
                               <span className="text-xs font-medium mr-2 px-2.5 py-0.5 rounded tag-react text-[red]">
-                                wordpress
+                                html or css
                               </span>
                               <span className="text-xs text-left text-red-700">
                                 <span>Date</span>{" "}
@@ -147,7 +150,7 @@ export default function Viewwordpress() {
                             </div>
 
                             <button className="flex items-center justify-center gap-2 px-3 text-sm font-medium border rounded-md whitespace-nowrap h-9 border-input bg-background hover:bg-accent">
-                              <Link to={`/Addwordpress/${v._id}`}>Edit</Link>
+                              <Link to={`/AddHTML_CSS/${v._id}`}>Edit</Link>
                             </button>
                             <button
                               className="flex items-center justify-center gap-2 px-3 text-sm font-medium border rounded-md whitespace-nowrap h-9 border-input bg-background text-destructive hover:bg-destructive/10"

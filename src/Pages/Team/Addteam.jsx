@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { mainContext } from "../Context";
-import Header from "../Common/Header";
-import Sidebar from "../Common/Sidebar";
-import Footer from "../Common/Footer";
-import prev from "../img/generic-image-file-icon-hi.png";
+import { mainContext } from "../../Context";
+import Header from "../../Common/Header";
+import Sidebar from "../../Common/Sidebar";
+import Footer from "../../Common/Footer";
+import prev from "../../img/generic-image-file-icon-hi.png";
 
 function Addteam() {
   let { changemenu } = useContext(mainContext);

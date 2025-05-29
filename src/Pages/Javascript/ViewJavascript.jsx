@@ -1,10 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import { mainContext } from "../Context";
-import Header from "../Common/Header";
-import Sidebar from "../Common/Sidebar";
-import Footer from "../Common/Footer";
+import { mainContext } from "../../Context";
+import Header from "../../Common/Header";
+import Sidebar from "../../Common/Sidebar";
 import axios from "axios";
-import { javascriptbaseurl, Loading } from "../Common/MenuData";
+import { javascriptbaseurl, Loading } from "../../Common/MenuData";
 import { toast, ToastContainer } from "react-toastify";
 import { Link } from "react-router-dom";
 

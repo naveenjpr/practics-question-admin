@@ -6,19 +6,21 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Login from './Pages/Login';
 import Dashboard from './Pages/Dashboard';
 import Context from './Context';
-import Addteam from './Pages/Addteam';
 import Viewuser from './Pages/Viewuser';
-import Viewteam from './Pages/Viewteam';
-import ViewReact from './Pages/ViewReact';
-import AddReact from './Pages/AddReact';
-import ViewJavascript from './Pages/ViewJavascript';
-import AddJavascript from './Pages/AddJavascript';
-import AddNode from './Pages/AddNode';
-import ViewNode from './Pages/ViewNode';
-import Viewwordpress from './Pages/Viewwordpress';
-import Addwordpress from './Pages/Addwordpress ';
-import AddHTML_CSS from './Pages/AddHTML_CSS';
-import ViewHTML_CSS from './Pages/ViewHTML_CSS';
+import AddHTML_CSS from './Pages/HTML or CSS/AddHTML_CSS';
+import ViewHTML_CSS from './Pages/HTML or CSS/ViewHTML_CSS';
+import ViewJavascript from './Pages/Javascript/ViewJavascript';
+import AddJavascript from './Pages/Javascript/AddJavascript';
+import ViewReact from './Pages/React/ViewReact';
+import AddReact from './Pages/React/AddReact';
+import AddNode from './Pages/Node.js/AddNode';
+import ViewNode from './Pages/Node.js/ViewNode';
+import Viewwordpress from './Pages/wordpress/Viewwordpress';
+import Addwordpress from './Pages/wordpress/Addwordpress ';
+import Addteam from './Pages/Team/Addteam';
+import Viewteam from './Pages/Team/Viewteam';
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -41,50 +43,47 @@ const router = createBrowserRouter([
   },
   {
     path: "Addwordpress/:id?",
-    element: <Addwordpress />
+    element: <Addwordpress/>
   },
   {
     path: "Viewwordpress",
-    element: <Viewwordpress />
+    element: <Viewwordpress/>
   },
   {
     path: "addReact/:id?",
-    element: <AddReact />
+    element: <AddReact/>
   },
   {
     path: "viewReact",
-    element: <ViewReact />
+    element: <ViewReact/>
   },
   {
     path: "add-Node/:id?",
-    element: <AddNode />
+    element: <AddNode/>
   },
   {
     path: "view-Node",
-    element: <ViewNode />
+    element: <ViewNode/>
   },
   {
     path: "add-Javascript/:id?",
-    element: <AddJavascript />
+    element: <AddJavascript/>
   },
   {
     path: "view-Javascript",
-    element: <ViewJavascript />
+    element: <ViewJavascript/>
   },
   {
     path: "addteam",
-    element: <Addteam />
+    element: <Addteam/>
   },
   {
     path: "viewuser",
     element: <Viewuser />
   },
-
-
-
   {
     path: "viewteam",
-    element: <Viewteam />
+    element: <Viewteam/>
   },
 
 

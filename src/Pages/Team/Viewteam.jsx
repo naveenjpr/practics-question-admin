@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
-import { mainContext } from '../Context';
-import Header from '../Common/Header';
-import Sidebar from '../Common/Sidebar';
-import Footer from '../Common/Footer';
+import { mainContext } from '../../Context';
+import Header from '../../Common/Header';
+import Sidebar from '../../Common/Sidebar';
+import Footer from '../../Common/Footer';
 
 function Viewteam() {
   let {changemenu} = useContext(mainContext);

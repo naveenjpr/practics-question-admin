@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
-import { mainContext } from "../Context";
-import Header from "../Common/Header";
-import Sidebar from "../Common/Sidebar";
-import Footer from "../Common/Footer";
+import { mainContext } from "../../Context";
+import Header from "../../Common/Header";
+import Sidebar from "../../Common/Sidebar";
+import Footer from "../../Common/Footer";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
 import { useNavigate, useParams } from "react-router";
-import { WordPressUrl } from "../Common/MenuData";
+import { WordPressUrl } from "../../Common/MenuData";
 export default function Addwordpress() {
   let { changemenu } = useContext(mainContext);
   let params = useParams();

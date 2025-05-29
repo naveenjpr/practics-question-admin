@@ -1,13 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
-import { mainContext } from "../Context";
-import Header from "../Common/Header";
-import Sidebar from "../Common/Sidebar";
-import Footer from "../Common/Footer";
-import prev from "../img/generic-image-file-icon-hi.png";
+import { mainContext } from "../../Context";
+import Header from "../../Common/Header";
+import Sidebar from "../../Common/Sidebar";
+import Footer from "../../Common/Footer";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
-import { javascriptbaseurl } from "../Common/MenuData";
+import { javascriptbaseurl } from "../../Common/MenuData";
 import { useNavigate, useParams } from "react-router";
 import { Api } from "@mui/icons-material";
 

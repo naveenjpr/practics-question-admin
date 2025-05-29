@@ -1,13 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
-import { mainContext } from "../Context";
-import Header from "../Common/Header";
-import Sidebar from "../Common/Sidebar";
-import Footer from "../Common/Footer";
+// import { mainContext } from "../Context";
 import axios from "axios";
+import Footer from "../../Common/Footer";
 import { ToastContainer, toast } from "react-toastify";
 
 import { useNavigate, useParams } from "react-router";
-import { HTML_CSSUrl } from "../Common/MenuData";
+import { HTML_CSSUrl } from "../../Common/MenuData";
+import Sidebar from "../../Common/Sidebar";
+import Header from "../../Common/Header";
+import { mainContext } from "../../Context";
 export default function AddHTML_CSS() {
   let { changemenu } = useContext(mainContext);
   let params = useParams();
@@ -87,12 +88,12 @@ useEffect(() => {
   
   return (
     <div>
-      <Header />
+      <Header/>
 
       <div className="flex  bg-[#F5F7FF]">
         <ToastContainer />
 
-        <Sidebar />
+        <Sidebar/>
 
         <div
           className={` ${
@@ -186,7 +187,7 @@ useEffect(() => {
               </form>
             </div>
           </div>
-          <Footer />
+          <Footer/>
         </div>
       </div>
     </div>

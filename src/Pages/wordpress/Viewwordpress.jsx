@@ -1,24 +1,26 @@
 import React, { useContext, useEffect, useState } from "react";
-import { mainContext } from "../Context";
-import Header from "../Common/Header";
-import Sidebar from "../Common/Sidebar";
-import Footer from "../Common/Footer";
-import { Link } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
+import { mainContext } from "../../Context";
+import Header from "../../Common/Header";
+import Sidebar from "../../Common/Sidebar";
 import axios from "axios";
-import { Loading, reactbaseurl } from "../Common/MenuData";
-
-function ViewReact() {
+import { toast, ToastContainer } from "react-toastify";
+import { Link } from "react-router-dom";
+import { Loading, WordPressUrl } from "../../Common/MenuData";
+export default function Viewwordpress() {
   let { changemenu } = useContext(mainContext);
+
   const [javascriptview, setjavascriptview] = useState([]);
+  const [Imagepath, setImagepath] = useState();
   const [deleteororstatus, setdeleteororstatus] = useState(false);
-  let Api = reactbaseurl;
+
+  let Api = WordPressUrl;
   let showdata = () => {
     axios
       .post(`${Api}/view`)
       .then((result) => {
         console.log(result.data.imagePath);
         if (result.data.status == true) {
+          setImagepath(result.data.imagePath); // ✅ correct key
           setjavascriptview(result.data.data);
         } else {
           setjavascriptview([]);
@@ -72,6 +74,7 @@ function ViewReact() {
         toast.error("Something went wrong");
       });
   };
+
   return (
     <div>
       <Header />
@@ -88,7 +91,7 @@ function ViewReact() {
           } relative px-[10px] py-[10px] h-[92vh] bg-[#F5F7FF]`}
         >
           <h1 className="text-[25px] font-[500] mb-[10px]">
-            <u>react</u> 
+            Welcome To &nbsp;<u>word press</u> &nbsp; Admin Panel
           </h1>
           <div className="">
             <div className="bg-white w-[100%] mb-[50px] p-4 h-full rounded-[20px]">
@@ -100,7 +103,7 @@ function ViewReact() {
                           <div className="flex-1">
                             <div className="flex items-center mb-2">
                               <span className="text-xs font-medium mr-2 px-2.5 py-0.5 rounded tag-react text-[red]">
-                                React
+                                wordpress
                               </span>
                               <span className="text-xs text-left text-red-700">
                                 <span>Date</span>{" "}
@@ -111,7 +114,7 @@ function ViewReact() {
                                   .join("-")}
                               </span>
                             </div>
-                            <button className="text-lg font-medium text-left w-full flex items-center bg-[blue]  ">
+                            <button className="text-lg font-medium text-left w-full flex items-center bg-[blue] ">
                               <span className="mx-[5px]">{i + 1} </span>
                               {v.Question}
                             </button>
@@ -121,6 +124,7 @@ function ViewReact() {
                           <pre className="whitespace-pre-wrap break-words">
                             {v.Answers}
                           </pre>
+
                           <div className="flex justify-end mt-4 space-x-2">
                             <div className="flex items-center justify-center gap-2">
                               <span>status type</span>
@@ -142,7 +146,7 @@ function ViewReact() {
                             </div>
 
                             <button className="flex items-center justify-center gap-2 px-3 text-sm font-medium border rounded-md whitespace-nowrap h-9 border-input bg-background hover:bg-accent">
-                              <Link to={`/addReact/${v._id}`}>Edit</Link>
+                              <Link to={`/Addwordpress/${v._id}`}>Edit</Link>
                             </button>
                             <button
                               className="flex items-center justify-center gap-2 px-3 text-sm font-medium border rounded-md whitespace-nowrap h-9 border-input bg-background text-destructive hover:bg-destructive/10"
@@ -164,5 +168,3 @@ function ViewReact() {
     </div>
   );
 }
-
-export default ViewReact;
