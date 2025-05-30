@@ -40,11 +40,9 @@ function ViewNode() {
     axios
       .delete(`${Api}/delete/${id}`)
       .then((result) => {
-        if (result.data.status === true) {
-          setdeleteororstatus(!deleteororstatus);
-        } else {
+        
           toast.success(result.data.message);
-        }
+        
         showdata();
       })
       .catch((err) => {

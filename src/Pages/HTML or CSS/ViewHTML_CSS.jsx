@@ -38,12 +38,9 @@ export default function ViewHTML_CSS() {
     axios
       .delete(`${Api}/delete/${id}`)
       .then((result) => {
-        if (result.data.status == true) {
+       
           toast.success(result.data.message);
-        } else {
-          toast.error(result.data.message);
-
-        }
+       
         showdata()
 
       })
