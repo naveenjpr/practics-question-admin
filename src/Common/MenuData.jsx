@@ -8,6 +8,10 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaNodeJs, FaReact, FaWordpress } from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io";
+import { RiEnglishInput } from "react-icons/ri";
+import { MdCss } from "react-icons/md";
+
+
 
 export const data = [
   {
@@ -48,7 +52,7 @@ export const data = [
   },
   {
     id: 5,
-    icon: <FaWordpress />,
+    icon: <MdCss/>,
     uid: "HTML CSS",
     sub1: "Add HTML_CSS",
     sub2: "View HTML_CSS",
@@ -57,6 +61,15 @@ export const data = [
   },
   {
     id: 6,
+    icon: <RiEnglishInput/>,
+    uid: "Eng_Spok",
+    sub1: "Add Eng-spoken",
+    sub2: "View Eng-spoken",
+    link1: "/AddEnglish",
+    link2: "/ViewEnglish",
+  },
+  {
+    id: 7,
     icon: <FontAwesomeIcon icon={faUsers} />,
     uid: "User",
     sub1: "View User",
@@ -78,6 +91,9 @@ export const WordPressUrl =
   "https://rss-feed-node-js.onrender.com/api/backend/WordPress";
 export const HTML_CSSUrl =
   "https://rss-feed-node-js.onrender.com/api/backend/HTML_CSS";
+// export const EnglishUrl =
+//   "http://localhost:5000/api/backend/English";
+export const EnglishUrl =
+  "https://rss-feed-node-js.onrender.com/api/backend/English";
 
 //
-

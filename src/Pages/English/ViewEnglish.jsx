@@ -5,15 +5,15 @@ import Sidebar from "../../Common/Sidebar";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import { Link } from "react-router-dom";
-import { Loading, WordPressUrl } from "../../Common/MenuData";
-export default function Viewwordpress() {
+import { EnglishUrl, Loading,  } from "../../Common/MenuData";
+export default function ViewEnglish() {
   let { changemenu } = useContext(mainContext);
 
-  const [javascriptview, setjavascriptview] = useState([]);
+  const [Englishview, setEnglishview] = useState([]);
   const [Imagepath, setImagepath] = useState();
   const [deleteororstatus, setdeleteororstatus] = useState(false);
 
-  let Api = WordPressUrl;
+  let Api = EnglishUrl;
   let showdata = () => {
     axios
       .post(`${Api}/view`)
@@ -21,9 +21,9 @@ export default function Viewwordpress() {
         console.log(result.data.imagePath);
         if (result.data.status == true) {
           setImagepath(result.data.imagePath); // ✅ correct key
-          setjavascriptview(result.data.data);
+          setEnglishview(result.data.data);
         } else {
-          setjavascriptview([]);
+          setEnglishview([]);
         }
       })
       .catch((error) => {});
@@ -89,19 +89,19 @@ export default function Viewwordpress() {
           } relative px-[10px] py-[10px] overflow-auto h-screen bg-[#F5F7FF]`}
         >
           <h1 className="text-[25px] font-[500] mb-[10px]">
-            Welcome To &nbsp;<u>word press</u> &nbsp; Admin Panel
+            Welcome To &nbsp;<u>English spoken</u> &nbsp; Admin Panel
           </h1>
           <div className="">
             <div className="bg-white w-[100%] mb-[50px] p-4 h-full rounded-[20px]">
-              {javascriptview.length > 0
-                ? javascriptview.map((v, i) => {
+              {Englishview.length > 0
+                ? Englishview.map((v, i) => {
                     return (
                       <div className="p-4 border-[2px]  text-white" key={i}>
                         <div className="flex items-start justify-between">
                           <div className="flex-1">
                             <div className="flex items-center mb-2">
                               <span className="text-xs font-medium mr-2 px-2.5 py-0.5 rounded tag-react text-[red]">
-                                wordpress
+English
                               </span>
                               <span className="text-xs text-left text-red-700">
                                 <span>Date</span>{" "}
@@ -144,7 +144,7 @@ export default function Viewwordpress() {
                             </div>
 
                             <button className="flex items-center justify-center gap-2 px-3 text-sm font-medium border rounded-md whitespace-nowrap h-9 border-input bg-background hover:bg-accent">
-                              <Link to={`/Addwordpress/${v._id}`}>Edit</Link>
+                              <Link to={`/AddEnglish/${v._id}`}>Edit</Link>
                             </button>
                             <button
                               className="flex items-center justify-center gap-2 px-3 text-sm font-medium border rounded-md whitespace-nowrap h-9 border-input bg-background text-destructive hover:bg-destructive/10"

@@ -83,7 +83,7 @@ function ViewJavascript() {
         <div
           className={` ${
             changemenu == true ? "w-[95%]" : "w-[100%]"
-          } relative px-[10px] py-[10px] h-[92vh] bg-[#F5F7FF]`}
+          } relative px-[10px] py-[10px] overflow-auto h-screen bg-[#F5F7FF]`}
         >
           <div className="">
             <div className="bg-white w-[100%] mb-[50px] p-4 h-full rounded-[20px]">

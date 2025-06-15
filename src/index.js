@@ -19,6 +19,8 @@ import Viewwordpress from './Pages/wordpress/Viewwordpress';
 import Addwordpress from './Pages/wordpress/Addwordpress ';
 import Addteam from './Pages/Team/Addteam';
 import Viewteam from './Pages/Team/Viewteam';
+import AddEnglish from './Pages/English/AddEnglish';
+import ViewEnglish from './Pages/English/ViewEnglish';
 
 
 
@@ -33,6 +35,16 @@ const router = createBrowserRouter([
     path: "dashboard",
     element: <Dashboard />
   },
+  //English
+  {
+    path: "AddEnglish/:id?",
+    element: <AddEnglish/>
+  },
+  {
+    path: "ViewEnglish",
+    element: <ViewEnglish/>
+  },
+  // html css
   {
     path: "AddHTML_CSS/:id?",
     element: <AddHTML_CSS/>
@@ -41,6 +53,7 @@ const router = createBrowserRouter([
     path: "ViewHTML_CSS",
     element: <ViewHTML_CSS/>
   },
+  // wordpress
   {
     path: "Addwordpress/:id?",
     element: <Addwordpress/>
@@ -49,6 +62,7 @@ const router = createBrowserRouter([
     path: "Viewwordpress",
     element: <Viewwordpress/>
   },
+  //react
   {
     path: "addReact/:id?",
     element: <AddReact/>
@@ -57,6 +71,7 @@ const router = createBrowserRouter([
     path: "viewReact",
     element: <ViewReact/>
   },
+  // node
   {
     path: "add-Node/:id?",
     element: <AddNode/>
@@ -65,6 +80,7 @@ const router = createBrowserRouter([
     path: "view-Node",
     element: <ViewNode/>
   },
+  // javascript
   {
     path: "add-Javascript/:id?",
     element: <AddJavascript/>

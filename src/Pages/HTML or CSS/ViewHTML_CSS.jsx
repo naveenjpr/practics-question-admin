@@ -89,7 +89,7 @@ export default function ViewHTML_CSS() {
         <div
           className={` ${
             changemenu == true ? "w-[95%]" : "w-[100%]"
-          } relative px-[10px] py-[10px] h-[92vh] bg-[#F5F7FF]`}
+          } relative px-[10px] py-[10px] overflow-auto h-screen bg-[#F5F7FF]`}
         >
           <h1 className="text-[25px] font-[500] mb-[10px]">
             <u className="">  HTML OR CSS </u> 

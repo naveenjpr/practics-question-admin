@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
+  EnglishUrl,
   HTML_CSSUrl,
   javascriptbaseurl,
   nodebaseurl,
@@ -14,6 +15,7 @@ function DashboardItems() {
   const [reactApitotalrecord, setreactApitotalrecord] = useState(null);
   const [wordpresstotalrecord, setwordpresstotalrecord] = useState(null);
   const [HTML_CSS, setHTML_CSS] = useState(null);
+  const [English, setEnglish] = useState(null);
 
   let Api = javascriptbaseurl;
   useEffect(() => {
@@ -36,6 +38,7 @@ function DashboardItems() {
       })
       .catch((error) => {});
   }, []);
+  //react
   let reactApi = reactbaseurl;
   useEffect(() => {
     axios
@@ -46,6 +49,7 @@ function DashboardItems() {
       })
       .catch((error) => {});
   }, []);
+  // wordpress
 
   let wordpressApi = WordPressUrl;
   useEffect(() => {
@@ -57,7 +61,7 @@ function DashboardItems() {
       })
       .catch((error) => {});
   }, []);
-
+// html or css
   let HTML_CSSApi = HTML_CSSUrl;
   useEffect(() => {
     axios
@@ -65,6 +69,17 @@ function DashboardItems() {
       .then((result) => {
         console.log(result.data.totalRecords);
         setHTML_CSS(result.data.totalRecords);
+      })
+      .catch((error) => {});
+  }, []);
+  // english
+  let EnglishApi = EnglishUrl;
+  useEffect(() => {
+    axios
+      .post(`${EnglishApi}/view`)
+      .then((result) => {
+        console.log(result.data.totalRecords);
+        setEnglish(result.data.totalRecords);
       })
       .catch((error) => {});
   }, []);
@@ -118,6 +133,16 @@ function DashboardItems() {
           {HTML_CSS ?? "Loading..."}
         </h1>
       </div>
+      {/* English */}
+      <div className="bg-gradient-to-r from-purple-100 to-purple-200 border-purple-400 border-2 rounded-2xl p-6 text-center shadow-md hover:shadow-xl transition">
+        <h3 className="text-lg font-semibold text-purple-700 mb-2">
+          English Total Questions
+        </h3>
+        <h1 className="text-4xl font-bold text-purple-900">
+          {English ?? "Loading..."}
+        </h1>
+      </div>
+  
     </div>
   );
 }

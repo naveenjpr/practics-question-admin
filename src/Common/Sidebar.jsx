@@ -7,9 +7,9 @@ function Sidebar() {
   return (
     < >
       <div
-        className={`duration-[0.2s]  ${
+        className={`duration-[0.2s] sticky top-0 min-h-screen   ${
           changemenu == true ? "w-[5%]" : "w-[16%]"
-        }  bg-white`}
+        }  bg-white `}
       >
         <ul className={` py-4 ${changemenu == true ? "px-0" : "px-5"}`}>
           <Menuitems />
