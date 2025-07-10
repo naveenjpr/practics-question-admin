@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { mainContext } from "../../Context";
 import Header from "../../Common/Header";
 import Sidebar from "../../Common/Sidebar";
-import { Loading, nodebaseurl } from "../../Common/MenuData";
+import { nodebaseurl } from "../../Common/MenuData";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import { Link } from "react-router-dom";
@@ -17,7 +17,6 @@ function ViewNode() {
     axios
       .post(`${Api}/view`)
       .then((result) => {
-        console.log(result.data.imagePath);
         if (result.data.status == true) {
           setImagepath(result.data.imagePath); // ✅ correct key
           setjavascriptview(result.data.data);
@@ -40,9 +39,8 @@ function ViewNode() {
     axios
       .delete(`${Api}/delete/${id}`)
       .then((result) => {
-        
-          toast.success(result.data.message);
-        
+        toast.success(result.data.message);
+
         showdata();
       })
       .catch((err) => {
@@ -52,7 +50,6 @@ function ViewNode() {
   };
 
   let statuschange = (id, staus) => {
-    console.log(id, staus);
     const data = {
       id: id,
       status: !staus,
@@ -78,21 +75,17 @@ function ViewNode() {
 
       <div className="flex  bg-[#F5F7FF]">
         <Sidebar />
- <ToastContainer
-        position="top-right"
-        autoClose={500} // 1 सेकंड (1000 मिलीसेकंड) में बंद हो
-      />
+        <ToastContainer
+          position="top-right"
+          autoClose={500} // 1 सेकंड (1000 मिलीसेकंड) में बंद हो
+        />
         <div
           className={` ${
             changemenu == true ? "w-[95%]" : "w-[84%]"
           } relative px-[30px] py-[50px] overflow-auto h-screen bg-[#F5F7FF]`}
         >
           <h1 className="text-[25px] font-[500] mb-[10px]">
-            <u>
-
-            node js question
-
-            </u>
+            <u>node js question</u>
           </h1>
           <div
             className={` ${
@@ -103,7 +96,6 @@ function ViewNode() {
               <div className="bg-white w-[100%] mb-[50px] p-4 h-full rounded-[20px]">
                 {javascriptview.length > 0
                   ? javascriptview.map((v, i) => {
-                      console.log("v", v);
                       return (
                         <div className="p-4 border-[2px]  text-white" key={i}>
                           <div className="flex items-start justify-between">

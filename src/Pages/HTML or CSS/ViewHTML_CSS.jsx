@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import { Link } from "react-router-dom";
-import { Loading, HTML_CSSUrl } from "../../Common/MenuData";
+import { HTML_CSSUrl } from "../../Common/MenuData";
 import Sidebar from "../../Common/Sidebar";
 import Header from "../../Common/Header";
 import { mainContext } from "../../Context";
@@ -11,7 +11,6 @@ export default function ViewHTML_CSS() {
   let { changemenu } = useContext(mainContext);
 
   const [html_cssview, sethtml_cssview] = useState([]);
-  const [Imagepath, setImagepath] = useState();
   const [deleteororstatus, setdeleteororstatus] = useState(false);
 
   let Api = HTML_CSSUrl;
@@ -20,8 +19,7 @@ export default function ViewHTML_CSS() {
     axios
       .post(`${Api}/view`)
       .then((result) => {
-        if (result.data.status == true) {
-          setImagepath(result.data.imagePath); // ✅ correct key
+        if (result.data.status === true) {
           sethtml_cssview(result.data.data);
         } else {
           sethtml_cssview([]);
@@ -38,11 +36,9 @@ export default function ViewHTML_CSS() {
     axios
       .delete(`${Api}/delete/${id}`)
       .then((result) => {
-       
-          toast.success(result.data.message);
-       
-        showdata()
+        toast.success(result.data.message);
 
+        showdata();
       })
 
       .catch((err) => {
@@ -52,7 +48,6 @@ export default function ViewHTML_CSS() {
   };
 
   let statuschange = (id, staus) => {
-    console.log(id, staus);
     const data = {
       id: id,
       status: !staus,
@@ -60,7 +55,7 @@ export default function ViewHTML_CSS() {
     axios
       .put(`${Api}/change-status`, data)
       .then((result) => {
-        if (result.data.status == true) {
+        if (result.data.status === true) {
           setdeleteororstatus(!deleteororstatus);
           toast.success("Status changed successfully"); // ✅ Add this line
         } else {
@@ -74,14 +69,14 @@ export default function ViewHTML_CSS() {
   };
   useEffect(() => {
     showdata();
-  }, [deleteororstatus]);
+  }, [deleteororstatus, Api]);
 
   return (
     <div>
-      <Header/>
+      <Header />
 
       <div className="flex  bg-[#F5F7FF]">
-        <Sidebar/>
+        <Sidebar />
         <ToastContainer
           position="top-right"
           autoClose={500} // 1 सेकंड (1000 मिलीसेकंड) में बंद हो
@@ -92,7 +87,7 @@ export default function ViewHTML_CSS() {
           } relative px-[10px] py-[10px] overflow-auto h-screen bg-[#F5F7FF]`}
         >
           <h1 className="text-[25px] font-[500] mb-[10px]">
-            <u className="">  HTML OR CSS </u> 
+            <u className=""> HTML OR CSS </u>
           </h1>
           <div className="">
             <div className="bg-white w-[100%] mb-[50px] p-4 h-full rounded-[20px]">
@@ -100,7 +95,7 @@ export default function ViewHTML_CSS() {
                 ? html_cssview.map((v, i) => {
                     return (
                       <div className="p-4 border-[2px]  text-white" key={i}>
-                        <div className="flex items-start justify-between">
+                        <div className="flex justify-between items-start">
                           <div className="flex-1">
                             <div className="flex items-center mb-2">
                               <span className="text-xs font-medium mr-2 px-2.5 py-0.5 rounded tag-react text-[red]">
@@ -127,11 +122,11 @@ export default function ViewHTML_CSS() {
                           </pre>
 
                           <div className="flex justify-end mt-4 space-x-2">
-                            <div className="flex items-center justify-center gap-2">
+                            <div className="flex gap-2 justify-center items-center">
                               <span>status type</span>
-                              {v.status == 1 ? (
+                              {v.status === 1 ? (
                                 <button
-                                  className="gap-2 px-3 text-sm font-medium text-green-700 bg-green-100 border border-green-300 rounded-md whitespace-nowrap h-9 hover:bg-green-200"
+                                  className="gap-2 px-3 h-9 text-sm font-medium text-green-700 whitespace-nowrap bg-green-100 rounded-md border border-green-300 hover:bg-green-200"
                                   onClick={() => statuschange(v._id, v.status)}
                                 >
                                   Active
@@ -146,11 +141,11 @@ export default function ViewHTML_CSS() {
                               )}
                             </div>
 
-                            <button className="flex items-center justify-center gap-2 px-3 text-sm font-medium border rounded-md whitespace-nowrap h-9 border-input bg-background hover:bg-accent">
+                            <button className="flex gap-2 justify-center items-center px-3 h-9 text-sm font-medium whitespace-nowrap rounded-md border border-input bg-background hover:bg-accent">
                               <Link to={`/AddHTML_CSS/${v._id}`}>Edit</Link>
                             </button>
                             <button
-                              className="flex items-center justify-center gap-2 px-3 text-sm font-medium border rounded-md whitespace-nowrap h-9 border-input bg-background text-destructive hover:bg-destructive/10"
+                              className="flex gap-2 justify-center items-center px-3 h-9 text-sm font-medium whitespace-nowrap rounded-md border border-input bg-background text-destructive hover:bg-destructive/10"
                               onClick={() => deletecoure(v._id)}
                             >
                               Delete

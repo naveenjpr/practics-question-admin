@@ -5,7 +5,7 @@ import Sidebar from "../../Common/Sidebar";
 import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
-import { Loading, reactbaseurl } from "../../Common/MenuData";
+import { reactbaseurl } from "../../Common/MenuData";
 
 function ViewReact() {
   let { changemenu } = useContext(mainContext);
@@ -16,7 +16,6 @@ function ViewReact() {
     axios
       .post(`${Api}/view`)
       .then((result) => {
-        console.log(result.data.imagePath);
         if (result.data.status == true) {
           setjavascriptview(result.data.data);
         } else {
@@ -38,9 +37,8 @@ function ViewReact() {
     axios
       .delete(`${Api}/delete/${id}`)
       .then((result) => {
-        
-          toast.success(result.data.message);
-        
+        toast.success(result.data.message);
+
         showdata();
       })
       .catch((err) => {
@@ -50,7 +48,6 @@ function ViewReact() {
   };
 
   let statuschange = (id, staus) => {
-    console.log(id, staus);
     const data = {
       id: id,
       status: !staus,
@@ -85,7 +82,7 @@ function ViewReact() {
           } relative px-[10px] py-[10px] overflow-auto h-screen bg-[#F5F7FF]`}
         >
           <h1 className="text-[25px] font-[500] mb-[10px]">
-            <u>react</u> 
+            <u>react</u>
           </h1>
           <div className="">
             <div className="bg-white w-[100%] mb-[50px] p-4 h-full rounded-[20px]">

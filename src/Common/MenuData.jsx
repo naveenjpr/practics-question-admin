@@ -11,8 +11,6 @@ import { IoLogoJavascript } from "react-icons/io";
 import { RiEnglishInput } from "react-icons/ri";
 import { MdCss } from "react-icons/md";
 
-
-
 export const data = [
   {
     id: 1,
@@ -52,7 +50,7 @@ export const data = [
   },
   {
     id: 5,
-    icon: <MdCss/>,
+    icon: <MdCss />,
     uid: "HTML CSS",
     sub1: "Add HTML_CSS",
     sub2: "View HTML_CSS",
@@ -61,7 +59,7 @@ export const data = [
   },
   {
     id: 6,
-    icon: <RiEnglishInput/>,
+    icon: <RiEnglishInput />,
     uid: "Eng_Spok",
     sub1: "Add Eng-spoken",
     sub2: "View Eng-spoken",
@@ -70,6 +68,15 @@ export const data = [
   },
   {
     id: 7,
+    icon: <FontAwesomeIcon icon={faVideo} />,
+    uid: "Live Website",
+    sub1: "Add Live Website",
+    sub2: "View Live Website",
+    link1: "/Add-livewebsite",
+    link2: "/View-livewebsite",
+  },
+  {
+    id: 8,
     icon: <FontAwesomeIcon icon={faUsers} />,
     uid: "User",
     sub1: "View User",
@@ -95,5 +102,7 @@ export const HTML_CSSUrl =
 //   "http://localhost:5000/api/backend/English";
 export const EnglishUrl =
   "https://rss-feed-node-js.onrender.com/api/backend/English";
+export const livewebsiteUrl =
+  "https://rss-feed-node-js.onrender.com/api/backend/livewebsite";
 
 //

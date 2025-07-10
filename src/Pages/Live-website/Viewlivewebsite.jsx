@@ -5,22 +5,22 @@ import Sidebar from "../../Common/Sidebar";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import { Link } from "react-router-dom";
-import { WordPressUrl } from "../../Common/MenuData";
-export default function Viewwordpress() {
+import { livewebsiteUrl } from "../../Common/MenuData";
+export default function Viewlivewebsite() {
   let { changemenu } = useContext(mainContext);
 
-  const [javascriptview, setjavascriptview] = useState([]);
+  const [livewebsite, setlivewebsite] = useState([]);
   const [deleteororstatus, setdeleteororstatus] = useState(false);
 
-  let Api = WordPressUrl;
+  let Api = livewebsiteUrl;
   let showdata = () => {
     axios
       .post(`${Api}/view`)
       .then((result) => {
-        if (result.data.status === true) {
-          setjavascriptview(result.data.data);
+        if (result.data.status == true) {
+          setlivewebsite(result.data.data);
         } else {
-          setjavascriptview([]);
+          setlivewebsite([]);
         }
       })
       .catch((error) => {});
@@ -28,7 +28,7 @@ export default function Viewwordpress() {
 
   useEffect(() => {
     showdata();
-  }, [deleteororstatus, Api]);
+  }, [deleteororstatus]);
 
   let deletecoure = (id) => {
     const confirmed = window.confirm(
@@ -80,23 +80,23 @@ export default function Viewwordpress() {
         />
         <div
           className={` ${
-            changemenu === true ? "w-[95%]" : "w-[100%]"
+            changemenu == true ? "w-[95%]" : "w-[100%]"
           } relative px-[10px] py-[10px] overflow-auto h-screen bg-[#F5F7FF]`}
         >
           <h1 className="text-[25px] font-[500] mb-[10px]">
-            Welcome To &nbsp;<u>word press</u> &nbsp; Admin Panel
+            Welcome To &nbsp;<u>English spoken</u> &nbsp; Admin Panel
           </h1>
           <div className="">
             <div className="bg-white w-[100%] mb-[50px] p-4 h-full rounded-[20px]">
-              {javascriptview.length > 0
-                ? javascriptview.map((v, i) => {
+              {livewebsite.length > 0
+                ? livewebsite.map((v, i) => {
                     return (
                       <div className="p-4 border-[2px]  text-white" key={i}>
-                        <div className="flex justify-between items-start">
+                        <div className="flex items-start justify-between">
                           <div className="flex-1">
                             <div className="flex items-center mb-2">
                               <span className="text-xs font-medium mr-2 px-2.5 py-0.5 rounded tag-react text-[red]">
-                                wordpress
+                                English
                               </span>
                               <span className="text-xs text-left text-red-700">
                                 <span>Date</span>{" "}
@@ -119,11 +119,11 @@ export default function Viewwordpress() {
                           </pre>
 
                           <div className="flex justify-end mt-4 space-x-2">
-                            <div className="flex gap-2 justify-center items-center">
+                            <div className="flex items-center justify-center gap-2">
                               <span>status type</span>
-                              {v.status === 1 ? (
+                              {v.status == 1 ? (
                                 <button
-                                  className="gap-2 px-3 h-9 text-sm font-medium text-green-700 whitespace-nowrap bg-green-100 rounded-md border border-green-300 hover:bg-green-200"
+                                  className="gap-2 px-3 text-sm font-medium text-green-700 bg-green-100 border border-green-300 rounded-md whitespace-nowrap h-9 hover:bg-green-200"
                                   onClick={() => statuschange(v._id, v.status)}
                                 >
                                   Active
@@ -138,11 +138,11 @@ export default function Viewwordpress() {
                               )}
                             </div>
 
-                            <button className="flex gap-2 justify-center items-center px-3 h-9 text-sm font-medium whitespace-nowrap rounded-md border border-input bg-background hover:bg-accent">
-                              <Link to={`/Addwordpress/${v._id}`}>Edit</Link>
+                            <button className="flex items-center justify-center gap-2 px-3 text-sm font-medium border rounded-md whitespace-nowrap h-9 border-input bg-background hover:bg-accent">
+                              <Link to={`/Add-livewebsite/${v._id}`}>Edit</Link>
                             </button>
                             <button
-                              className="flex gap-2 justify-center items-center px-3 h-9 text-sm font-medium whitespace-nowrap rounded-md border border-input bg-background text-destructive hover:bg-destructive/10"
+                              className="flex items-center justify-center gap-2 px-3 text-sm font-medium border rounded-md whitespace-nowrap h-9 border-input bg-background text-destructive hover:bg-destructive/10"
                               onClick={() => deletecoure(v._id)}
                             >
                               Delete

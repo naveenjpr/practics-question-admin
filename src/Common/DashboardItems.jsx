@@ -3,6 +3,7 @@ import {
   EnglishUrl,
   HTML_CSSUrl,
   javascriptbaseurl,
+  livewebsiteUrl,
   nodebaseurl,
   reactbaseurl,
   WordPressUrl,
@@ -16,13 +17,13 @@ function DashboardItems() {
   const [wordpresstotalrecord, setwordpresstotalrecord] = useState(null);
   const [HTML_CSS, setHTML_CSS] = useState(null);
   const [English, setEnglish] = useState(null);
+  const [livewebsite, setlivewebsite] = useState(null);
 
   let Api = javascriptbaseurl;
   useEffect(() => {
     axios
       .post(`${Api}/view`)
       .then((result) => {
-        console.log(result.data.totalRecords);
         setjavascripttotalrecord(result.data.totalRecords);
       })
       .catch((error) => {});
@@ -33,7 +34,6 @@ function DashboardItems() {
     axios
       .post(`${nodeApi}/view`)
       .then((result) => {
-        console.log(result.data.totalRecords);
         setnodebaseurltotalrecord(result.data.totalRecords);
       })
       .catch((error) => {});
@@ -44,7 +44,6 @@ function DashboardItems() {
     axios
       .post(`${reactApi}/view`)
       .then((result) => {
-        console.log(result.data.totalRecords);
         setreactApitotalrecord(result.data.totalRecords);
       })
       .catch((error) => {});
@@ -56,18 +55,16 @@ function DashboardItems() {
     axios
       .post(`${wordpressApi}/view`)
       .then((result) => {
-        console.log(result.data.totalRecords);
         setwordpresstotalrecord(result.data.totalRecords);
       })
       .catch((error) => {});
   }, []);
-// html or css
+  // html or css
   let HTML_CSSApi = HTML_CSSUrl;
   useEffect(() => {
     axios
       .post(`${HTML_CSSApi}/view`)
       .then((result) => {
-        console.log(result.data.totalRecords);
         setHTML_CSS(result.data.totalRecords);
       })
       .catch((error) => {});
@@ -78,17 +75,26 @@ function DashboardItems() {
     axios
       .post(`${EnglishApi}/view`)
       .then((result) => {
-        console.log(result.data.totalRecords);
         setEnglish(result.data.totalRecords);
+      })
+      .catch((error) => {});
+  }, []);
+  // livewebsite
+  let livewebsiteApi = livewebsiteUrl;
+  useEffect(() => {
+    axios
+      .post(`${livewebsiteApi}/view`)
+      .then((result) => {
+        setlivewebsite(result.data.totalRecords);
       })
       .catch((error) => {});
   }, []);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
       {/* JavaScript */}
-      <div className="bg-gradient-to-r from-yellow-100 to-yellow-200 border-yellow-400 border-2 rounded-2xl p-6 text-center shadow-md hover:shadow-xl transition">
-        <h3 className="text-lg font-semibold text-yellow-700 mb-2">
+      <div className="p-6 text-center bg-gradient-to-r from-yellow-100 to-yellow-200 rounded-2xl border-2 border-yellow-400 shadow-md transition hover:shadow-xl">
+        <h3 className="mb-2 text-lg font-semibold text-yellow-700">
           JavaScript Total Questions
         </h3>
         <h1 className="text-4xl font-bold text-yellow-900">
@@ -97,8 +103,8 @@ function DashboardItems() {
       </div>
 
       {/* Node.js */}
-      <div className="bg-gradient-to-r from-green-100 to-green-200 border-green-400 border-2 rounded-2xl p-6 text-center shadow-md hover:shadow-xl transition">
-        <h3 className="text-lg font-semibold text-green-700 mb-2">
+      <div className="p-6 text-center bg-gradient-to-r from-green-100 to-green-200 rounded-2xl border-2 border-green-400 shadow-md transition hover:shadow-xl">
+        <h3 className="mb-2 text-lg font-semibold text-green-700">
           Node.js Total Questions
         </h3>
         <h1 className="text-4xl font-bold text-green-900">
@@ -107,8 +113,8 @@ function DashboardItems() {
       </div>
 
       {/* React */}
-      <div className="bg-gradient-to-r from-blue-100 to-blue-200 border-blue-400 border-2 rounded-2xl p-6 text-center shadow-md hover:shadow-xl transition">
-        <h3 className="text-lg font-semibold text-blue-700 mb-2">
+      <div className="p-6 text-center bg-gradient-to-r from-blue-100 to-blue-200 rounded-2xl border-2 border-blue-400 shadow-md transition hover:shadow-xl">
+        <h3 className="mb-2 text-lg font-semibold text-blue-700">
           React Total Questions
         </h3>
         <h1 className="text-4xl font-bold text-blue-900">
@@ -117,16 +123,16 @@ function DashboardItems() {
       </div>
 
       {/* WordPress */}
-      <div className="bg-gradient-to-r from-purple-100 to-purple-200 border-purple-400 border-2 rounded-2xl p-6 text-center shadow-md hover:shadow-xl transition">
-        <h3 className="text-lg font-semibold text-purple-700 mb-2">
+      <div className="p-6 text-center bg-gradient-to-r from-purple-100 to-purple-200 rounded-2xl border-2 border-purple-400 shadow-md transition hover:shadow-xl">
+        <h3 className="mb-2 text-lg font-semibold text-purple-700">
           WordPress Total Questions
         </h3>
         <h1 className="text-4xl font-bold text-purple-900">
           {wordpresstotalrecord ?? "Loading..."}
         </h1>
       </div>
-      <div className="bg-gradient-to-r from-purple-100 to-purple-200 border-purple-400 border-2 rounded-2xl p-6 text-center shadow-md hover:shadow-xl transition">
-        <h3 className="text-lg font-semibold text-purple-700 mb-2">
+      <div className="p-6 text-center bg-gradient-to-r from-purple-100 to-purple-200 rounded-2xl border-2 border-purple-400 shadow-md transition hover:shadow-xl">
+        <h3 className="mb-2 text-lg font-semibold text-purple-700">
           html or css Total Questions
         </h3>
         <h1 className="text-4xl font-bold text-purple-900">
@@ -134,15 +140,23 @@ function DashboardItems() {
         </h1>
       </div>
       {/* English */}
-      <div className="bg-gradient-to-r from-purple-100 to-purple-200 border-purple-400 border-2 rounded-2xl p-6 text-center shadow-md hover:shadow-xl transition">
-        <h3 className="text-lg font-semibold text-purple-700 mb-2">
+      <div className="p-6 text-center bg-gradient-to-r from-purple-100 to-purple-200 rounded-2xl border-2 border-purple-400 shadow-md transition hover:shadow-xl">
+        <h3 className="mb-2 text-lg font-semibold text-purple-700">
           English Total Questions
         </h3>
         <h1 className="text-4xl font-bold text-purple-900">
           {English ?? "Loading..."}
         </h1>
       </div>
-  
+      {/* livewebsite */}
+      <div className="p-6 text-center bg-gradient-to-r from-purple-100 to-purple-200 rounded-2xl border-2 border-purple-400 shadow-md transition hover:shadow-xl">
+        <h3 className="mb-2 text-lg font-semibold text-purple-700">
+          live website Total Questions
+        </h3>
+        <h1 className="text-4xl font-bold text-purple-900">
+          {livewebsite ?? "Loading..."}
+        </h1>
+      </div>
     </div>
   );
 }

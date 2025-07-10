@@ -21,6 +21,8 @@ import Addteam from './Pages/Team/Addteam';
 import Viewteam from './Pages/Team/Viewteam';
 import AddEnglish from './Pages/English/AddEnglish';
 import ViewEnglish from './Pages/English/ViewEnglish';
+import Viewlivewebsite from './Pages/Live-website/Viewlivewebsite';
+import Addlivewebsite from './Pages/Live-website/Addlivewebsite';
 
 
 
@@ -38,60 +40,70 @@ const router = createBrowserRouter([
   //English
   {
     path: "AddEnglish/:id?",
-    element: <AddEnglish/>
+    element: <AddEnglish />
   },
   {
     path: "ViewEnglish",
-    element: <ViewEnglish/>
+    element: <ViewEnglish />
   },
   // html css
   {
     path: "AddHTML_CSS/:id?",
-    element: <AddHTML_CSS/>
+    element: <AddHTML_CSS />
   },
   {
     path: "ViewHTML_CSS",
-    element: <ViewHTML_CSS/>
+    element: <ViewHTML_CSS />
   },
   // wordpress
   {
     path: "Addwordpress/:id?",
-    element: <Addwordpress/>
+    element: <Addwordpress />
   },
   {
     path: "Viewwordpress",
-    element: <Viewwordpress/>
+    element: <Viewwordpress />
   },
   //react
   {
     path: "addReact/:id?",
-    element: <AddReact/>
+    element: <AddReact />
   },
   {
     path: "viewReact",
-    element: <ViewReact/>
+    element: <ViewReact />
   },
   // node
   {
     path: "add-Node/:id?",
-    element: <AddNode/>
+    element: <AddNode />
   },
   {
     path: "view-Node",
-    element: <ViewNode/>
+    element: <ViewNode />
   },
   // javascript
   {
     path: "add-Javascript/:id?",
-    element: <AddJavascript/>
+    element: <AddJavascript />
   },
   {
     path: "view-Javascript",
-    element: <ViewJavascript/>
+    element: <ViewJavascript />
+  },
+  //  live website
+
+  {
+    path: "Add-livewebsite/:id?",
+    element: <Addlivewebsite />
+  },
+  {
+    path: "View-livewebsite",
+    element: <Viewlivewebsite />
   },
   {
     path: "addteam",
-    element: <Addteam/>
+    element: <Addteam />
   },
   {
     path: "viewuser",
@@ -99,7 +111,7 @@ const router = createBrowserRouter([
   },
   {
     path: "viewteam",
-    element: <Viewteam/>
+    element: <Viewteam />
   },
 
 

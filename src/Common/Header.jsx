@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import logo from "../img/logo (1).svg";
 import minlogo from "../img/logo-mini.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -19,22 +19,22 @@ function Header() {
                 changemenu == true ? "w-[3%] " : "w-[16%]"
               }`}
             >
-              <a href="#" className="flex items-center">
-                {changemenu == true ? (
-                  <Link to="/dashboard">
-                    <img src={minlogo} className="mr-3 h-6 sm:h-9" />
-                  </Link>
+              <Link to="/dashboard" className="flex items-center">
+                {changemenu === true ? (
+                  <img
+                    src={minlogo}
+                    className="mr-3 h-6 sm:h-9"
+                    alt="Mini Logo"
+                  />
                 ) : (
-                  <Link to="/dashboard">
-                    <img src={logo} className="mr-3 h-6 sm:h-9" />
-                  </Link>
+                  <img src={logo} className="mr-3 h-6 sm:h-9" alt="Logo" />
                 )}
-              </a>
+              </Link>
             </div>
 
             <div
               className={`flex items-center lg:order-2 w-[84%] duration-[0.5s] ${
-                changemenu == true ? "w-[97%]" : "w-[84%]"
+                changemenu === true ? "w-[97%]" : "w-[84%]"
               }  justify-between`}
             >
               <FontAwesomeIcon

@@ -5,12 +5,11 @@ import Sidebar from "../../Common/Sidebar";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import { Link } from "react-router-dom";
-import { EnglishUrl, Loading,  } from "../../Common/MenuData";
+import { EnglishUrl } from "../../Common/MenuData";
 export default function ViewEnglish() {
   let { changemenu } = useContext(mainContext);
 
   const [Englishview, setEnglishview] = useState([]);
-  const [Imagepath, setImagepath] = useState();
   const [deleteororstatus, setdeleteororstatus] = useState(false);
 
   let Api = EnglishUrl;
@@ -18,9 +17,7 @@ export default function ViewEnglish() {
     axios
       .post(`${Api}/view`)
       .then((result) => {
-        console.log(result.data.imagePath);
-        if (result.data.status == true) {
-          setImagepath(result.data.imagePath); // ✅ correct key
+        if (result.data.status === true) {
           setEnglishview(result.data.data);
         } else {
           setEnglishview([]);
@@ -31,7 +28,7 @@ export default function ViewEnglish() {
 
   useEffect(() => {
     showdata();
-  }, [deleteororstatus]);
+  }, [deleteororstatus, Api]);
 
   let deletecoure = (id) => {
     const confirmed = window.confirm(
@@ -41,9 +38,8 @@ export default function ViewEnglish() {
     axios
       .delete(`${Api}/delete/${id}`)
       .then((result) => {
-      
-          toast.success(result.data.message);
-        
+        toast.success(result.data.message);
+
         showdata();
       })
       .catch((err) => {
@@ -53,7 +49,6 @@ export default function ViewEnglish() {
   };
 
   let statuschange = (id, staus) => {
-    console.log(id, staus);
     const data = {
       id: id,
       status: !staus,
@@ -101,7 +96,7 @@ export default function ViewEnglish() {
                           <div className="flex-1">
                             <div className="flex items-center mb-2">
                               <span className="text-xs font-medium mr-2 px-2.5 py-0.5 rounded tag-react text-[red]">
-English
+                                English
                               </span>
                               <span className="text-xs text-left text-red-700">
                                 <span>Date</span>{" "}
@@ -126,7 +121,7 @@ English
                           <div className="flex justify-end mt-4 space-x-2">
                             <div className="flex items-center justify-center gap-2">
                               <span>status type</span>
-                              {v.status == 1 ? (
+                              {v.status === 1 ? (
                                 <button
                                   className="gap-2 px-3 text-sm font-medium text-green-700 bg-green-100 border border-green-300 rounded-md whitespace-nowrap h-9 hover:bg-green-200"
                                   onClick={() => statuschange(v._id, v.status)}
