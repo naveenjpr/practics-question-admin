@@ -81,7 +81,7 @@ export default function Addlivewebsite() {
 
 useEffect(() => {
     if (formsubmit == true) {
-      navigate("/Viewlivewebsite");
+      navigate("/View-livewebsite");
     }
   }, [formsubmit]); 
   
