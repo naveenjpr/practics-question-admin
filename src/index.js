@@ -16,7 +16,7 @@ import AddReact from './Pages/React/AddReact';
 import AddNode from './Pages/Node.js/AddNode';
 import ViewNode from './Pages/Node.js/ViewNode';
 import Viewwordpress from './Pages/wordpress/Viewwordpress';
-import Addwordpress from './Pages/wordpress/Addwordpress ';
+import Addwordpress from './Pages/wordpress/Addwordpress';
 import Addteam from './Pages/Team/Addteam';
 import Viewteam from './Pages/Team/Viewteam';
 import AddEnglish from './Pages/English/AddEnglish';

@@ -7,7 +7,7 @@ function Context(props) {
   let [changemenu , setchangeMenu] = useState(false)
   let [menu,setMenu] = useState(mydata[0].id)
   useEffect(()=>{
-    setMenu(0)
+    setMenu(mydata[0].id)
   },[])
 
 

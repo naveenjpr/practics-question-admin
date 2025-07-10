@@ -17,71 +17,39 @@ function DashboardItems() {
   const [HTML_CSS, setHTML_CSS] = useState(null);
   const [English, setEnglish] = useState(null);
 
-  let Api = javascriptbaseurl;
   useEffect(() => {
-    axios
-      .post(`${Api}/view`)
-      .then((result) => {
-        console.log(result.data.totalRecords);
-        setjavascripttotalrecord(result.data.totalRecords);
-      })
-      .catch((error) => {});
-  }, []);
+    // Fetch all data concurrently using Promise.all for better performance
+    const fetchAllData = async () => {
+      try {
+        const [
+          javascriptResult,
+          nodeResult,
+          reactResult,
+          wordpressResult,
+          htmlCssResult,
+          englishResult
+        ] = await Promise.all([
+          axios.post(`${javascriptbaseurl}/view`),
+          axios.post(`${nodebaseurl}/view`),
+          axios.post(`${reactbaseurl}/view`),
+          axios.post(`${WordPressUrl}/view`),
+          axios.post(`${HTML_CSSUrl}/view`),
+          axios.post(`${EnglishUrl}/view`)
+        ]);
 
-  let nodeApi = nodebaseurl;
-  useEffect(() => {
-    axios
-      .post(`${nodeApi}/view`)
-      .then((result) => {
-        console.log(result.data.totalRecords);
-        setnodebaseurltotalrecord(result.data.totalRecords);
-      })
-      .catch((error) => {});
-  }, []);
-  //react
-  let reactApi = reactbaseurl;
-  useEffect(() => {
-    axios
-      .post(`${reactApi}/view`)
-      .then((result) => {
-        console.log(result.data.totalRecords);
-        setreactApitotalrecord(result.data.totalRecords);
-      })
-      .catch((error) => {});
-  }, []);
-  // wordpress
+        setjavascripttotalrecord(javascriptResult.data.totalRecords);
+        setnodebaseurltotalrecord(nodeResult.data.totalRecords);
+        setreactApitotalrecord(reactResult.data.totalRecords);
+        setwordpresstotalrecord(wordpressResult.data.totalRecords);
+        setHTML_CSS(htmlCssResult.data.totalRecords);
+        setEnglish(englishResult.data.totalRecords);
+      } catch (error) {
+        console.error('Error fetching dashboard data:', error);
+        // You could set error states here for better user experience
+      }
+    };
 
-  let wordpressApi = WordPressUrl;
-  useEffect(() => {
-    axios
-      .post(`${wordpressApi}/view`)
-      .then((result) => {
-        console.log(result.data.totalRecords);
-        setwordpresstotalrecord(result.data.totalRecords);
-      })
-      .catch((error) => {});
-  }, []);
-// html or css
-  let HTML_CSSApi = HTML_CSSUrl;
-  useEffect(() => {
-    axios
-      .post(`${HTML_CSSApi}/view`)
-      .then((result) => {
-        console.log(result.data.totalRecords);
-        setHTML_CSS(result.data.totalRecords);
-      })
-      .catch((error) => {});
-  }, []);
-  // english
-  let EnglishApi = EnglishUrl;
-  useEffect(() => {
-    axios
-      .post(`${EnglishApi}/view`)
-      .then((result) => {
-        console.log(result.data.totalRecords);
-        setEnglish(result.data.totalRecords);
-      })
-      .catch((error) => {});
+    fetchAllData();
   }, []);
 
   return (
