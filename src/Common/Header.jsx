@@ -1,13 +1,28 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import logo from "../img/logo (1).svg";
 import minlogo from "../img/logo-mini.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { mainContext } from "../Context";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { logOut } from '../slice/AdminSlice';
 
 function Header() {
   let { changemenu, setchangeMenu } = useContext(mainContext);
+
+  let loginData = useSelector((myAllState) => {
+    return myAllState.loginStore.adminDetails;
+  });
+
+  let navigate = useNavigate();
+  useEffect(() => {
+    if (loginData == null) {
+      navigate("/login");
+    }
+  }, [loginData]);
+
+  let dispatch = useDispatch();
 
   return (
     <>
@@ -45,6 +60,7 @@ function Header() {
                 <a
                   href="#"
                   className="text-gray-800   focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800"
+                  onClick={() => { dispatch(logOut()); navigate('/login'); }}
                 >
                   Log Out
                 </a>

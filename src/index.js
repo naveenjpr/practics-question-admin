@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
@@ -23,14 +23,29 @@ import AddEnglish from './Pages/English/AddEnglish';
 import ViewEnglish from './Pages/English/ViewEnglish';
 import Viewlivewebsite from './Pages/Live-website/Viewlivewebsite';
 import Addlivewebsite from './Pages/Live-website/Addlivewebsite';
-
+import { Provider } from 'react-redux';
+import { store } from './store/store';
+import { useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
+function HomeRedirect() {
+  const loginData = useSelector(state => state.loginStore.adminDetails);
+  if (loginData) {
+    return <Navigate to="/dashboard" />;
+  }
+  return <Navigate to="/login" />;
+}
+
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <HomeRedirect />
+  },
+  {
+    path: "login",
     element: <Login />
   },
   {
@@ -118,7 +133,10 @@ const router = createBrowserRouter([
 ])
 root.render(
   <Context>
-    <RouterProvider router={router} />
+
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
 
   </Context>
 
