@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { mainContext } from "../../Context";
 import Header from "../../Common/Header";
 import Sidebar from "../../Common/Sidebar";
+import LoadingSpinner from "../../Common/LoadingSpinner";
 import axios from "axios";
 import { javascriptbaseurl } from "../../Common/MenuData";
 import { toast, ToastContainer } from "react-toastify";
@@ -12,9 +13,11 @@ function ViewJavascript() {
 
   const [javascriptview, setjavascriptview] = useState([]);
   const [deleteororstatus, setdeleteororstatus] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   let Api = javascriptbaseurl;
   let showdata = () => {
+    setLoading(true);
     axios
       .post(`${Api}/view`)
       .then((result) => {
@@ -24,7 +27,12 @@ function ViewJavascript() {
           setjavascriptview([]);
         }
       })
-      .catch((error) => {});
+      .catch((error) => {
+        setjavascriptview([]);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   useEffect(() => {
@@ -85,8 +93,10 @@ function ViewJavascript() {
         >
           <div className="">
             <div className="bg-white w-[100%] mb-[50px] p-4 h-full rounded-[20px]">
-              {javascriptview.length > 0
-                ? javascriptview.map((v, i) => {
+              {loading ? (
+                <LoadingSpinner message="Loading JavaScript questions..." />
+              ) : javascriptview.length > 0 ? (
+                javascriptview.map((v, i) => {
                     return (
                       <div className="p-4 border-[2px]  text-white" key={i}>
                         <div className="flex justify-between items-start">
@@ -149,7 +159,11 @@ function ViewJavascript() {
                       </div>
                     );
                   })
-                : ""}
+                ) : (
+                  <div className="flex flex-col items-center justify-center min-h-[200px] p-8">
+                    <p className="text-gray-600 text-lg font-medium">No JavaScript questions found</p>
+                  </div>
+                )}
             </div>
           </div>
           {/* <Footer /> */}

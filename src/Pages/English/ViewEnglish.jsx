@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { mainContext } from "../../Context";
 import Header from "../../Common/Header";
 import Sidebar from "../../Common/Sidebar";
+import LoadingSpinner from "../../Common/LoadingSpinner";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import { Link } from "react-router-dom";
@@ -11,9 +12,11 @@ export default function ViewEnglish() {
 
   const [Englishview, setEnglishview] = useState([]);
   const [deleteororstatus, setdeleteororstatus] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   let Api = EnglishUrl;
   let showdata = () => {
+    setLoading(true);
     axios
       .post(`${Api}/view`)
       .then((result) => {
@@ -23,7 +26,12 @@ export default function ViewEnglish() {
           setEnglishview([]);
         }
       })
-      .catch((error) => {});
+      .catch((error) => {
+        setEnglishview([]);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   useEffect(() => {
@@ -88,8 +96,10 @@ export default function ViewEnglish() {
           </h1>
           <div className="">
             <div className="bg-white w-[100%] mb-[50px] p-4 h-full rounded-[20px]">
-              {Englishview.length > 0
-                ? Englishview.map((v, i) => {
+              {loading ? (
+                <LoadingSpinner message="Loading English questions..." />
+              ) : Englishview.length > 0 ? (
+                Englishview.map((v, i) => {
                     return (
                       <div className="p-4 border-[2px]  text-white" key={i}>
                         <div className="flex items-start justify-between">
@@ -152,7 +162,11 @@ export default function ViewEnglish() {
                       </div>
                     );
                   })
-                : ""}
+                ) : (
+                  <div className="flex flex-col items-center justify-center min-h-[200px] p-8">
+                    <p className="text-gray-600 text-lg font-medium">No English questions found</p>
+                  </div>
+                )}
             </div>
           </div>
           {/* <Footer /> */}

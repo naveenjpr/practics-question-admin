@@ -2,6 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import { mainContext } from "../../Context";
 import Header from "../../Common/Header";
 import Sidebar from "../../Common/Sidebar";
+<<<<<<< HEAD
+=======
+import LoadingSpinner from "../../Common/LoadingSpinner";
+>>>>>>> e45b989 (initial commit)
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import { Link } from "react-router-dom";
@@ -11,9 +15,17 @@ export default function Viewlivewebsite() {
 
   const [livewebsite, setlivewebsite] = useState([]);
   const [deleteororstatus, setdeleteororstatus] = useState(false);
+<<<<<<< HEAD
 
   let Api = livewebsiteUrl;
   let showdata = () => {
+=======
+  const [loading, setLoading] = useState(true);
+
+  let Api = livewebsiteUrl;
+  let showdata = () => {
+    setLoading(true);
+>>>>>>> e45b989 (initial commit)
     axios
       .post(`${Api}/view`)
       .then((result) => {
@@ -23,7 +35,16 @@ export default function Viewlivewebsite() {
           setlivewebsite([]);
         }
       })
+<<<<<<< HEAD
       .catch((error) => {});
+=======
+      .catch((error) => {
+        setlivewebsite([]);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+>>>>>>> e45b989 (initial commit)
   };
 
   useEffect(() => {
@@ -88,8 +109,15 @@ export default function Viewlivewebsite() {
           </h1>
           <div className="">
             <div className="bg-white w-[100%] mb-[50px] p-4 h-full rounded-[20px]">
+<<<<<<< HEAD
               {livewebsite.length > 0
                 ? livewebsite.map((v, i) => {
+=======
+              {loading ? (
+                <LoadingSpinner message="Loading Live Website questions..." />
+              ) : livewebsite.length > 0 ? (
+                livewebsite.map((v, i) => {
+>>>>>>> e45b989 (initial commit)
                     return (
                       <div className="p-4 border-[2px]  text-white" key={i}>
                         <div className="flex items-start justify-between">
@@ -152,7 +180,15 @@ export default function Viewlivewebsite() {
                       </div>
                     );
                   })
+<<<<<<< HEAD
                 : ""}
+=======
+                ) : (
+                  <div className="flex flex-col items-center justify-center min-h-[200px] p-8">
+                    <p className="text-gray-600 text-lg font-medium">No Live Website questions found</p>
+                  </div>
+                )}
+>>>>>>> e45b989 (initial commit)
             </div>
           </div>
           {/* <Footer /> */}

@@ -1,11 +1,26 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { mainContext } from '../Context';
 import Header from '../Common/Header';
 import Sidebar from '../Common/Sidebar';
+import LoadingSpinner from '../Common/LoadingSpinner';
 import Footer from '../Common/Footer';
 
 function Viewuser() {
   let {changemenu} = useContext(mainContext);
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate API call for users
+    setLoading(true);
+    setTimeout(() => {
+      setUsers([
+        { id: 1, name: 'React', email: '20000', password: '1 month' }
+      ]);
+      setLoading(false);
+    }, 1000);
+  }, []);
+
   return (
     <div>
 
@@ -21,28 +36,35 @@ function Viewuser() {
         </h1>
         <div className=''>
         <div className='bg-white w-[100%] mb-[50px] p-4 h-full rounded-[20px]'>
-          <table >
-            <tr>
-              <th>S.no</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Password</th>
-              <th>Action</th>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>React</td>
-              <td>20000</td>
-              <td>1 month</td>
-              <td className='text-center'>
-
-              <button className='bg-green-500 text-white px-5 mr-5 py-1'>Edit</button>
-              <button className='bg-red-400 text-white px-5 py-1'>Delete</button>
-
-
-              </td>
-            </tr>
-          </table>
+          {loading ? (
+            <LoadingSpinner message="Loading users..." />
+          ) : (
+            <table className="w-full">
+              <thead>
+                <tr>
+                  <th className="text-left p-2">S.no</th>
+                  <th className="text-left p-2">Name</th>
+                  <th className="text-left p-2">Email</th>
+                  <th className="text-left p-2">Password</th>
+                  <th className="text-left p-2">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {users.map((user, index) => (
+                  <tr key={user.id}>
+                    <td className="p-2">{index + 1}</td>
+                    <td className="p-2">{user.name}</td>
+                    <td className="p-2">{user.email}</td>
+                    <td className="p-2">{user.password}</td>
+                    <td className='text-center p-2'>
+                      <button className='bg-green-500 text-white px-5 mr-5 py-1 rounded'>Edit</button>
+                      <button className='bg-red-400 text-white px-5 py-1 rounded'>Delete</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
         </div>
         </div>
       <Footer/>

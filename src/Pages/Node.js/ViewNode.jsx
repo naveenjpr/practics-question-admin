@@ -2,6 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import { mainContext } from "../../Context";
 import Header from "../../Common/Header";
 import Sidebar from "../../Common/Sidebar";
+<<<<<<< HEAD
+=======
+import LoadingSpinner from "../../Common/LoadingSpinner";
+>>>>>>> e45b989 (initial commit)
 import { nodebaseurl } from "../../Common/MenuData";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
@@ -12,8 +16,10 @@ function ViewNode() {
   const [javascriptview, setjavascriptview] = useState([]);
   const [Imagepath, setImagepath] = useState();
   const [deleteororstatus, setdeleteororstatus] = useState(false);
+  const [loading, setLoading] = useState(true);
   let Api = nodebaseurl;
   let showdata = () => {
+    setLoading(true);
     axios
       .post(`${Api}/view`)
       .then((result) => {
@@ -24,7 +30,12 @@ function ViewNode() {
           setjavascriptview([]);
         }
       })
-      .catch((error) => {});
+      .catch((error) => {
+        setjavascriptview([]);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   useEffect(() => {
@@ -94,8 +105,15 @@ function ViewNode() {
           >
             <div className="">
               <div className="bg-white w-[100%] mb-[50px] p-4 h-full rounded-[20px]">
+<<<<<<< HEAD
                 {javascriptview.length > 0
                   ? javascriptview.map((v, i) => {
+=======
+                {loading ? (
+                  <LoadingSpinner message="Loading Node.js questions..." />
+                ) : javascriptview.length > 0 ? (
+                  javascriptview.map((v, i) => {
+>>>>>>> e45b989 (initial commit)
                       return (
                         <div className="p-4 border-[2px]  text-white" key={i}>
                           <div className="flex items-start justify-between">
@@ -157,11 +175,15 @@ function ViewNode() {
                                 Delete
                               </button>
                             </div>
-                          </div>
-                        </div>
-                      );
-                    })
-                  : ""}
+                                                  </div>
+                      </div>
+                    );
+                  })
+                ) : (
+                  <div className="flex flex-col items-center justify-center min-h-[200px] p-8">
+                    <p className="text-gray-600 text-lg font-medium">No Node.js questions found</p>
+                  </div>
+                )}
               </div>
             </div>
             {/* <Footer /> */}

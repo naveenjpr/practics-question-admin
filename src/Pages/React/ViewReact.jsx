@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { mainContext } from "../../Context";
 import Header from "../../Common/Header";
 import Sidebar from "../../Common/Sidebar";
+import LoadingSpinner from "../../Common/LoadingSpinner";
 import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
@@ -11,8 +12,10 @@ function ViewReact() {
   let { changemenu } = useContext(mainContext);
   const [javascriptview, setjavascriptview] = useState([]);
   const [deleteororstatus, setdeleteororstatus] = useState(false);
+  const [loading, setLoading] = useState(true);
   let Api = reactbaseurl;
   let showdata = () => {
+    setLoading(true);
     axios
       .post(`${Api}/view`)
       .then((result) => {
@@ -22,7 +25,12 @@ function ViewReact() {
           setjavascriptview([]);
         }
       })
-      .catch((error) => {});
+      .catch((error) => {
+        setjavascriptview([]);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   useEffect(() => {
@@ -86,8 +94,10 @@ function ViewReact() {
           </h1>
           <div className="">
             <div className="bg-white w-[100%] mb-[50px] p-4 h-full rounded-[20px]">
-              {javascriptview.length > 0
-                ? javascriptview.map((v, i) => {
+              {loading ? (
+                <LoadingSpinner message="Loading React questions..." />
+              ) : javascriptview.length > 0 ? (
+                javascriptview.map((v, i) => {
                     return (
                       <div className="p-4 border-[2px]  text-white" key={i}>
                         <div className="flex items-start justify-between">
@@ -149,7 +159,11 @@ function ViewReact() {
                       </div>
                     );
                   })
-                : ""}
+                ) : (
+                  <div className="flex flex-col items-center justify-center min-h-[200px] p-8">
+                    <p className="text-gray-600 text-lg font-medium">No React questions found</p>
+                  </div>
+                )}
             </div>
           </div>
           {/* <Footer /> */}

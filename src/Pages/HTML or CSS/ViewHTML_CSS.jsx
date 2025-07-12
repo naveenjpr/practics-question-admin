@@ -6,16 +6,19 @@ import { Link } from "react-router-dom";
 import { HTML_CSSUrl } from "../../Common/MenuData";
 import Sidebar from "../../Common/Sidebar";
 import Header from "../../Common/Header";
+import LoadingSpinner from "../../Common/LoadingSpinner";
 import { mainContext } from "../../Context";
 export default function ViewHTML_CSS() {
   let { changemenu } = useContext(mainContext);
 
   const [html_cssview, sethtml_cssview] = useState([]);
   const [deleteororstatus, setdeleteororstatus] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   let Api = HTML_CSSUrl;
 
   let showdata = () => {
+    setLoading(true);
     axios
       .post(`${Api}/view`)
       .then((result) => {
@@ -25,7 +28,12 @@ export default function ViewHTML_CSS() {
           sethtml_cssview([]);
         }
       })
-      .catch((error) => {});
+      .catch((error) => {
+        sethtml_cssview([]);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   let deletecoure = (id) => {
@@ -91,8 +99,10 @@ export default function ViewHTML_CSS() {
           </h1>
           <div className="">
             <div className="bg-white w-[100%] mb-[50px] p-4 h-full rounded-[20px]">
-              {html_cssview.length > 0
-                ? html_cssview.map((v, i) => {
+              {loading ? (
+                <LoadingSpinner message="Loading HTML/CSS questions..." />
+              ) : html_cssview.length > 0 ? (
+                html_cssview.map((v, i) => {
                     return (
                       <div className="p-4 border-[2px]  text-white" key={i}>
                         <div className="flex justify-between items-start">
@@ -155,7 +165,11 @@ export default function ViewHTML_CSS() {
                       </div>
                     );
                   })
-                : ""}
+                ) : (
+                  <div className="flex flex-col items-center justify-center min-h-[200px] p-8">
+                    <p className="text-gray-600 text-lg font-medium">No HTML/CSS questions found</p>
+                  </div>
+                )}
             </div>
           </div>
           {/* <Footer /> */}
