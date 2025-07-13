@@ -21,11 +21,11 @@ function AddJavascript() {
     let Api = javascriptbaseurl;
     let form = new FormData(event.target);
 
-    if (params.id === undefined) {
+    if (params.id == undefined) {
       axios
         .post(`${Api}/add`, form)
         .then((resutl) => {
-          if (resutl.data.status === true) {
+          if (resutl.data.status == true) {
             setformsubmit(true);
             toast.success("Form submitted successfully!");
             setinput({ Question: "", Answers: "", status: "" }); // clear state
@@ -40,7 +40,7 @@ function AddJavascript() {
       axios
         .put(`${Api}/update/${params.id}`, form)
         .then((resutl) => {
-          if (resutl.data.status === true) {
+          if (resutl.data.status == true) {
             setformsubmit(true);
             toast.success("Form submitted successfully!");
             setinput({ Question: "", Answers: "", status: "" }); // clear state
@@ -80,7 +80,7 @@ function AddJavascript() {
   let navigate = useNavigate();
 
   useEffect(() => {
-    if (formsubmit === true) {
+    if (formsubmit == true) {
       navigate("/view-Javascript");
     }
   }, [formsubmit, navigate]);
@@ -139,7 +139,7 @@ function AddJavascript() {
                         name="status"
                         onChange={inputHnader}
                         value="1"
-                        checked={input.status === 1 ? "checked" : ""}
+                        checked={input.status == 1 ? "checked" : ""}
                         className="w-5 h-5 text-blue-600 focus:ring-blue-500"
                       />
                       <span className="ml-2">Active</span>
@@ -150,7 +150,7 @@ function AddJavascript() {
                         name="status"
                         value="0"
                         onChange={inputHnader}
-                        checked={input.status === 0 ? "checked" : ""}
+                        checked={input.status == 0 ? "checked" : ""}
                         className="w-5 h-5 text-blue-600 focus:ring-blue-500"
                       />
                       <span className="ml-2">Deactive</span>
@@ -159,7 +159,7 @@ function AddJavascript() {
                 </div>
 
                 <div className="flex pt-2 space-x-4">
-                  {params.id === undefined ? (
+                  {params.id == undefined ? (
                     <button
                       type="submit"
                       className="bg-[#4B49AC] hover:bg-[#3a3899] text-white px-6 py-2 rounded-lg text-lg font-medium transition-colors"

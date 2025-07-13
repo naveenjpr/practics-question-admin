@@ -20,7 +20,7 @@ export default function Viewwordpress() {
     axios
       .post(`${Api}/view`)
       .then((result) => {
-        if (result.data.status === true) {
+        if (result.data.status == true) {
           setjavascriptview(result.data.data);
         } else {
           setjavascriptview([]);
@@ -64,11 +64,12 @@ export default function Viewwordpress() {
     axios
       .put(`${Api}/change-status`, data)
       .then((result) => {
-        if (result.data.status === true) {
-          setdeleteororstatus(!deleteororstatus);
+        if (result.data.status == true) {
+          toast.success("Status changed successfully!");
         } else {
           toast.error(result.data.message);
         }
+        showdata();
       })
       .catch((err) => {
         console.error(err);
@@ -88,7 +89,7 @@ export default function Viewwordpress() {
         />
         <div
           className={` ${
-            changemenu === true ? "w-[95%]" : "w-[100%]"
+            changemenu == true ? "w-[95%]" : "w-[100%]"
           } relative px-[10px] py-[10px] overflow-auto h-screen bg-[#F5F7FF]`}
         >
           <h1 className="text-[25px] font-[500] mb-[10px]">
@@ -131,7 +132,7 @@ export default function Viewwordpress() {
                           <div className="flex justify-end mt-4 space-x-2">
                             <div className="flex gap-2 justify-center items-center">
                               <span>status type</span>
-                              {v.status === 1 ? (
+                              {v.status == 1 ? (
                                 <button
                                   className="gap-2 px-3 h-9 text-sm font-medium text-green-700 whitespace-nowrap bg-green-100 rounded-md border border-green-300 hover:bg-green-200"
                                   onClick={() => statuschange(v._id, v.status)}

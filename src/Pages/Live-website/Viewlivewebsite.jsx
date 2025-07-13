@@ -64,11 +64,12 @@ export default function Viewlivewebsite() {
     axios
       .put(`${Api}/change-status`, data)
       .then((result) => {
-        if (result.data.status === true) {
-          setdeleteororstatus(!deleteororstatus);
+        if (result.data.status == true) {
+          toast.success("Status changed successfully!");
         } else {
           toast.error(result.data.message);
         }
+        showdata();
       })
       .catch((err) => {
         console.error(err);

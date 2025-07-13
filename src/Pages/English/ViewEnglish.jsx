@@ -20,7 +20,7 @@ export default function ViewEnglish() {
     axios
       .post(`${Api}/view`)
       .then((result) => {
-        if (result.data.status === true) {
+        if (result.data.status == true) {
           setEnglishview(result.data.data);
         } else {
           setEnglishview([]);
@@ -64,11 +64,12 @@ export default function ViewEnglish() {
     axios
       .put(`${Api}/change-status`, data)
       .then((result) => {
-        if (result.data.status === true) {
-          setdeleteororstatus(!deleteororstatus);
+        if (result.data.status == true) {
+          toast.success("Status changed successfully!");
         } else {
           toast.error(result.data.message);
         }
+        showdata();
       })
       .catch((err) => {
         console.error(err);
@@ -131,7 +132,7 @@ export default function ViewEnglish() {
                           <div className="flex justify-end mt-4 space-x-2">
                             <div className="flex items-center justify-center gap-2">
                               <span>status type</span>
-                              {v.status === 1 ? (
+                              {v.status == 1 ? (
                                 <button
                                   className="gap-2 px-3 text-sm font-medium text-green-700 bg-green-100 border border-green-300 rounded-md whitespace-nowrap h-9 hover:bg-green-200"
                                   onClick={() => statuschange(v._id, v.status)}
