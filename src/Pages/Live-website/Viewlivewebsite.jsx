@@ -93,7 +93,7 @@ export default function Viewlivewebsite() {
           } relative px-[10px] py-[10px] overflow-auto h-screen bg-[#F5F7FF]`}
         >
           <h1 className="text-[25px] font-[500] mb-[10px]">
-            Welcome To &nbsp;<u>English spoken</u> &nbsp; Admin Panel
+            Welcome To &nbsp;<u>Live Website</u> &nbsp; Admin Panel
           </h1>
           <div className="">
             <div className="bg-white w-[100%] mb-[50px] p-4 h-full rounded-[20px]">
