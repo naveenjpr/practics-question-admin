@@ -4,6 +4,7 @@ import {
   HTML_CSSUrl,
   javascriptbaseurl,
   livewebsiteUrl,
+  MenkaUrl,
   nodebaseurl,
   reactbaseurl,
   WordPressUrl,
@@ -18,6 +19,7 @@ function DashboardItems() {
   const [HTML_CSS, setHTML_CSS] = useState(null);
   const [English, setEnglish] = useState(null);
   const [livewebsite, setlivewebsite] = useState(null);
+  const [menkawebsite, setmenkawebsite] = useState(null);
 
   let Api = javascriptbaseurl;
   useEffect(() => {
@@ -90,6 +92,17 @@ function DashboardItems() {
       .catch((error) => {});
   }, []);
 
+  //MENKA
+  let menkawebsiteApi = MenkaUrl;
+  useEffect(() => {
+    axios
+      .post(`${menkawebsiteApi}/view`)
+      .then((result) => {
+        setlivewebsite(result.data.totalRecords);
+      })
+      .catch((error) => {});
+  }, []);
+
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
       {/* JavaScript */}
@@ -148,15 +161,24 @@ function DashboardItems() {
           {English ?? "Loading..."}
         </h1>
       </div>
-      {/* livewebsite */}
-      <div className="p-6 text-center bg-gradient-to-r from-purple-100 to-purple-200 rounded-2xl border-2 border-purple-400 shadow-md transition hover:shadow-xl">
-        <h3 className="mb-2 text-lg font-semibold text-purple-700">
-          live website Total Questions
-        </h3>
-        <h1 className="text-4xl font-bold text-purple-900">
-          {livewebsite ?? "Loading..."}
-        </h1>
-      </div>
+        {/* livewebsite */}
+        <div className="p-6 text-center bg-gradient-to-r from-purple-100 to-purple-200 rounded-2xl border-2 border-purple-400 shadow-md transition hover:shadow-xl">
+          <h3 className="mb-2 text-lg font-semibold text-purple-700">
+            live website Total Questions
+          </h3>
+          <h1 className="text-4xl font-bold text-purple-900">
+            {livewebsite ?? "Loading..."}
+          </h1>
+        </div>
+        {/* menkawebsite */}
+        <div className="p-6 text-center bg-gradient-to-r from-purple-100 to-purple-200 rounded-2xl border-2 border-purple-400 shadow-md transition hover:shadow-xl">
+          <h3 className="mb-2 text-lg font-semibold text-purple-700">
+          menka website Total Questions
+          </h3>
+          <h1 className="text-4xl font-bold text-purple-900">
+            {livewebsite ?? "Loading..."}
+          </h1>
+        </div>
     </div>
   );
 }

@@ -83,6 +83,16 @@ export const data = [
     sub2: "",
     link1: "/viewuser",
   },
+  {
+    id: 9,
+    icon: <RiEnglishInput />,
+    uid: "Menka",
+    sub1: "Add Menka",
+    sub2: "View Menka",
+    link1: "/Addmenka",
+    link2: "/Viewmenka",
+  },
+
 ];
 
 export const javascriptbaseurl =
@@ -104,5 +114,7 @@ export const EnglishUrl =
   "https://rss-feed-node-js.onrender.com/api/backend/English";
 export const livewebsiteUrl =
   "https://rss-feed-node-js.onrender.com/api/backend/livewebsite";
+export const MenkaUrl =
+  "https://rss-feed-node-js.onrender.com/api/backend/Menka";
 
 //

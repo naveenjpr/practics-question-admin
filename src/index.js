@@ -27,6 +27,8 @@ import { Provider } from 'react-redux';
 import { store } from './store/store';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
+import Viewmenka from './Pages/Menka/Viewmenka';
+import Addmenka from './Pages/Menka/Addmenka';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -115,6 +117,15 @@ const router = createBrowserRouter([
   {
     path: "View-livewebsite",
     element: <Viewlivewebsite />
+  },
+  //menka 
+  {
+    path: "addmenka/:id?",
+    element: <Addmenka/>
+  },
+  {
+    path: "viewmenka",
+    element: <Viewmenka/>
   },
   {
     path: "addteam",
