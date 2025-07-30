@@ -81,7 +81,7 @@ export default function Addmenka() {
   
     useEffect(() => {
       if (formsubmit == true) {
-        navigate("/view-Javascript");
+        navigate("/viewmenka");
       }
     }, [formsubmit, navigate]);
     return (
