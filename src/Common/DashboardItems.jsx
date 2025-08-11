@@ -5,6 +5,7 @@ import {
   javascriptbaseurl,
   livewebsiteUrl,
   MenkaUrl,
+  NextjsUrl,
   nodebaseurl,
   reactbaseurl,
   WordPressUrl,
@@ -20,6 +21,7 @@ function DashboardItems() {
   const [English, setEnglish] = useState(null);
   const [livewebsite, setlivewebsite] = useState(null);
   const [menkawebsite, setmenkawebsite] = useState(null);
+  const [Nextjswebsite, setNextjswebsite] = useState(null);
 
   let Api = javascriptbaseurl;
   useEffect(() => {
@@ -94,11 +96,23 @@ function DashboardItems() {
 
   //MENKA
   let menkawebsiteApi = MenkaUrl;
+  console.log("menkawebsiteApi",menkawebsiteApi);
   useEffect(() => {
     axios
       .post(`${menkawebsiteApi}/view`)
       .then((result) => {
-        setlivewebsite(result.data.totalRecords);
+        setmenkawebsite(result.data.totalRecords);
+      })
+      .catch((error) => {
+      });
+  }, []);
+  //Nextjs
+  let NextjswebsiteApi = NextjsUrl;
+  useEffect(() => {
+    axios
+      .post(`${NextjswebsiteApi}/view`)
+      .then((result) => {
+        setNextjswebsite(result.data.totalRecords);
       })
       .catch((error) => {});
   }, []);
@@ -176,7 +190,16 @@ function DashboardItems() {
           menka website Total Questions
           </h3>
           <h1 className="text-4xl font-bold text-purple-900">
-            {livewebsite ?? "Loading..."}
+            {menkawebsite ?? "Loading..."}
+          </h1>
+        </div>
+        {/* Nextjs */}
+        <div className="p-6 text-center bg-gradient-to-r from-purple-100 to-purple-200 rounded-2xl border-2 border-purple-400 shadow-md transition hover:shadow-xl">
+          <h3 className="mb-2 text-lg font-semibold text-purple-700">
+          Nextjs Total Questions
+          </h3>
+          <h1 className="text-4xl font-bold text-purple-900">
+            {Nextjswebsite ?? "Loading..."}
           </h1>
         </div>
     </div>

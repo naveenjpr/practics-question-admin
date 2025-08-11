@@ -29,6 +29,8 @@ import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import Viewmenka from './Pages/Menka/Viewmenka';
 import Addmenka from './Pages/Menka/Addmenka';
+import AddNextjs from './Pages/Nextjs/AddNextjs';
+import ViewNextjs from './Pages/Nextjs/ViewNextjs';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -126,6 +128,15 @@ const router = createBrowserRouter([
   {
     path: "viewmenka",
     element: <Viewmenka/>
+  },
+  //Nextjs
+  {
+    path: "addNextjs/:id?",
+    element: <AddNextjs/>
+  },
+  {
+    path: "viewNextjs",
+    element: <ViewNextjs/>
   },
   {
     path: "addteam",

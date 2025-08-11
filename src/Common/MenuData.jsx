@@ -2,14 +2,16 @@ import {
   faBook,
   faPeopleGroup,
   faSliders,
+  
   faUsers,
   faVideo,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaNodeJs, FaReact, FaWordpress } from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io";
-import { RiEnglishInput } from "react-icons/ri";
+import { RiEnglishInput, RiNextjsFill } from "react-icons/ri";
 import { MdCss } from "react-icons/md";
+import { CgWebsite } from "react-icons/cg";
 
 export const data = [
   {
@@ -85,12 +87,21 @@ export const data = [
   },
   {
     id: 9,
-    icon: <RiEnglishInput />,
+    icon: <CgWebsite/>,
     uid: "Menka",
     sub1: "Add Menka",
     sub2: "View Menka",
     link1: "/Addmenka",
     link2: "/Viewmenka",
+  },
+  {
+    id: 10,
+    icon: <RiNextjsFill />,
+    uid: "Nextjs",
+    sub1: "Add Nextjs",
+    sub2: "View Nextjs",
+    link1: "/AddNextjs",
+    link2: "/ViewNextjs",
   },
 
 ];
@@ -116,5 +127,7 @@ export const livewebsiteUrl =
   "https://rss-feed-node-js.onrender.com/api/backend/livewebsite";
 export const MenkaUrl =
   "https://rss-feed-node-js.onrender.com/api/backend/Menka";
+export const NextjsUrl =
+  "https://rss-feed-node-js.onrender.com/api/backend/Nextjs";
 
 //
