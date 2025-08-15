@@ -92,7 +92,7 @@ export default function ViewAWS() {
               } relative px-[10px] py-[10px] overflow-auto h-screen bg-[#F5F7FF]`}
             >
               <h1 className="text-[25px] font-[500] mb-[10px]">
-                <u>react</u>
+                <u>AWS</u>
               </h1>
               <div className="">
                 <div className="bg-white w-[100%] mb-[50px] p-4 h-full rounded-[20px]">
