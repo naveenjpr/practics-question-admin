@@ -107,7 +107,7 @@ export default function Viewlivewebsite() {
                           <div className="flex-1">
                             <div className="flex items-center mb-2">
                               <span className="text-xs font-medium mr-2 px-2.5 py-0.5 rounded tag-react text-[red]">
-                                English
+                                Live Website
                               </span>
                               <span className="text-xs text-left text-red-700">
                                 <span>Date</span>{" "}

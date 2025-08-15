@@ -31,6 +31,8 @@ import Viewmenka from './Pages/Menka/Viewmenka';
 import Addmenka from './Pages/Menka/Addmenka';
 import AddNextjs from './Pages/Nextjs/AddNextjs';
 import ViewNextjs from './Pages/Nextjs/ViewNextjs';
+import AddAWS from './Pages/AWS/AddAWS';
+import ViewAWS from './Pages/AWS/ViewAWS';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -129,15 +131,24 @@ const router = createBrowserRouter([
     path: "viewmenka",
     element: <Viewmenka/>
   },
-  //Nextjs
-  {
-    path: "addNextjs/:id?",
-    element: <AddNextjs/>
-  },
-  {
-    path: "viewNextjs",
-    element: <ViewNextjs/>
-  },
+    //Nextjs
+    {
+      path: "addNextjs/:id?",
+      element: <AddNextjs/>
+    },
+    {
+      path: "viewNextjs",
+      element: <ViewNextjs/>
+    },
+    //AWS
+    {
+      path: "addAWS/:id?",
+      element: <AddAWS/>
+    },
+    {
+      path: "viewAWS",
+      element: <ViewAWS/>
+    },
   {
     path: "addteam",
     element: <Addteam />

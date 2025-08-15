@@ -7,7 +7,7 @@ import {
   faVideo,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { FaNodeJs, FaReact, FaWordpress } from "react-icons/fa";
+import { FaAws, FaNodeJs, FaReact, FaWordpress } from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io";
 import { RiEnglishInput, RiNextjsFill } from "react-icons/ri";
 import { MdCss } from "react-icons/md";
@@ -103,6 +103,15 @@ export const data = [
     link1: "/AddNextjs",
     link2: "/ViewNextjs",
   },
+  {
+    id: 11,
+    icon: <FaAws />,
+    uid: "AWS",
+    sub1: "Add AWS",
+    sub2: "View AWS",
+    link1: "/AddAWS",
+    link2: "/ViewAWS",
+  },
 
 ];
 
@@ -129,5 +138,7 @@ export const MenkaUrl =
   "https://rss-feed-node-js.onrender.com/api/backend/Menka";
 export const NextjsUrl =
   "https://rss-feed-node-js.onrender.com/api/backend/Nextjs";
+export const AWSUrl =
+  "https://rss-feed-node-js.onrender.com/api/backend/AWS";
 
 //
