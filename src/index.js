@@ -33,6 +33,8 @@ import AddNextjs from './Pages/Nextjs/AddNextjs';
 import ViewNextjs from './Pages/Nextjs/ViewNextjs';
 import AddAWS from './Pages/AWS/AddAWS';
 import ViewAWS from './Pages/AWS/ViewAWS';
+import ViewTypeScript from './Pages/Typescript/ViewTypeScript';
+import AddTypescript from './Pages/Typescript/AddTypescript';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -161,6 +163,14 @@ const router = createBrowserRouter([
     path: "viewteam",
     element: <Viewteam />
   },
+  {
+    path:"AddTypescript/:id?",
+    element:<AddTypescript/>
+  },
+  { path:"ViewTypescript", 
+    element:<ViewTypeScript/> 
+  }
+  
 
 
 ])

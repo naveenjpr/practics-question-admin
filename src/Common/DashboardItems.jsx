@@ -9,6 +9,7 @@ import {
   NextjsUrl,
   nodebaseurl,
   reactbaseurl,
+  TypescriptUrl,
   WordPressUrl,
 } from "./MenuData";
 import axios from "axios";
@@ -24,6 +25,7 @@ function DashboardItems() {
   const [menkawebsite, setmenkawebsite] = useState(null);
   const [Nextjswebsite, setNextjswebsite] = useState(null);
   const [AWSwebsite, setAWSwebsite] = useState(null);
+  const [Typescript, setTypescript] = useState(null);
 
   let Api = javascriptbaseurl;
   useEffect(() => {
@@ -128,6 +130,18 @@ function DashboardItems() {
       })
       .catch((error) => {});
   }, []);
+  //typescript js
+  let TypescriptApi =TypescriptUrl;
+  useEffect(() => {
+    axios
+      .post(`${TypescriptApi}/view`)
+      .then((result) => {
+        setAWSwebsite(result.data.totalRecords);
+      })
+      .catch((error) => {});
+  }, []);
+
+  
 
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -218,6 +232,14 @@ function DashboardItems() {
           <div className="p-6 text-center bg-gradient-to-r from-purple-100 to-purple-200 rounded-2xl border-2 border-purple-400 shadow-md transition hover:shadow-xl">
             <h3 className="mb-2 text-lg font-semibold text-purple-700">
             AWS Total Questions
+            </h3>
+            <h1 className="text-4xl font-bold text-purple-900">
+              {AWSwebsite ?? "Loading..."}
+            </h1>
+          </div>
+          <div className="p-6 text-center bg-gradient-to-r from-purple-100 to-purple-200 rounded-2xl border-2 border-purple-400 shadow-md transition hover:shadow-xl">
+            <h3 className="mb-2 text-lg font-semibold text-purple-700">
+            Typescript Total Questions
             </h3>
             <h1 className="text-4xl font-bold text-purple-900">
               {AWSwebsite ?? "Loading..."}

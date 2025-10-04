@@ -12,6 +12,8 @@ import { IoLogoJavascript } from "react-icons/io";
 import { RiEnglishInput, RiNextjsFill } from "react-icons/ri";
 import { MdCss } from "react-icons/md";
 import { CgWebsite } from "react-icons/cg";
+import { SiTypescript } from "react-icons/si";
+
 
 export const data = [
   {
@@ -112,6 +114,15 @@ export const data = [
     link1: "/AddAWS",
     link2: "/ViewAWS",
   },
+  {
+    id: 12,
+    icon: <SiTypescript/>,
+    uid: "Typescript",
+    sub1: "Add Typescript",
+    sub2: "View Typescript",
+    link1: "/AddTypescript",
+    link2: "/ViewTypescript",
+  },
 
 ];
 
@@ -140,5 +151,8 @@ export const NextjsUrl =
   "https://rss-feed-node-js.onrender.com/api/backend/Nextjs";
 export const AWSUrl =
   "https://rss-feed-node-js.onrender.com/api/backend/AWS";
+
+  export const TypescriptUrl =
+  "https://rss-feed-node-js.onrender.com/api/backend/Typescript";
 
 //
