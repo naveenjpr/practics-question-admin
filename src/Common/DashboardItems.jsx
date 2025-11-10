@@ -25,7 +25,7 @@ function DashboardItems() {
   const [menkawebsite, setmenkawebsite] = useState(null);
   const [Nextjswebsite, setNextjswebsite] = useState(null);
   const [AWSwebsite, setAWSwebsite] = useState(null);
-  const [Typescript, setTypescript] = useState(null);
+  // const [Typescript, setTypescript] = useState(null);
 
   let Api = javascriptbaseurl;
   useEffect(() => {
