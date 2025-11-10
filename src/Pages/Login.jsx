@@ -4,8 +4,10 @@ import logo from "../img/logo (1).svg";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { saveLoginDetails } from '../slice/AdminSlice';
+import { saveLoginDetails } from "../slice/AdminSlice";
 function Login() {
+  const [loading, setLoading] = useState(true);
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -15,6 +17,8 @@ function Login() {
     return myAllState.loginStore.adminDetails;
   });
   const handleSubmit = async (e) => {
+    setLoading(true);
+
     e.preventDefault();
     setError("");
     try {
@@ -40,13 +44,32 @@ function Login() {
     } catch (err) {
       setError("Server error. Please try again later.");
     }
+    setLoading(false);
   };
 
   useEffect(() => {
+    // Check if user is already logged in
     if (loginData) {
       navigate("/dashboard");
+    } else {
+      // If not logged in, stop loading after a short delay
+      const timer = setTimeout(() => {
+        setLoading(false);
+      }, 500);
+      return () => clearTimeout(timer);
     }
-  }, [loginData]);
+  }, [loginData, navigate]);
+
+  if (loading) {
+    return (
+      <div className="bg-[#F5F7FF] w-full h-[100vh] flex justify-center items-center">
+        <div className="flex flex-col items-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mb-4"></div>
+          <p className="text-gray-600">Loading...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-[#F5F7FF] w-full h-[100vh] flex justify-center items-center">
@@ -60,7 +83,7 @@ function Login() {
             type="text"
             name="adminName"
             value={username}
-            onChange={e => setUsername(e.target.value)}
+            onChange={(e) => setUsername(e.target.value)}
             className=" mt-5 px-7 text-[16px] focus:outline-blue-400 w-full h-[50px] border border-1 border-[#c5c0c0]"
             placeholder="Username"
           />
@@ -68,7 +91,7 @@ function Login() {
             type="password"
             name="adminPassword"
             value={password}
-            onChange={e => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
             className=" mt-6 mb-5 px-7 text-[16px] focus:outline-blue-400 w-full h-[50px] border border-1 border-[#c5c0c0]"
             placeholder="Password"
           />
