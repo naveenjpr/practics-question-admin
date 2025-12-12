@@ -2,18 +2,22 @@ import {
   faBook,
   faPeopleGroup,
   faSliders,
-  
   faUsers,
   faVideo,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { FaAws, FaNodeJs, FaReact, FaWordpress } from "react-icons/fa";
+import {
+  FaAws,
+  FaGithub,
+  FaNodeJs,
+  FaReact,
+  FaWordpress,
+} from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io";
 import { RiEnglishInput, RiNextjsFill } from "react-icons/ri";
 import { MdCss } from "react-icons/md";
 import { CgWebsite } from "react-icons/cg";
-import { SiTypescript } from "react-icons/si";
-
+import { SiTypescript, SiMysql } from "react-icons/si";
 
 export const data = [
   {
@@ -89,7 +93,7 @@ export const data = [
   },
   {
     id: 9,
-    icon: <CgWebsite/>,
+    icon: <CgWebsite />,
     uid: "Menka",
     sub1: "Add Menka",
     sub2: "View Menka",
@@ -116,43 +120,47 @@ export const data = [
   },
   {
     id: 12,
-    icon: <SiTypescript/>,
+    icon: <SiTypescript />,
     uid: "Typescript",
     sub1: "Add Typescript",
     sub2: "View Typescript",
     link1: "/AddTypescript",
     link2: "/ViewTypescript",
   },
-
+  {
+    id: 13,
+    icon: <FaGithub />,
+    uid: "Github",
+    sub1: "Add Github",
+    sub2: "View Github",
+    link1: "/AddGithub",
+    link2: "/ViewGithub",
+  },
+  {
+    id: 14,
+    icon: <SiMysql />,
+    uid: "SQL",
+    sub1: "Add SQL",
+    sub2: "View SQL",
+    link1: "/AddSQL",
+    link2: "/ViewSQL",
+  },
 ];
 
-export const javascriptbaseurl =
-  "https://rss-feed-node-js.onrender.com/api/backend/javascript";
-
-export const nodebaseurl =
-  "https://rss-feed-node-js.onrender.com/api/backend/node-js-Notes";
-
-export const reactbaseurl =
-  "https://rss-feed-node-js.onrender.com/api/backend/ReactNotes";
-
-export const WordPressUrl =
-  "https://rss-feed-node-js.onrender.com/api/backend/WordPress";
-export const HTML_CSSUrl =
-  "https://rss-feed-node-js.onrender.com/api/backend/HTML_CSS";
-// export const EnglishUrl =
-//   "http://localhost:5000/api/backend/English";
-export const EnglishUrl =
-  "https://rss-feed-node-js.onrender.com/api/backend/English";
-export const livewebsiteUrl =
-  "https://rss-feed-node-js.onrender.com/api/backend/livewebsite";
-export const MenkaUrl =
-  "https://rss-feed-node-js.onrender.com/api/backend/Menka";
-export const NextjsUrl =
-  "https://rss-feed-node-js.onrender.com/api/backend/Nextjs";
-export const AWSUrl =
-  "https://rss-feed-node-js.onrender.com/api/backend/AWS";
-
-  export const TypescriptUrl =
-  "https://rss-feed-node-js.onrender.com/api/backend/Typescript";
+export const javascriptbaseurl = process.env.REACT_APP_JAVASCRIPT_BASEURL;
+console.log("javascriptbaseurl", javascriptbaseurl);
+export const nodebaseurl = process.env.REACT_APP_NODE_BASEURL;
+export const reactbaseurl = process.env.REACT_APP_REACT_BASEURL;
+export const WordPressUrl = process.env.REACT_APP_WORDPRESS_URL;
+export const HTML_CSSUrl = process.env.REACT_APP_HTML_CSS_URL;
+export const EnglishUrl = process.env.REACT_APP_ENGLISH_URL;
+export const livewebsiteUrl = process.env.REACT_APP_LIVE_WEBSITE_URL;
+export const MenkaUrl = process.env.REACT_APP_MENKA_URL;
+export const NextjsUrl = process.env.REACT_APP_NEXTJS_URL;
+export const AWSUrl = process.env.REACT_APP_AWS_URL;
+export const TypescriptUrl = process.env.REACT_APP_TYPESCRIPT_URL;
+export const GithubUrl = process.env.REACT_APP_GITHUB_URL;
+console.log("MenuData Env Check - GITHUB_URL:", process.env.REACT_APP_GITHUB_URL);
+export const SQLUrl = process.env.REACT_APP_SQL_URL;
 
 //
