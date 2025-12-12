@@ -11,6 +11,8 @@ import {
   reactbaseurl,
   TypescriptUrl,
   WordPressUrl,
+  GithubUrl,
+  SQLUrl,
 } from "./MenuData";
 import axios from "axios";
 
@@ -25,7 +27,30 @@ function DashboardItems() {
   const [menkawebsite, setmenkawebsite] = useState(null);
   const [Nextjswebsite, setNextjswebsite] = useState(null);
   const [AWSwebsite, setAWSwebsite] = useState(null);
-  // const [Typescript, setTypescript] = useState(null);
+  const [Github, setGithub] = useState(null);
+  const [SQL, setSQL] = useState(null);
+  const [Typescript, setTypescript] = useState(null); // ✅ Fixed: Added Typescript state
+
+  let ApiGithub = GithubUrl;
+  console.log("ApiGithub", ApiGithub);
+  useEffect(() => {
+    axios
+      .post(`${ApiGithub}/view`)
+      .then((result) => {
+        setGithub(result.data.totalRecords);
+      })
+      .catch((error) => { });
+  }, []);
+
+  let ApiSQL = SQLUrl;
+  useEffect(() => {
+    axios
+      .post(`${ApiSQL}/view`)
+      .then((result) => {
+        setSQL(result.data.totalRecords);
+      })
+      .catch((error) => { });
+  }, []);
 
   let Api = javascriptbaseurl;
   useEffect(() => {
@@ -34,7 +59,7 @@ function DashboardItems() {
       .then((result) => {
         setjavascripttotalrecord(result.data.totalRecords);
       })
-      .catch((error) => {});
+      .catch((error) => { });
   }, []);
 
   let nodeApi = nodebaseurl;
@@ -44,7 +69,7 @@ function DashboardItems() {
       .then((result) => {
         setnodebaseurltotalrecord(result.data.totalRecords);
       })
-      .catch((error) => {});
+      .catch((error) => { });
   }, []);
   //react
   let reactApi = reactbaseurl;
@@ -54,7 +79,7 @@ function DashboardItems() {
       .then((result) => {
         setreactApitotalrecord(result.data.totalRecords);
       })
-      .catch((error) => {});
+      .catch((error) => { });
   }, []);
   // wordpress
 
@@ -65,7 +90,7 @@ function DashboardItems() {
       .then((result) => {
         setwordpresstotalrecord(result.data.totalRecords);
       })
-      .catch((error) => {});
+      .catch((error) => { });
   }, []);
   // html or css
   let HTML_CSSApi = HTML_CSSUrl;
@@ -75,7 +100,7 @@ function DashboardItems() {
       .then((result) => {
         setHTML_CSS(result.data.totalRecords);
       })
-      .catch((error) => {});
+      .catch((error) => { });
   }, []);
   // english
   let EnglishApi = EnglishUrl;
@@ -85,7 +110,7 @@ function DashboardItems() {
       .then((result) => {
         setEnglish(result.data.totalRecords);
       })
-      .catch((error) => {});
+      .catch((error) => { });
   }, []);
   // livewebsite
   let livewebsiteApi = livewebsiteUrl;
@@ -95,20 +120,19 @@ function DashboardItems() {
       .then((result) => {
         setlivewebsite(result.data.totalRecords);
       })
-      .catch((error) => {});
+      .catch((error) => { });
   }, []);
 
   //MENKA
   let menkawebsiteApi = MenkaUrl;
-  console.log("menkawebsiteApi",menkawebsiteApi);
+  console.log("menkawebsiteApi", menkawebsiteApi);
   useEffect(() => {
     axios
       .post(`${menkawebsiteApi}/view`)
       .then((result) => {
         setmenkawebsite(result.data.totalRecords);
       })
-      .catch((error) => {
-      });
+      .catch((error) => { });
   }, []);
   //Nextjs
   let NextjswebsiteApi = NextjsUrl;
@@ -118,7 +142,7 @@ function DashboardItems() {
       .then((result) => {
         setNextjswebsite(result.data.totalRecords);
       })
-      .catch((error) => {});
+      .catch((error) => { });
   }, []);
   //AWSjs
   let AWSwebsiteApi = AWSUrl;
@@ -128,20 +152,18 @@ function DashboardItems() {
       .then((result) => {
         setAWSwebsite(result.data.totalRecords);
       })
-      .catch((error) => {});
+      .catch((error) => { });
   }, []);
-  //typescript js
-  let TypescriptApi =TypescriptUrl;
+  //typescript js - ✅ Fixed this section
+  let TypescriptApi = TypescriptUrl;
   useEffect(() => {
     axios
       .post(`${TypescriptApi}/view`)
       .then((result) => {
-        setAWSwebsite(result.data.totalRecords);
+        setTypescript(result.data.totalRecords); // ✅ Fixed: Setting to Typescript state
       })
-      .catch((error) => {});
+      .catch((error) => { });
   }, []);
-
-  
 
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -184,6 +206,8 @@ function DashboardItems() {
           {wordpresstotalrecord ?? "Loading..."}
         </h1>
       </div>
+
+      {/* HTML/CSS */}
       <div className="p-6 text-center bg-gradient-to-r from-purple-100 to-purple-200 rounded-2xl border-2 border-purple-400 shadow-md transition hover:shadow-xl">
         <h3 className="mb-2 text-lg font-semibold text-purple-700">
           html or css Total Questions
@@ -192,6 +216,7 @@ function DashboardItems() {
           {HTML_CSS ?? "Loading..."}
         </h1>
       </div>
+
       {/* English */}
       <div className="p-6 text-center bg-gradient-to-r from-purple-100 to-purple-200 rounded-2xl border-2 border-purple-400 shadow-md transition hover:shadow-xl">
         <h3 className="mb-2 text-lg font-semibold text-purple-700">
@@ -201,50 +226,76 @@ function DashboardItems() {
           {English ?? "Loading..."}
         </h1>
       </div>
-        {/* livewebsite */}
-        <div className="p-6 text-center bg-gradient-to-r from-purple-100 to-purple-200 rounded-2xl border-2 border-purple-400 shadow-md transition hover:shadow-xl">
-          <h3 className="mb-2 text-lg font-semibold text-purple-700">
-            live website Total Questions
-          </h3>
-          <h1 className="text-4xl font-bold text-purple-900">
-            {livewebsite ?? "Loading..."}
-          </h1>
-        </div>
-        {/* menkawebsite */}
-        <div className="p-6 text-center bg-gradient-to-r from-purple-100 to-purple-200 rounded-2xl border-2 border-purple-400 shadow-md transition hover:shadow-xl">
-          <h3 className="mb-2 text-lg font-semibold text-purple-700">
+
+      {/* livewebsite */}
+      <div className="p-6 text-center bg-gradient-to-r from-purple-100 to-purple-200 rounded-2xl border-2 border-purple-400 shadow-md transition hover:shadow-xl">
+        <h3 className="mb-2 text-lg font-semibold text-purple-700">
+          live website Total Questions
+        </h3>
+        <h1 className="text-4xl font-bold text-purple-900">
+          {livewebsite ?? "Loading..."}
+        </h1>
+      </div>
+
+      {/* menkawebsite */}
+      <div className="p-6 text-center bg-gradient-to-r from-purple-100 to-purple-200 rounded-2xl border-2 border-purple-400 shadow-md transition hover:shadow-xl">
+        <h3 className="mb-2 text-lg font-semibold text-purple-700">
           menka website Total Questions
-          </h3>
-          <h1 className="text-4xl font-bold text-purple-900">
-            {menkawebsite ?? "Loading..."}
-          </h1>
-        </div>
-          {/* Nextjs */}
-          <div className="p-6 text-center bg-gradient-to-r from-purple-100 to-purple-200 rounded-2xl border-2 border-purple-400 shadow-md transition hover:shadow-xl">
-            <h3 className="mb-2 text-lg font-semibold text-purple-700">
-            Nextjs Total Questions
-            </h3>
-            <h1 className="text-4xl font-bold text-purple-900">
-              {Nextjswebsite ?? "Loading..."}
-            </h1>
-          </div>
-          {/* AWS */}
-          <div className="p-6 text-center bg-gradient-to-r from-purple-100 to-purple-200 rounded-2xl border-2 border-purple-400 shadow-md transition hover:shadow-xl">
-            <h3 className="mb-2 text-lg font-semibold text-purple-700">
-            AWS Total Questions
-            </h3>
-            <h1 className="text-4xl font-bold text-purple-900">
-              {AWSwebsite ?? "Loading..."}
-            </h1>
-          </div>
-          <div className="p-6 text-center bg-gradient-to-r from-purple-100 to-purple-200 rounded-2xl border-2 border-purple-400 shadow-md transition hover:shadow-xl">
-            <h3 className="mb-2 text-lg font-semibold text-purple-700">
-            Typescript Total Questions
-            </h3>
-            <h1 className="text-4xl font-bold text-purple-900">
-              {AWSwebsite ?? "Loading..."}
-            </h1>
-          </div>
+        </h3>
+        <h1 className="text-4xl font-bold text-purple-900">
+          {menkawebsite ?? "Loading..."}
+        </h1>
+      </div>
+
+      {/* Nextjs */}
+      <div className="p-6 text-center bg-gradient-to-r from-purple-100 to-purple-200 rounded-2xl border-2 border-purple-400 shadow-md transition hover:shadow-xl">
+        <h3 className="mb-2 text-lg font-semibold text-purple-700">
+          Nextjs Total Questions
+        </h3>
+        <h1 className="text-4xl font-bold text-purple-900">
+          {Nextjswebsite ?? "Loading..."}
+        </h1>
+      </div>
+
+      {/* AWS */}
+      <div className="p-6 text-center bg-gradient-to-r from-purple-100 to-purple-200 rounded-2xl border-2 border-purple-400 shadow-md transition hover:shadow-xl">
+        <h3 className="mb-2 text-lg font-semibold text-purple-700">
+          AWS Total Questions
+        </h3>
+        <h1 className="text-4xl font-bold text-purple-900">
+          {AWSwebsite ?? "Loading..."}
+        </h1>
+      </div>
+
+      {/* Typescript - ✅ Fixed: Now shows Typescript data */}
+      <div className="p-6 text-center bg-gradient-to-r from-purple-100 to-purple-200 rounded-2xl border-2 border-purple-400 shadow-md transition hover:shadow-xl">
+        <h3 className="mb-2 text-lg font-semibold text-purple-700">
+          Typescript Total Questions
+        </h3>
+        <h1 className="text-4xl font-bold text-purple-900">
+          {Typescript ?? "Loading..."} {/* ✅ Fixed: Shows Typescript data */}
+        </h1>
+      </div>
+
+      {/* Github */}
+      <div className="p-6 text-center bg-gradient-to-r from-purple-100 to-purple-200 rounded-2xl border-2 border-purple-400 shadow-md transition hover:shadow-xl">
+        <h3 className="mb-2 text-lg font-semibold text-purple-700">
+          Github Total Questions
+        </h3>
+        <h1 className="text-4xl font-bold text-purple-900">
+          {Github ?? "Loading..."}
+        </h1>
+      </div>
+
+      {/* SQL */}
+      <div className="p-6 text-center bg-gradient-to-r from-purple-100 to-purple-200 rounded-2xl border-2 border-purple-400 shadow-md transition hover:shadow-xl">
+        <h3 className="mb-2 text-lg font-semibold text-purple-700">
+          SQL Total Questions
+        </h3>
+        <h1 className="text-4xl font-bold text-purple-900">
+          {SQL ?? "Loading..."}
+        </h1>
+      </div>
     </div>
   );
 }
