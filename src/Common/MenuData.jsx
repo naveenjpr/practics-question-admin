@@ -148,7 +148,6 @@ export const data = [
 ];
 
 export const javascriptbaseurl = process.env.REACT_APP_JAVASCRIPT_BASEURL;
-console.log("javascriptbaseurl", javascriptbaseurl);
 export const nodebaseurl = process.env.REACT_APP_NODE_BASEURL;
 export const reactbaseurl = process.env.REACT_APP_REACT_BASEURL;
 export const WordPressUrl = process.env.REACT_APP_WORDPRESS_URL;
