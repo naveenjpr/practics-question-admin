@@ -39,6 +39,8 @@ import ViewSQL from "./Pages/SQL/ViewSQL";
 import AddSQL from "./Pages/SQL/AddSQL";
 import ViewGithub from "./Pages/Github/ViewGithub";
 import AddGithub from "./Pages/Github/AddGithub";
+import Viewangular from "./Pages/Angular/Viewangular";
+import Addangular from "./Pages/Angular/Addangular";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -181,6 +183,14 @@ const router = createBrowserRouter([
     element: <AddSQL />,
   },
   { path: "ViewSQL", element: <ViewSQL /> },
+  { 
+    path: "Addangular/:id?",
+    element: <Addangular/>,
+  },
+  { 
+    path: "Viewangular",
+    element: <Viewangular/>,
+  },
 ]);
 root.render(
   <Context>
