@@ -17,7 +17,7 @@ import { IoLogoJavascript } from "react-icons/io";
 import { RiEnglishInput, RiNextjsFill } from "react-icons/ri";
 import { MdCss } from "react-icons/md";
 import { CgWebsite } from "react-icons/cg";
-import { SiTypescript, SiMysql } from "react-icons/si";
+import { SiTypescript, SiMysql, SiAngular } from "react-icons/si";
 
 export const data = [
   {
@@ -145,6 +145,15 @@ export const data = [
     link1: "/AddSQL",
     link2: "/ViewSQL",
   },
+  {
+    id: 15,
+    icon: <SiAngular />,
+    uid: "Angular",
+    sub1: "Add Angular",
+    sub2: "View Angular",
+    link1: "/AddAngular",
+    link2: "/ViewAngular",
+  },
 ];
 
 export const javascriptbaseurl = process.env.REACT_APP_JAVASCRIPT_BASEURL;
@@ -159,7 +168,8 @@ export const NextjsUrl = process.env.REACT_APP_NEXTJS_URL;
 export const AWSUrl = process.env.REACT_APP_AWS_URL;
 export const TypescriptUrl = process.env.REACT_APP_TYPESCRIPT_URL;
 export const GithubUrl = process.env.REACT_APP_GITHUB_URL;
-console.log("MenuData Env Check - GITHUB_URL:", process.env.REACT_APP_GITHUB_URL);
 export const SQLUrl = process.env.REACT_APP_SQL_URL;
+export const AngularUrl = process.env.REACT_APP_ANGULAR_URL;
+console.log("MenuData Env Check - Angular_URL:", process.env.REACT_APP_ANGULAR_URL);
 
 //

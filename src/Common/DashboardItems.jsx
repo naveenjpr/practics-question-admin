@@ -13,6 +13,7 @@ import {
   WordPressUrl,
   GithubUrl,
   SQLUrl,
+  AngularUrl,
 } from "./MenuData";
 import axios from "axios";
 
@@ -30,6 +31,7 @@ function DashboardItems() {
   const [Github, setGithub] = useState(null);
   const [SQL, setSQL] = useState(null);
   const [Typescript, setTypescript] = useState(null); // ✅ Fixed: Added Typescript state
+  const [Angular, setAngular] = useState(null);
 
   let ApiGithub = GithubUrl;
   console.log("ApiGithub", ApiGithub);
@@ -165,6 +167,17 @@ function DashboardItems() {
       .catch((error) => { });
   }, []);
 
+  //Angular
+  let AngularApi = AngularUrl;
+  useEffect(() => {
+    axios
+      .post(`${AngularApi}/view`)
+      .then((result) => {
+        setAngular(result.data.totalRecords);
+      })
+      .catch((error) => { });
+  }, []);
+
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
       {/* JavaScript */}
@@ -294,6 +307,15 @@ function DashboardItems() {
         </h3>
         <h1 className="text-4xl font-bold text-purple-900">
           {SQL ?? "Loading..."}
+        </h1>
+      </div>
+      {/* Angular */}
+      <div className="p-6 text-center bg-gradient-to-r from-purple-100 to-purple-200 rounded-2xl border-2 border-purple-400 shadow-md transition hover:shadow-xl">
+        <h3 className="mb-2 text-lg font-semibold text-purple-700">
+          Angular Total Questions
+        </h3>
+        <h1 className="text-4xl font-bold text-purple-900">
+          {Angular ?? "Loading..."}
         </h1>
       </div>
     </div>
