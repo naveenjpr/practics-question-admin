@@ -86,9 +86,8 @@ function ViewReact() {
           autoClose={500} // 1 सेकंड (1000 मिलीसेकंड) में बंद हो
         />
         <div
-          className={` ${
-            changemenu == true ? "w-[95%]" : "w-[100%]"
-          } relative px-[10px] py-[10px] overflow-auto h-screen bg-[#F5F7FF]`}
+          className={` ${changemenu == true ? "w-[95%]" : "w-[100%]"
+            } relative px-[10px] py-[10px] overflow-auto h-screen bg-[#F5F7FF]`}
         >
           <h1 className="text-[25px] font-[500] mb-[10px]">
             <u>react</u>
@@ -99,72 +98,72 @@ function ViewReact() {
                 <LoadingSpinner message="Loading React questions..." />
               ) : javascriptview.length > 0 ? (
                 javascriptview.map((v, i) => {
-                    return (
-                      <div className="p-4 border-[2px]  text-white" key={i}>
-                        <div className="flex items-start justify-between">
-                          <div className="flex-1">
-                            <div className="flex items-center mb-2">
-                              <span className="text-xs font-medium mr-2 px-2.5 py-0.5 rounded tag-react text-[red]">
-                                React
-                              </span>
-                              <span className="text-xs text-left text-red-700">
-                                <span>Date</span>{" "}
-                                {v.created_at
-                                  .slice(0, 10)
-                                  .split("-")
-                                  .reverse()
-                                  .join("-")}
-                              </span>
-                            </div>
-                            <button className="text-lg font-medium text-left w-full flex items-center bg-[blue]  ">
-                              <span className="mx-[5px]">{i + 1} </span>
-                              {v.Question}
-                            </button>
+                  return (
+                    <div className="p-4 border-[2px]  text-white" key={i}>
+                      <div className="flex items-start justify-between">
+                        <div className="flex-1">
+                          <div className="flex items-center mb-2">
+                            <span className="text-xs font-medium mr-2 px-2.5 py-0.5 rounded tag-react text-[red]">
+                              React
+                            </span>
+                            <span className="text-xs text-left text-red-700">
+                              <span>Date</span>{" "}
+                              {v.created_at
+                                .slice(0, 10)
+                                .split("-")
+                                .reverse()
+                                .join("-")}
+                            </span>
                           </div>
-                        </div>
-                        <div className="p-2 mt-1 text-white bg-black">
-                          <pre className="whitespace-pre-wrap break-words">
-                            {v.Answers}
-                          </pre>
-                          <div className="flex justify-end mt-4 space-x-2">
-                            <div className="flex items-center justify-center gap-2">
-                              <span>status type</span>
-                              {v.status == 1 ? (
-                                <button
-                                  className="gap-2 px-3 text-sm font-medium text-green-700 bg-green-100 border border-green-300 rounded-md whitespace-nowrap h-9 hover:bg-green-200"
-                                  onClick={() => statuschange(v._id, v.status)}
-                                >
-                                  Active
-                                </button>
-                              ) : (
-                                <button
-                                  className="flex items-center justify-center gap-2 px-4 py-1.5 text-sm font-semibold text-red-600 bg-red-100 border border-red-300 rounded-md hover:bg-red-200 transition duration-150"
-                                  onClick={() => statuschange(v._id, v.status)}
-                                >
-                                  Deactive
-                                </button>
-                              )}
-                            </div>
-
-                            <button className="flex items-center justify-center gap-2 px-3 text-sm font-medium border rounded-md whitespace-nowrap h-9 border-input bg-background hover:bg-accent">
-                              <Link to={`/addReact/${v._id}`}>Edit</Link>
-                            </button>
-                            <button
-                              className="flex items-center justify-center gap-2 px-3 text-sm font-medium border rounded-md whitespace-nowrap h-9 border-input bg-background text-destructive hover:bg-destructive/10"
-                              onClick={() => deletecoure(v._id)}
-                            >
-                              Delete
-                            </button>
-                          </div>
+                          <button className="text-lg font-medium text-left w-full flex items-center bg-[blue]  ">
+                            <span className="mx-[5px]">{i + 1} </span>
+                            {v.Question}
+                          </button>
                         </div>
                       </div>
-                    );
-                  })
-                ) : (
-                  <div className="flex flex-col items-center justify-center min-h-[200px] p-8">
-                    <p className="text-gray-600 text-lg font-medium">No React questions found</p>
-                  </div>
-                )}
+                      <div className="p-2 mt-1 text-white bg-black">
+                        <pre className="whitespace-pre-wrap break-words">
+                          {v.Answers}
+                        </pre>
+                        <div className="flex justify-end mt-4 space-x-2">
+                          <div className="flex items-center justify-center gap-2">
+                            <span>status type</span>
+                            {v.status == 1 ? (
+                              <button
+                                className="gap-2 px-3 text-sm font-medium text-green-700 bg-green-100 border border-green-300 rounded-md whitespace-nowrap h-9 hover:bg-green-200"
+                                onClick={() => statuschange(v._id, v.status)}
+                              >
+                                Active
+                              </button>
+                            ) : (
+                              <button
+                                className="flex items-center justify-center gap-2 px-4 py-1.5 text-sm font-semibold text-red-600 bg-red-100 border border-red-300 rounded-md hover:bg-red-200 transition duration-150"
+                                onClick={() => statuschange(v._id, v.status)}
+                              >
+                                Deactive
+                              </button>
+                            )}
+                          </div>
+
+                          <button className="flex items-center justify-center gap-2 px-3 text-sm font-medium border rounded-md whitespace-nowrap h-9 border-input bg-background hover:bg-accent">
+                            <Link to={`/addReact/${v._id}`}>Edit</Link>
+                          </button>
+                          <button
+                            className="flex items-center justify-center gap-2 px-3 text-sm font-medium border rounded-md whitespace-nowrap h-9 border-input bg-background text-destructive hover:bg-destructive/10"
+                            onClick={() => deletecoure(v._id)}
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })
+              ) : (
+                <div className="flex flex-col items-center justify-center min-h-[200px] p-8">
+                  <p className="text-gray-600 text-lg font-medium">No React questions found</p>
+                </div>
+              )}
             </div>
           </div>
           {/* <Footer /> */}
