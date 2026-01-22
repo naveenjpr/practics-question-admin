@@ -8,7 +8,7 @@ import Header from '../../Common/Header';
 import Sidebar from '../../Common/Sidebar';
 
 export default function AddTypescript() {
- let { changemenu } = useContext(mainContext);
+  let { changemenu } = useContext(mainContext);
   let params = useParams();
 
   let navigate = useNavigate();
@@ -85,16 +85,15 @@ export default function AddTypescript() {
   }, [formsubmit]);
   return (
     <div>
-      <Header/>
-      <ToastContainer/>
+      <Header />
+      <ToastContainer />
 
       <div className="flex  bg-[#F5F7FF]">
-        <Sidebar/>
+        <Sidebar />
 
         <div
-          className={` ${
-            changemenu == true ? "w-[95%]" : "w-[84%]"
-          } relative px-[30px] pt-[20px] pb-[60px]  bg-[#F5F7FF]`}
+          className={` ${changemenu == true ? "w-[95%]" : "w-[84%]"
+            } relative px-[30px] pt-[20px] pb-[60px]  bg-[#F5F7FF]`}
         >
           <h1 className="text-[25px] font-[500] mb-[10px]">
             Type script question add
@@ -124,11 +123,11 @@ export default function AddTypescript() {
                     placeholder="Enter the answer"
                     rows="9"
                   >
-                  
+
                   </textarea>
                 </div>
 
-              
+
 
                 <div>
                   <label className="block mb-2 text-gray-700">

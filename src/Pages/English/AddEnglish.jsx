@@ -79,12 +79,12 @@ export default function AddEnglish() {
 
   let navigate = useNavigate();
 
-useEffect(() => {
+  useEffect(() => {
     if (formsubmit == true) {
       navigate("/ViewEnglish");
     }
-  }, [formsubmit]); 
-  
+  }, [formsubmit]);
+
   return (
     <div>
       <Header />
@@ -95,9 +95,8 @@ useEffect(() => {
         <Sidebar />
 
         <div
-          className={` ${
-            changemenu == true ? "w-[95%]" : "w-[84%]"
-          } relative px-[30px] pt-[20px] pb-[60px]  bg-[#F5F7FF]`}
+          className={` ${changemenu == true ? "w-[95%]" : "w-[84%]"
+            } relative px-[30px] pt-[20px] pb-[60px]  bg-[#F5F7FF]`}
         >
           <h1 className="text-[25px] font-[500] mb-[10px]">
             English spoken question
