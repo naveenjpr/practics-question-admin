@@ -41,6 +41,8 @@ import ViewGithub from "./Pages/Github/ViewGithub";
 import AddGithub from "./Pages/Github/AddGithub";
 import Viewangular from "./Pages/Angular/Viewangular";
 import Addangular from "./Pages/Angular/Addangular";
+import Viewpython from "./Pages/Python/Viewpython";
+import Addpython from "./Pages/Python/Addpython";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -190,6 +192,14 @@ const router = createBrowserRouter([
   { 
     path: "Viewangular",
     element: <Viewangular/>,
+  },
+  { 
+    path: "Addpython/:id?",
+    element: <Addpython/>,
+  },
+  { 
+    path: "Viewpython",
+    element: <Viewpython/>,
   },
 ]);
 root.render(

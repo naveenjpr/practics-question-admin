@@ -14,6 +14,7 @@ import {
   GithubUrl,
   SQLUrl,
   AngularUrl,
+  PythonUrl,
 } from "./MenuData";
 import axios from "axios";
 
@@ -32,6 +33,18 @@ function DashboardItems() {
   const [SQL, setSQL] = useState(null);
   const [Typescript, setTypescript] = useState(null); // ✅ Fixed: Added Typescript state
   const [Angular, setAngular] = useState(null);
+  const [Python, setPython] = useState(null);
+
+  let ApiPythonUrl = PythonUrl;
+  console.log("ApiPythonUrl", ApiPythonUrl);
+  useEffect(() => {
+    axios
+      .post(`${ApiPythonUrl}/view`)
+      .then((result) => {
+        setPython(result.data.totalRecords);
+      })
+      .catch((error) => { });
+  }, []);
 
   let ApiGithub = GithubUrl;
   console.log("ApiGithub", ApiGithub);
@@ -316,6 +329,15 @@ function DashboardItems() {
         </h3>
         <h1 className="text-4xl font-bold text-purple-900">
           {Angular ?? "Loading..."}
+        </h1>
+      </div>
+      {/* Python */}
+      <div className="p-6 text-center bg-gradient-to-r from-purple-100 to-purple-200 rounded-2xl border-2 border-purple-400 shadow-md transition hover:shadow-xl">
+        <h3 className="mb-2 text-lg font-semibold text-purple-700">
+          Python Total Questions
+        </h3>
+        <h1 className="text-4xl font-bold text-purple-900">
+          {Python ?? "Loading..."}
         </h1>
       </div>
     </div>
