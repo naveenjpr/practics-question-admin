@@ -30,9 +30,8 @@ function Header() {
         <nav className="bg-white border-gray-200  py-2.5  shadow-lg relative z-[999]">
           <div className="flex  justify-between items-center mx-auto ">
             <div
-              className={` duration-[0.5s] mx-5  ${
-                changemenu == true ? "w-[3%] " : "w-[16%]"
-              }`}
+              className={` duration-[0.5s] mx-5  ${changemenu == true ? "w-[3%] " : "w-[16%]"
+                }`}
             >
               <Link to="/dashboard" className="flex items-center">
                 {changemenu === true ? (
@@ -48,9 +47,8 @@ function Header() {
             </div>
 
             <div
-              className={`flex items-center lg:order-2 w-[84%] duration-[0.5s] ${
-                changemenu === true ? "w-[97%]" : "w-[84%]"
-              }  justify-between`}
+              className={`flex items-center lg:order-2 w-[84%] duration-[0.5s] ${changemenu === true ? "w-[97%]" : "w-[84%]"
+                }  justify-between`}
             >
               <FontAwesomeIcon
                 icon={faBars}
