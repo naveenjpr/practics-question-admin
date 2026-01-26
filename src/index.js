@@ -43,6 +43,8 @@ import Viewangular from "./Pages/Angular/Viewangular";
 import Addangular from "./Pages/Angular/Addangular";
 import Viewpython from "./Pages/Python/Viewpython";
 import Addpython from "./Pages/Python/Addpython";
+import AddDocker from "./Pages/Docker/AddDocker";
+import ViewDocker from "./Pages/Docker/ViewDocker";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -185,21 +187,29 @@ const router = createBrowserRouter([
     element: <AddSQL />,
   },
   { path: "ViewSQL", element: <ViewSQL /> },
-  { 
+  {
     path: "Addangular/:id?",
-    element: <Addangular/>,
+    element: <Addangular />,
   },
-  { 
+  {
     path: "Viewangular",
-    element: <Viewangular/>,
+    element: <Viewangular />,
   },
-  { 
+  {
     path: "Addpython/:id?",
-    element: <Addpython/>,
+    element: <Addpython />,
   },
-  { 
+  {
     path: "Viewpython",
-    element: <Viewpython/>,
+    element: <Viewpython />,
+  },
+  {
+    path: "AddDocker/:id?",
+    element: <AddDocker />,
+  },
+  {
+    path: "ViewDocker",
+    element: <ViewDocker />,
   },
 ]);
 root.render(
@@ -207,7 +217,7 @@ root.render(
     <Provider store={store}>
       <RouterProvider router={router} />
     </Provider>
-  </Context>
+  </Context>,
 
   // <React.StrictMode>
   // </React.StrictMode>
