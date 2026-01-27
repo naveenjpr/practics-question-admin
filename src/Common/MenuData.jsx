@@ -218,5 +218,5 @@ export const PythonUrl = process.env.REACT_APP_PYTHON_URL;
 export const DockerUrl = process.env.REACT_APP_DOCKER_URL;
 export const TestingUrl = process.env.REACT_APP_TESTING_URL;
 export const PostgreSQLUrl = process.env.REACT_APP_POSTGRESQL_URL;
-console.log("menu data PostgreSQLUrl =>", PostgreSQLUrl);
+console.log("PostgreSQLUrl =>", PostgreSQLUrl);
 
