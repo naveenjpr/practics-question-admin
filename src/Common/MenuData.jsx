@@ -23,6 +23,8 @@ import {
   SiAngular,
   SiPython,
   SiDocker,
+  SiTestinglibrary,
+  SiPostgresql,
 } from "react-icons/si";
 
 export const data = [
@@ -178,6 +180,24 @@ export const data = [
     link1: "/AddDocker",
     link2: "/ViewDocker",
   },
+  {
+    id: 18,
+    icon: <SiTestinglibrary />,
+    uid: "Testing",
+    sub1: "Add Testing",
+    sub2: "View Testing",
+    link1: "/AddTesting",
+    link2: "/ViewTesting",
+  },
+  {
+    id: 19,
+    icon: <SiPostgresql />,
+    uid: "PostgreSQL",
+    sub1: "Add PostgreSQL",
+    sub2: "View PostgreSQL",
+    link1: "/AddPostgreSQL",
+    link2: "/ViewPostgreSQL",
+  },
 ];
 
 export const javascriptbaseurl = process.env.REACT_APP_JAVASCRIPT_BASEURL;
@@ -196,6 +216,7 @@ export const SQLUrl = process.env.REACT_APP_SQL_URL;
 export const AngularUrl = process.env.REACT_APP_ANGULAR_URL;
 export const PythonUrl = process.env.REACT_APP_PYTHON_URL;
 export const DockerUrl = process.env.REACT_APP_DOCKER_URL;
-console.log("DockerUrl in MenuData.jsx:", process.env.REACT_APP_DOCKER_URL);
+export const TestingUrl = process.env.REACT_APP_TESTING_URL;
+export const PostgreSQLUrl = process.env.REACT_APP_POSTGRESQL_URL;
+console.log("menu data PostgreSQLUrl =>", PostgreSQLUrl);
 
-//

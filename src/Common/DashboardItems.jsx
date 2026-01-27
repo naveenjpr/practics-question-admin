@@ -16,6 +16,8 @@ import {
   AngularUrl,
   PythonUrl,
   DockerUrl,
+  TestingUrl,
+  PostgreSQLUrl,
 } from "./MenuData";
 import axios from "axios";
 
@@ -36,8 +38,32 @@ function DashboardItems() {
   const [Angular, setAngular] = useState(null);
   const [Python, setPython] = useState(null);
   const [Docker, setDocker] = useState(null);
-  console.log("Docker value:", Docker);
+  const [Testing, setTesting] = useState(null);
+  const [PostgreSQL, setPostgreSQL] = useState(null);
+  console.log("Testing value:", Testing);
 
+  //postgreSQL
+  let ApiPostgreSQLUrl = PostgreSQLUrl;
+  useEffect(() => {
+    axios
+      .post(`${ApiPostgreSQLUrl}/view`)
+      .then((result) => {
+        setPostgreSQL(result.data.totalRecords);
+      })
+      .catch((error) => { });
+  }, []);
+
+  //testing
+  let ApiTestingUrl = TestingUrl;
+  console.log("ApiTestingUrl", ApiTestingUrl);
+  useEffect(() => {
+    axios
+      .post(`${ApiTestingUrl}/view`)
+      .then((result) => {
+        setTesting(result.data.totalRecords);
+      })
+      .catch((error) => { });
+  }, []);
   //docker
   let ApiDockerUrl = DockerUrl;
   console.log("ApiDockerUrl", ApiDockerUrl);
@@ -365,6 +391,24 @@ function DashboardItems() {
         </h3>
         <h1 className="text-4xl font-bold text-purple-900">
           {Docker ?? "Loading..."}
+        </h1>
+      </div>
+      {/* Testing */}
+      <div className="p-6 text-center bg-gradient-to-r from-purple-100 to-purple-200 rounded-2xl border-2 border-purple-400 shadow-md transition hover:shadow-xl">
+        <h3 className="mb-2 text-lg font-semibold text-purple-700">
+          Testing Total Questions
+        </h3>
+        <h1 className="text-4xl font-bold text-purple-900">
+          {Testing ?? "Loading..."}
+        </h1>
+      </div>
+      {/* PostgreSQL */}
+      <div className="p-6 text-center bg-gradient-to-r from-purple-100 to-purple-200 rounded-2xl border-2 border-purple-400 shadow-md transition hover:shadow-xl">
+        <h3 className="mb-2 text-lg font-semibold text-purple-700">
+          PostgreSQL Total Questions
+        </h3>
+        <h1 className="text-4xl font-bold text-purple-900">
+          {PostgreSQL ?? "Loading..."}
         </h1>
       </div>
     </div>
