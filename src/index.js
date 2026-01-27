@@ -45,6 +45,10 @@ import Viewpython from "./Pages/Python/Viewpython";
 import Addpython from "./Pages/Python/Addpython";
 import AddDocker from "./Pages/Docker/AddDocker";
 import ViewDocker from "./Pages/Docker/ViewDocker";
+import ViewPostgreSQL from "./Pages/postgreSQL/ViewpostgreSQL";
+import AddPostgreSQL from "./Pages/postgreSQL/AddpostgreSQL";
+import AddTesting from "./Pages/Testing/AddTesting";
+import ViewTesting from "./Pages/Testing/ViewTesting";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -203,6 +207,16 @@ const router = createBrowserRouter([
     path: "Viewpython",
     element: <Viewpython />,
   },
+  //testing
+  {
+    path: "AddTesting/:id?",
+    element: <AddTesting/>,
+  },
+  {
+    path: "ViewTesting",
+    element: <ViewTesting/>,
+  },  
+  //docker
   {
     path: "AddDocker/:id?",
     element: <AddDocker />,
@@ -210,6 +224,15 @@ const router = createBrowserRouter([
   {
     path: "ViewDocker",
     element: <ViewDocker />,
+  },
+  //postgresql
+  {
+    path: "AddPostgreSQL/:id?",
+    element: <AddPostgreSQL/>,
+  },
+  {
+    path: "ViewPostgreSQL",
+    element: <ViewPostgreSQL/>,
   },
 ]);
 root.render(
