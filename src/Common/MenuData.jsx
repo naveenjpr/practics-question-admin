@@ -25,6 +25,7 @@ import {
   SiDocker,
   SiTestinglibrary,
   SiPostgresql,
+  SiSupabase,
 } from "react-icons/si";
 
 export const data = [
@@ -198,6 +199,15 @@ export const data = [
     link1: "/AddPostgreSQL",
     link2: "/ViewPostgreSQL",
   },
+  {
+    id: 20,
+    icon: <SiSupabase />,
+    uid: "supabase",
+    sub1: "Add supabase",
+    sub2: "View supabase",
+    link1: "/Addsupabase",
+    link2: "/Viewsupabase",
+  },
 ];
 
 export const javascriptbaseurl = process.env.REACT_APP_JAVASCRIPT_BASEURL;
@@ -218,5 +228,6 @@ export const PythonUrl = process.env.REACT_APP_PYTHON_URL;
 export const DockerUrl = process.env.REACT_APP_DOCKER_URL;
 export const TestingUrl = process.env.REACT_APP_TESTING_URL;
 export const PostgreSQLUrl = process.env.REACT_APP_POSTGRESQL_URL;
-console.log("menu data PostgreSQLUrl =>", PostgreSQLUrl);
+export const supabaseUrl = process.env.REACT_APP_SUPABASE_URL;
+console.log("supabaseUrl menu data", supabaseUrl);
 

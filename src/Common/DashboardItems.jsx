@@ -18,6 +18,7 @@ import {
   DockerUrl,
   TestingUrl,
   PostgreSQLUrl,
+  supabaseUrl,
 } from "./MenuData";
 import axios from "axios";
 
@@ -40,8 +41,20 @@ function DashboardItems() {
   const [Docker, setDocker] = useState(null);
   const [Testing, setTesting] = useState(null);
   const [PostgreSQL, setPostgreSQL] = useState(null);
-  console.log("Testing value:", Testing);
 
+  const [supabaseurls, setsupabaseurls] = useState(null);
+  console.log("supabaseUrl", supabaseUrl);
+
+  //supabaseUrl
+  let ApisupabaseUrl = supabaseUrl;
+  useEffect(() => {
+    axios
+      .post(`${ApisupabaseUrl}/view`)
+      .then((result) => {
+        setsupabaseurls(result.data.totalRecords);
+      })
+      .catch((error) => { })
+  }, []);
   //postgreSQL
   let ApiPostgreSQLUrl = PostgreSQLUrl;
   useEffect(() => {
@@ -409,6 +422,15 @@ function DashboardItems() {
         </h3>
         <h1 className="text-4xl font-bold text-purple-900">
           {PostgreSQL ?? "Loading..."}
+        </h1>
+      </div>
+      {/* supabase */}
+      <div className="p-6 text-center bg-gradient-to-r from-purple-100 to-purple-200 rounded-2xl border-2 border-purple-400 shadow-md transition hover:shadow-xl">
+        <h3 className="mb-2 text-lg font-semibold text-purple-700">
+          supabase Total Questions
+        </h3>
+        <h1 className="text-4xl font-bold text-purple-900">
+          {supabaseurls ?? "Loading..."}
         </h1>
       </div>
     </div>
