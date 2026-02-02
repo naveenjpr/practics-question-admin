@@ -49,6 +49,8 @@ import ViewPostgreSQL from "./Pages/postgreSQL/ViewpostgreSQL";
 import AddPostgreSQL from "./Pages/postgreSQL/AddpostgreSQL";
 import AddTesting from "./Pages/Testing/AddTesting";
 import ViewTesting from "./Pages/Testing/ViewTesting";
+import Addsupabase from "./Pages/supabase/Addsupabase";
+import Viewsupabase from "./Pages/supabase/Viewsupabase";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -234,6 +236,15 @@ const router = createBrowserRouter([
     path: "ViewPostgreSQL",
     element: <ViewPostgreSQL/>,
   },
+  //supabase
+  {
+    path: "Addsupabase/:id?",
+    element: <Addsupabase/>,
+  },
+  {
+    path: "Viewsupabase",
+    element: <Viewsupabase/>,
+  },  
 ]);
 root.render(
   <Context>
