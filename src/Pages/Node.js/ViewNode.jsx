@@ -41,7 +41,7 @@ function ViewNode() {
 
   let deletecoure = (id) => {
     const confirmed = window.confirm(
-      "Are you sure you want to delete this course?"
+      "Are you sure you want to delete this course?",
     );
     if (!confirmed) return;
     axios
@@ -89,15 +89,17 @@ function ViewNode() {
           autoClose={500} // 1 सेकंड (1000 मिलीसेकंड) में बंद हो
         />
         <div
-          className={` ${changemenu == true ? "w-[95%]" : "w-[84%]"
-            } relative px-[30px] py-[50px] overflow-auto h-screen bg-[#F5F7FF]`}
+          className={` ${
+            changemenu == true ? "w-[95%]" : "w-[84%]"
+          } relative px-[30px] py-[50px] overflow-auto h-screen bg-[#F5F7FF]`}
         >
           <h1 className="text-[25px] font-[500] mb-[10px]">
             <u>node js question</u>
           </h1>
           <div
-            className={` ${changemenu == true ? "w-[95%]" : "w-[100%]"
-              } relative px-[10px] py-[10px] h-[92vh] bg-[#F5F7FF]`}
+            className={` ${
+              changemenu == true ? "w-[95%]" : "w-[100%]"
+            } relative px-[10px] py-[10px] h-[92vh] bg-[#F5F7FF]`}
           >
             <div className="">
               <div className="bg-white w-[100%] mb-[50px] p-4 h-full rounded-[20px]">
@@ -110,9 +112,18 @@ function ViewNode() {
                         <div className="flex items-start justify-between">
                           <div className="flex-1">
                             <div className="flex items-center mb-2">
-                              <span className="text-xs font-medium mr-2 px-2.5 py-0.5 rounded tag-react text-[red]">
-                                node.js
-                              </span>
+                              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+                                <h1 className="text-[18px] sm:text-[22px] md:text-[25px] font-medium">
+                                  Welcome To <u>node.js</u> Admin Panel
+                                </h1>
+
+                                <Link
+                                  to="/view-Node"
+                                  className="bg-blue-500 text-white px-4 py-2 rounded-md text-center sm:w-auto w-full"
+                                >
+                                  Add Data
+                                </Link>
+                              </div>
                               <span className="text-xs text-left text-red-700">
                                 <span>Date</span>{" "}
                                 {v.created_at
@@ -138,18 +149,14 @@ function ViewNode() {
                               {v.status == 1 ? (
                                 <button
                                   className="gap-2 px-3 text-sm font-medium text-green-700 bg-green-100 border border-green-300 rounded-md whitespace-nowrap h-9 hover:bg-green-200"
-                                  onClick={() =>
-                                    statuschange(v._id, v.status)
-                                  }
+                                  onClick={() => statuschange(v._id, v.status)}
                                 >
                                   Active
                                 </button>
                               ) : (
                                 <button
                                   className="flex items-center justify-center gap-2 px-4 py-1.5 text-sm font-semibold text-red-600 bg-red-100 border border-red-300 rounded-md hover:bg-red-200 transition duration-150"
-                                  onClick={() =>
-                                    statuschange(v._id, v.status)
-                                  }
+                                  onClick={() => statuschange(v._id, v.status)}
                                 >
                                   Deactive
                                 </button>
@@ -172,7 +179,9 @@ function ViewNode() {
                   })
                 ) : (
                   <div className="flex flex-col items-center justify-center min-h-[200px] p-8">
-                    <p className="text-gray-600 text-lg font-medium">No Node.js questions found</p>
+                    <p className="text-gray-600 text-lg font-medium">
+                      No Node.js questions found
+                    </p>
                   </div>
                 )}
               </div>
