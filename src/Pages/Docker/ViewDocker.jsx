@@ -95,9 +95,18 @@ export default function ViewDocker() {
             changemenu == true ? "w-[95%]" : "w-[100%]"
           } relative px-[10px] py-[10px] overflow-auto h-screen bg-[#F5F7FF]`}
         >
-          <h1 className="text-[25px] font-[500] mb-[10px]">
-            Welcome To &nbsp;<u>Docker</u> &nbsp; Admin Panel
-          </h1>
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+            <h1 className="text-[18px] sm:text-[22px] md:text-[25px] font-medium">
+              Welcome To <u>Docker</u> Admin Panel
+            </h1>
+
+            <Link
+              to="/AddDocker"
+              className="bg-blue-500 text-white px-4 py-2 rounded-md text-center sm:w-auto w-full"
+            >
+              Add Data
+            </Link>
+          </div>
           <div className="">
             <div className="bg-white w-[100%] mb-[50px] p-4 h-full rounded-[20px]">
               {loading ? (

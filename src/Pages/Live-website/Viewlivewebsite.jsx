@@ -40,7 +40,7 @@ export default function Viewlivewebsite() {
 
   let deletecoure = (id) => {
     const confirmed = window.confirm(
-      "Are you sure you want to delete this course?"
+      "Are you sure you want to delete this course?",
     );
     if (!confirmed) return;
     axios
@@ -88,12 +88,22 @@ export default function Viewlivewebsite() {
           autoClose={500} // 1 सेकंड (1000 मिलीसेकंड) में बंद हो
         />
         <div
-          className={` ${changemenu == true ? "w-[95%]" : "w-[100%]"
-            } relative px-[10px] py-[10px] overflow-auto h-screen bg-[#F5F7FF]`}
+          className={` ${
+            changemenu == true ? "w-[95%]" : "w-[100%]"
+          } relative px-[10px] py-[10px] overflow-auto h-screen bg-[#F5F7FF]`}
         >
-          <h1 className="text-[25px] font-[500] mb-[10px]">
-            Welcome To &nbsp;<u>Live Website</u> &nbsp; Admin Panel
-          </h1>
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+            <h1 className="text-[18px] sm:text-[22px] md:text-[25px] font-medium">
+              Welcome To <u>Live Website</u> Admin Panel
+            </h1>
+
+            <Link
+              to="/Add-livewebsite"
+              className="bg-blue-500 text-white px-4 py-2 rounded-md text-center sm:w-auto w-full"
+            >
+              Add Data
+            </Link>
+          </div>
           <div className="">
             <div className="bg-white w-[100%] mb-[50px] p-4 h-full rounded-[20px]">
               {loading ? (
@@ -164,7 +174,9 @@ export default function Viewlivewebsite() {
                 })
               ) : (
                 <div className="flex flex-col items-center justify-center min-h-[200px] p-8">
-                  <p className="text-gray-600 text-lg font-medium">No Live Website questions found</p>
+                  <p className="text-gray-600 text-lg font-medium">
+                    No Live Website questions found
+                  </p>
                 </div>
               )}
             </div>
