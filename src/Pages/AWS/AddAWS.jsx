@@ -1,23 +1,25 @@
-import React, { useContext, useState, useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router';
-import { mainContext } from '../../Context';
-import Header from '../../Common/Header';
-import Sidebar from '../../Common/Sidebar';
-import Footer from '../../Common/Footer';
-import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
+import React, { useContext, useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router";
+import { mainContext } from "../../Context";
+import Header from "../../Common/Header";
+import Sidebar from "../../Common/Sidebar";
+import Footer from "../../Common/Footer";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { AWSUrl } from '../../Common/MenuData';
+import { AWSUrl } from "../../Common/MenuData";
 
 export default function AddAWS() {
   let { changemenu } = useContext(mainContext);
   let params = useParams();
 
   const [formsubmit, setformsubmit] = useState(false);
+  const [isSubmitting, setisSubmitting] = useState(false);
   let [input, setinput] = useState({ Question: "", Answers: "", status: 1 });
 
   let submitHandler = (event) => {
     event.preventDefault();
+    setisSubmitting(true);
     let Api = AWSUrl;
     let form = new FormData(event.target);
 
@@ -94,12 +96,11 @@ export default function AddAWS() {
         <Sidebar />
 
         <div
-          className={` ${changemenu == true ? "w-[95%]" : "w-[84%]"
-            } relative px-[30px] pt-[20px] pb-[60px]  bg-[#F5F7FF]`}
+          className={` ${
+            changemenu == true ? "w-[95%]" : "w-[84%]"
+          } relative px-[30px] pt-[20px] pb-[60px]  bg-[#F5F7FF]`}
         >
-          <h1 className="text-[25px] font-[500] mb-[10px]">
-            AWS question
-          </h1>
+          <h1 className="text-[25px] font-[500] mb-[10px]">AWS question</h1>
           <div className="w-full">
             <div className="p-6 mb-12 w-full bg-white rounded-2xl shadow-sm">
               <form onSubmit={submitHandler} className="space-y-4">
@@ -161,22 +162,37 @@ export default function AddAWS() {
                   {params.id == undefined ? (
                     <button
                       type="submit"
-                      className="bg-[#4B49AC] hover:bg-[#3a3899] text-white px-6 py-2 rounded-lg text-lg font-medium transition-colors"
+                      disabled={isSubmitting}
+                      className={`text-white px-6 py-2 rounded-lg text-lg font-medium transition-colors ${
+                        isSubmitting
+                          ? "bg-gray-400 cursor-not-allowed opacity-60"
+                          : "bg-[#4B49AC] hover:bg-[#3a3899]"
+                      }`}
                     >
-                      submit
+                      {isSubmitting ? "Submitting..." : "submit"}
                     </button>
                   ) : (
                     <button
                       type="submit"
-                      className="bg-[#4B49AC] hover:bg-[#3a3899] text-white px-6 py-2 rounded-lg text-lg font-medium transition-colors"
+                      disabled={isSubmitting}
+                      className={`text-white px-6 py-2 rounded-lg text-lg font-medium transition-colors ${
+                        isSubmitting
+                          ? "bg-gray-400 cursor-not-allowed opacity-60"
+                          : "bg-[#4B49AC] hover:bg-[#3a3899]"
+                      }`}
                     >
-                      update
+                      {isSubmitting ? "Updating..." : "update"}
                     </button>
                   )}
 
                   <button
                     type="reset"
-                    className="px-6 py-2 text-lg font-medium text-gray-800 bg-gray-100 rounded-lg transition-colors hover:bg-gray-200"
+                    disabled={isSubmitting}
+                    className={`px-6 py-2 text-lg font-medium transition-colors rounded-lg ${
+                      isSubmitting
+                        ? "text-gray-400 bg-gray-100 cursor-not-allowed"
+                        : "text-gray-800 bg-gray-100 hover:bg-gray-200"
+                    }`}
                   >
                     Cancel
                   </button>
@@ -190,4 +206,3 @@ export default function AddAWS() {
     </div>
   );
 }
-

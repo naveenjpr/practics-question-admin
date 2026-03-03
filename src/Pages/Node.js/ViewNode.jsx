@@ -93,22 +93,32 @@ function ViewNode() {
             changemenu == true ? "w-[95%]" : "w-[84%]"
           } relative px-[30px] py-[50px] overflow-auto h-screen bg-[#F5F7FF]`}
         >
-          <h1 className="text-[25px] font-[500] mb-[10px]">
-            <u>node js question</u>
-          </h1>
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+            <h1 className="text-[25px] font-[500] mb-[10px]">
+              <u>node js question</u>
+            </h1>
+
+            <Link
+              to="/add-Node"
+              className="bg-blue-500 text-white px-4 py-2 rounded-md text-center sm:w-auto w-full"
+            >
+              Add Data
+            </Link>
+          </div>
+
           <div
             className={` ${
               changemenu == true ? "w-[95%]" : "w-[100%]"
             } relative px-[10px] py-[10px] h-[92vh] bg-[#F5F7FF]`}
           >
             <div className="">
-              <div className="bg-white w-[100%] mb-[50px] p-4 h-full rounded-[20px]">
+              <div className="bg-white w-[100%] mb-[50px] p-1h-full rounded-[20px]">
                 {loading ? (
                   <LoadingSpinner message="Loading Node.js questions..." />
                 ) : javascriptview.length > 0 ? (
                   javascriptview.map((v, i) => {
                     return (
-                      <div className="p-4 border-[2px]  text-white" key={i}>
+                      <div className="p-1border-[2px]  text-white" key={i}>
                         <div className="flex items-start justify-between">
                           <div className="flex-1">
                             <div className="flex items-center mb-2">
@@ -116,13 +126,6 @@ function ViewNode() {
                                 <h1 className="text-[18px] sm:text-[22px] md:text-[25px] font-medium">
                                   Welcome To <u>node.js</u> Admin Panel
                                 </h1>
-
-                                <Link
-                                  to="/view-Node"
-                                  className="bg-blue-500 text-white px-4 py-2 rounded-md text-center sm:w-auto w-full"
-                                >
-                                  Add Data
-                                </Link>
                               </div>
                               <span className="text-xs text-left text-red-700">
                                 <span>Date</span>{" "}

@@ -41,7 +41,7 @@ function Viewteam() {
         >
           <h1 className="text-[25px] font-[500] mb-[10px]">Team Table</h1>
           <div className="">
-            <div className="bg-white w-[100%] mb-[50px] p-4 h-full rounded-[20px]">
+            <div className="bg-white w-[100%] mb-[50px] p-1h-full rounded-[20px]">
               {loading ? (
                 <LoadingSpinner message="Loading team members..." />
               ) : (

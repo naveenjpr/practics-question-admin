@@ -107,13 +107,13 @@ export default function Viewpython() {
             </Link>
           </div>
           <div className="">
-            <div className="bg-white w-[100%] mb-[50px] p-4 h-full rounded-[20px]">
+            <div className="bg-white w-[100%] mb-[50px] p-1h-full rounded-[20px]">
               {loading ? (
                 <LoadingSpinner message="Loading Python questions..." />
               ) : javascriptview.length > 0 ? (
                 javascriptview.map((v, i) => {
                   return (
-                    <div className="p-4 border-[2px]  text-white" key={i}>
+                    <div className="p-1border-[2px]  text-white" key={i}>
                       <div className="flex justify-between items-start">
                         <div className="flex-1">
                           <div className="flex items-center mb-2">

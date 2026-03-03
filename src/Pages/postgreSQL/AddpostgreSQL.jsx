@@ -13,10 +13,12 @@ function AddPostgreSQL() {
   let params = useParams();
 
   const [formsubmit, setformsubmit] = useState(false);
+  const [isSubmitting, setisSubmitting] = useState(false);
   let [input, setinput] = useState({ Question: "", Answers: "", status: 1 });
 
   let submitHandler = (event) => {
     event.preventDefault();
+    setisSubmitting(true);
     let Api = PostgreSQLUrl;
     let form = new FormData(event.target);
 
@@ -164,22 +166,37 @@ function AddPostgreSQL() {
                   {params.id == undefined ? (
                     <button
                       type="submit"
-                      className="bg-[#4B49AC] hover:bg-[#3a3899] text-white px-6 py-2 rounded-lg text-lg font-medium transition-colors"
+                      disabled={isSubmitting}
+                      className={`text-white px-6 py-2 rounded-lg text-lg font-medium transition-colors ${
+                        isSubmitting
+                          ? "bg-gray-400 cursor-not-allowed opacity-60"
+                          : "bg-[#4B49AC] hover:bg-[#3a3899]"
+                      }`}
                     >
-                      submit
+                      {isSubmitting ? "Submitting..." : "submit"}
                     </button>
                   ) : (
                     <button
                       type="submit"
-                      className="bg-[#4B49AC] hover:bg-[#3a3899] text-white px-6 py-2 rounded-lg text-lg font-medium transition-colors"
+                      disabled={isSubmitting}
+                      className={`text-white px-6 py-2 rounded-lg text-lg font-medium transition-colors ${
+                        isSubmitting
+                          ? "bg-gray-400 cursor-not-allowed opacity-60"
+                          : "bg-[#4B49AC] hover:bg-[#3a3899]"
+                      }`}
                     >
-                      update
+                      {isSubmitting ? "Updating..." : "update"}
                     </button>
                   )}
 
                   <button
                     type="reset"
-                    className="px-6 py-2 text-lg font-medium text-gray-800 transition-colors bg-gray-100 rounded-lg hover:bg-gray-200"
+                    disabled={isSubmitting}
+                    className={`px-6 py-2 text-lg font-medium transition-colors rounded-lg ${
+                      isSubmitting
+                        ? "text-gray-400 bg-gray-100 cursor-not-allowed"
+                        : "text-gray-800 bg-gray-100 hover:bg-gray-200"
+                    }`}
                   >
                     Cancel
                   </button>

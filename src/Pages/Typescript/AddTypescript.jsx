@@ -1,11 +1,11 @@
-import axios from 'axios';
-import React, { useContext, useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router';
-import { TypescriptUrl } from '../../Common/MenuData';
-import { mainContext } from '../../Context';
-import { toast, ToastContainer } from 'react-toastify';
-import Header from '../../Common/Header';
-import Sidebar from '../../Common/Sidebar';
+import axios from "axios";
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router";
+import { TypescriptUrl } from "../../Common/MenuData";
+import { mainContext } from "../../Context";
+import { toast, ToastContainer } from "react-toastify";
+import Header from "../../Common/Header";
+import Sidebar from "../../Common/Sidebar";
 
 export default function AddTypescript() {
   let { changemenu } = useContext(mainContext);
@@ -14,10 +14,12 @@ export default function AddTypescript() {
   let navigate = useNavigate();
 
   const [formsubmit, setformsubmit] = useState(false);
+  const [isSubmitting, setisSubmitting] = useState(false);
   let [input, setinput] = useState({ Question: "", Answers: "", status: 1 });
 
   let submitHandler = (event) => {
     event.preventDefault();
+    setisSubmitting(true);
     let Api = TypescriptUrl;
     let form = new FormData(event.target);
 
@@ -92,8 +94,9 @@ export default function AddTypescript() {
         <Sidebar />
 
         <div
-          className={` ${changemenu == true ? "w-[95%]" : "w-[84%]"
-            } relative px-[30px] pt-[20px] pb-[60px]  bg-[#F5F7FF]`}
+          className={` ${
+            changemenu == true ? "w-[95%]" : "w-[84%]"
+          } relative px-[30px] pt-[20px] pb-[60px]  bg-[#F5F7FF]`}
         >
           <h1 className="text-[25px] font-[500] mb-[10px]">
             Type script question add
@@ -122,12 +125,8 @@ export default function AddTypescript() {
                     className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 min-h-24"
                     placeholder="Enter the answer"
                     rows="9"
-                  >
-
-                  </textarea>
+                  ></textarea>
                 </div>
-
-
 
                 <div>
                   <label className="block mb-2 text-gray-700">
@@ -162,6 +161,7 @@ export default function AddTypescript() {
                 <div className="flex pt-2 space-x-4">
                   {params.id == undefined ? (
                     <button
+                      disabled={isSubmitting}
                       type="submit"
                       className="bg-[#4B49AC] hover:bg-[#3a3899] text-white px-6 py-2 rounded-lg text-lg font-medium transition-colors"
                     >
@@ -169,6 +169,7 @@ export default function AddTypescript() {
                     </button>
                   ) : (
                     <button
+                      disabled={isSubmitting}
                       type="submit"
                       className="bg-[#4B49AC] hover:bg-[#3a3899] text-white px-6 py-2 rounded-lg text-lg font-medium transition-colors"
                     >
@@ -177,6 +178,7 @@ export default function AddTypescript() {
                   )}
 
                   <button
+                    disabled={isSubmitting}
                     type="reset"
                     className="px-6 py-2 text-lg font-medium text-gray-800 transition-colors bg-gray-100 rounded-lg hover:bg-gray-200"
                   >
