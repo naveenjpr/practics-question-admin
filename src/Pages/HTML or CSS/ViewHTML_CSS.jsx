@@ -38,7 +38,7 @@ export default function ViewHTML_CSS() {
 
   let deletecoure = (id) => {
     const confirmed = window.confirm(
-      "Are you sure you want to delete this course?"
+      "Are you sure you want to delete this course?",
     );
     if (!confirmed) return;
     axios
@@ -90,31 +90,30 @@ export default function ViewHTML_CSS() {
           autoClose={500} // 1 सेकंड (1000 मिलीसेकंड) में बंद हो
         />
         <div
-          className={` ${changemenu == true ? "w-[95%]" : "w-[100%]"
-            } relative px-[10px] py-[10px] overflow-auto h-screen bg-[#F5F7FF]`}
+          className={` ${
+            changemenu == true ? "w-[95%]" : "w-[100%]"
+          } relative px-[10px] py-[10px] overflow-auto h-screen bg-[#F5F7FF]`}
         >
-         
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+            <h1 className="text-[18px] sm:text-[22px] md:text-[25px] font-medium">
+              Welcome To <u>HTML OR CSS</u> Admin Panel
+            </h1>
 
-           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
-                      <h1 className="text-[18px] sm:text-[22px] md:text-[25px] font-medium">
-                        Welcome To <u>HTML OR CSS</u> Admin Panel
-                      </h1>
-          
-                      <Link
-                        to="/AddHTML_CSS"
-                        className="bg-blue-500 text-white px-4 py-2 rounded-md text-center sm:w-auto w-full"
-                      >
-                        Add Data
-                      </Link>
-                    </div>
+            <Link
+              to="/AddHTML_CSS"
+              className="bg-blue-500 text-white px-4 py-2 rounded-md text-center sm:w-auto w-full"
+            >
+              Add Data
+            </Link>
+          </div>
           <div className="">
-            <div className="bg-white w-[100%] mb-[50px] p-4 h-full rounded-[20px]">
+            <div className="bg-white w-[100%] mb-[50px] p-1h-full rounded-[20px]">
               {loading ? (
                 <LoadingSpinner message="Loading HTML/CSS questions..." />
               ) : html_cssview.length > 0 ? (
                 html_cssview.map((v, i) => {
                   return (
-                    <div className="p-4 border-[2px]  text-white" key={i}>
+                    <div className="p-1border-[2px]  text-white" key={i}>
                       <div className="flex justify-between items-start">
                         <div className="flex-1">
                           <div className="flex items-center mb-2">
@@ -177,7 +176,9 @@ export default function ViewHTML_CSS() {
                 })
               ) : (
                 <div className="flex flex-col items-center justify-center min-h-[200px] p-8">
-                  <p className="text-gray-600 text-lg font-medium">No HTML/CSS questions found</p>
+                  <p className="text-gray-600 text-lg font-medium">
+                    No HTML/CSS questions found
+                  </p>
                 </div>
               )}
             </div>

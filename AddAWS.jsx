@@ -1,25 +1,24 @@
-import React, { useContext, useEffect, useState } from "react";
-import { mainContext } from "../../Context";
-import Header from "../../Common/Header";
-import Sidebar from "../../Common/Sidebar";
-import Footer from "../../Common/Footer";
-import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import React, { useContext, useState, useEffect } from 'react'
+import { useParams, useNavigate } from 'react-router';
+import { mainContext } from '../../Context';
+import Header from '../../Common/Header';
+import Sidebar from '../../Common/Sidebar';
+import Footer from '../../Common/Footer';
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+import { AWSUrl } from '../../Common/MenuData';
 
-import { useNavigate, useParams } from "react-router";
-import { DockerUrl } from "../../Common/MenuData";
-export default function AddDocker() {
+export default function AddAWS() {
   let { changemenu } = useContext(mainContext);
   let params = useParams();
 
   const [formsubmit, setformsubmit] = useState(false);
-  const [isSubmitting, setisSubmitting] = useState(false);
   let [input, setinput] = useState({ Question: "", Answers: "", status: 1 });
 
   let submitHandler = (event) => {
     event.preventDefault();
-    setisSubmitting(true);
-    let Api = DockerUrl;
+    let Api = AWSUrl;
     let form = new FormData(event.target);
 
     if (params.id == undefined) {
@@ -62,8 +61,8 @@ export default function AddDocker() {
   };
 
   useEffect(() => {
-    let Api = DockerUrl;
-    if (params.id != undefined) {
+    let Api = AWSUrl;
+    if (params.id !== undefined) {
       axios
         .post(`${Api}/details/${params.id}`)
         .then((result) => {
@@ -77,16 +76,14 @@ export default function AddDocker() {
           toast.error("something want wrong");
         });
     }
-  }, []);
-
+  }, [params.id]);
   let navigate = useNavigate();
 
   useEffect(() => {
     if (formsubmit == true) {
-      navigate("/ViewDocker");
+      navigate("/viewAWS");
     }
-  }, [formsubmit]);
-
+  }, [formsubmit, navigate]);
   return (
     <div>
       <Header />
@@ -97,13 +94,14 @@ export default function AddDocker() {
         <Sidebar />
 
         <div
-          className={` ${
-            changemenu == true ? "w-[95%]" : "w-[84%]"
-          } relative px-[30px] pt-[20px] pb-[60px]  bg-[#F5F7FF]`}
+          className={` ${changemenu == true ? "w-[95%]" : "w-[84%]"
+            } relative px-[30px] pt-[20px] pb-[60px]  bg-[#F5F7FF]`}
         >
-          <h1 className="text-[25px] font-[500] mb-[10px]">Docker question</h1>
+          <h1 className="text-[25px] font-[500] mb-[10px]">
+            AWS question
+          </h1>
           <div className="w-full">
-            <div className="w-full p-6 mb-12 bg-white shadow-sm rounded-2xl">
+            <div className="p-6 mb-12 w-full bg-white rounded-2xl shadow-sm">
               <form onSubmit={submitHandler} className="space-y-4">
                 <div>
                   <label className="block mb-1 text-gray-700">Question</label>
@@ -112,7 +110,7 @@ export default function AddDocker() {
                     name="Question"
                     value={input.Question}
                     onChange={inputHnader}
-                    className="w-full h-12 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="p-3 w-full h-12 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="Enter your question"
                   />
                 </div>
@@ -123,7 +121,7 @@ export default function AddDocker() {
                     name="Answers"
                     value={input.Answers}
                     onChange={inputHnader}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 min-h-24"
+                    className="p-3 w-full rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 min-h-24"
                     placeholder="Enter the answer"
                     rows="9"
                   ></textarea>
@@ -163,37 +161,22 @@ export default function AddDocker() {
                   {params.id == undefined ? (
                     <button
                       type="submit"
-                      disabled={isSubmitting}
-                      className={`text-white px-6 py-2 rounded-lg text-lg font-medium transition-colors ${
-                        isSubmitting
-                          ? "bg-gray-400 cursor-not-allowed opacity-60"
-                          : "bg-[#4B49AC] hover:bg-[#3a3899]"
-                      }`}
+                      className="bg-[#4B49AC] hover:bg-[#3a3899] text-white px-6 py-2 rounded-lg text-lg font-medium transition-colors"
                     >
-                      {isSubmitting ? "Submitting..." : "submit"}
+                      submit
                     </button>
                   ) : (
                     <button
                       type="submit"
-                      disabled={isSubmitting}
-                      className={`text-white px-6 py-2 rounded-lg text-lg font-medium transition-colors ${
-                        isSubmitting
-                          ? "bg-gray-400 cursor-not-allowed opacity-60"
-                          : "bg-[#4B49AC] hover:bg-[#3a3899]"
-                      }`}
+                      className="bg-[#4B49AC] hover:bg-[#3a3899] text-white px-6 py-2 rounded-lg text-lg font-medium transition-colors"
                     >
-                      {isSubmitting ? "Updating..." : "update"}
+                      update
                     </button>
                   )}
 
                   <button
                     type="reset"
-                    disabled={isSubmitting}
-                    className={`px-6 py-2 text-lg font-medium transition-colors rounded-lg ${
-                      isSubmitting
-                        ? "text-gray-400 bg-gray-100 cursor-not-allowed"
-                        : "text-gray-800 bg-gray-100 hover:bg-gray-200"
-                    }`}
+                    className="px-6 py-2 text-lg font-medium text-gray-800 bg-gray-100 rounded-lg transition-colors hover:bg-gray-200"
                   >
                     Cancel
                   </button>
@@ -207,3 +190,4 @@ export default function AddDocker() {
     </div>
   );
 }
+
