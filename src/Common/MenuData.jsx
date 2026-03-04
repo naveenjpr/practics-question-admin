@@ -12,6 +12,7 @@ import {
   FaNodeJs,
   FaReact,
   FaWordpress,
+  FaSearch,
 } from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io";
 import { RiEnglishInput, RiNextjsFill } from "react-icons/ri";
@@ -208,6 +209,15 @@ export const data = [
     link1: "/Addsupabase",
     link2: "/Viewsupabase",
   },
+  {
+    id: 21,
+    icon: <FaSearch />,
+    uid: "SEO",
+    sub1: "Add SEO",
+    sub2: "View SEO",
+    link1: "/AddSEO",
+    link2: "/ViewSEO",
+  },
 ];
 
 export const javascriptbaseurl = process.env.REACT_APP_JAVASCRIPT_BASEURL;
@@ -223,6 +233,7 @@ export const AWSUrl = process.env.REACT_APP_AWS_URL;
 export const TypescriptUrl = process.env.REACT_APP_TYPESCRIPT_URL;
 export const GithubUrl = process.env.REACT_APP_GITHUB_URL;
 export const SQLUrl = process.env.REACT_APP_SQL_URL;
+export const SEOUrl = process.env.REACT_APP_SEO_URL;
 export const AngularUrl = process.env.REACT_APP_ANGULAR_URL;
 export const PythonUrl = process.env.REACT_APP_PYTHON_URL;
 export const DockerUrl = process.env.REACT_APP_DOCKER_URL;
@@ -230,4 +241,3 @@ export const TestingUrl = process.env.REACT_APP_TESTING_URL;
 export const PostgreSQLUrl = process.env.REACT_APP_POSTGRESQL_URL;
 export const supabaseUrl = process.env.REACT_APP_SUPABASE_URL;
 console.log("supabaseUrl menu data", supabaseUrl);
-
