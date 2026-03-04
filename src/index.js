@@ -51,6 +51,8 @@ import AddTesting from "./Pages/Testing/AddTesting";
 import ViewTesting from "./Pages/Testing/ViewTesting";
 import Addsupabase from "./Pages/supabase/Addsupabase";
 import Viewsupabase from "./Pages/supabase/Viewsupabase";
+import AddSEO from "./Pages/SEO/AddSQL";
+import ViewSEO from "./Pages/SEO/ViewSQL";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -194,6 +196,15 @@ const router = createBrowserRouter([
   },
   { path: "ViewSQL", element: <ViewSQL /> },
   {
+    path: "AddSEO/:id?",
+    element: <AddSEO />,
+  },
+  {
+    path: "ViewSEO",
+
+    element: <ViewSEO />,
+  },
+  {
     path: "Addangular/:id?",
     element: <Addangular />,
   },
@@ -212,12 +223,12 @@ const router = createBrowserRouter([
   //testing
   {
     path: "AddTesting/:id?",
-    element: <AddTesting/>,
+    element: <AddTesting />,
   },
   {
     path: "ViewTesting",
-    element: <ViewTesting/>,
-  },  
+    element: <ViewTesting />,
+  },
   //docker
   {
     path: "AddDocker/:id?",
@@ -230,21 +241,21 @@ const router = createBrowserRouter([
   //postgresql
   {
     path: "AddPostgreSQL/:id?",
-    element: <AddPostgreSQL/>,
+    element: <AddPostgreSQL />,
   },
   {
     path: "ViewPostgreSQL",
-    element: <ViewPostgreSQL/>,
+    element: <ViewPostgreSQL />,
   },
   //supabase
   {
     path: "Addsupabase/:id?",
-    element: <Addsupabase/>,
+    element: <Addsupabase />,
   },
   {
     path: "Viewsupabase",
-    element: <Viewsupabase/>,
-  },  
+    element: <Viewsupabase />,
+  },
 ]);
 root.render(
   <Context>

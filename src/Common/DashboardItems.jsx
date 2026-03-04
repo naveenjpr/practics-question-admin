@@ -13,6 +13,7 @@ import {
   WordPressUrl,
   GithubUrl,
   SQLUrl,
+  SEOUrl,
   AngularUrl,
   PythonUrl,
   DockerUrl,
@@ -35,6 +36,7 @@ function DashboardItems() {
   const [AWSwebsite, setAWSwebsite] = useState(null);
   const [Github, setGithub] = useState(null);
   const [SQL, setSQL] = useState(null);
+  const [SEO, setSEO] = useState(null);
   const [Typescript, setTypescript] = useState(null); // ✅ Fixed: Added Typescript state
   const [Angular, setAngular] = useState(null);
   const [Python, setPython] = useState(null);
@@ -53,7 +55,7 @@ function DashboardItems() {
       .then((result) => {
         setsupabaseurls(result.data.totalRecords);
       })
-      .catch((error) => { })
+      .catch((error) => {});
   }, []);
   //postgreSQL
   let ApiPostgreSQLUrl = PostgreSQLUrl;
@@ -63,7 +65,7 @@ function DashboardItems() {
       .then((result) => {
         setPostgreSQL(result.data.totalRecords);
       })
-      .catch((error) => { });
+      .catch((error) => {});
   }, []);
 
   //testing
@@ -75,7 +77,7 @@ function DashboardItems() {
       .then((result) => {
         setTesting(result.data.totalRecords);
       })
-      .catch((error) => { });
+      .catch((error) => {});
   }, []);
   //docker
   let ApiDockerUrl = DockerUrl;
@@ -86,7 +88,7 @@ function DashboardItems() {
       .then((result) => {
         setDocker(result.data.totalRecords);
       })
-      .catch((error) => { });
+      .catch((error) => {});
   }, []);
 
   //python
@@ -98,7 +100,7 @@ function DashboardItems() {
       .then((result) => {
         setPython(result.data.totalRecords);
       })
-      .catch((error) => { });
+      .catch((error) => {});
   }, []);
   //github
   let ApiGithub = GithubUrl;
@@ -109,7 +111,7 @@ function DashboardItems() {
       .then((result) => {
         setGithub(result.data.totalRecords);
       })
-      .catch((error) => { });
+      .catch((error) => {});
   }, []);
   //sql
 
@@ -120,7 +122,17 @@ function DashboardItems() {
       .then((result) => {
         setSQL(result.data.totalRecords);
       })
-      .catch((error) => { });
+      .catch((error) => {});
+  }, []);
+
+  let ApiSEO = SEOUrl;
+  useEffect(() => {
+    axios
+      .post(`${ApiSEO}/view`)
+      .then((result) => {
+        setSEO(result.data.totalRecords);
+      })
+      .catch((error) => {});
   }, []);
 
   let Api = javascriptbaseurl;
@@ -130,7 +142,7 @@ function DashboardItems() {
       .then((result) => {
         setjavascripttotalrecord(result.data.totalRecords);
       })
-      .catch((error) => { });
+      .catch((error) => {});
   }, []);
 
   let nodeApi = nodebaseurl;
@@ -140,7 +152,7 @@ function DashboardItems() {
       .then((result) => {
         setnodebaseurltotalrecord(result.data.totalRecords);
       })
-      .catch((error) => { });
+      .catch((error) => {});
   }, []);
   //react
   let reactApi = reactbaseurl;
@@ -150,7 +162,7 @@ function DashboardItems() {
       .then((result) => {
         setreactApitotalrecord(result.data.totalRecords);
       })
-      .catch((error) => { });
+      .catch((error) => {});
   }, []);
   // wordpress
 
@@ -161,7 +173,7 @@ function DashboardItems() {
       .then((result) => {
         setwordpresstotalrecord(result.data.totalRecords);
       })
-      .catch((error) => { });
+      .catch((error) => {});
   }, []);
   // html or css
   let HTML_CSSApi = HTML_CSSUrl;
@@ -171,7 +183,7 @@ function DashboardItems() {
       .then((result) => {
         setHTML_CSS(result.data.totalRecords);
       })
-      .catch((error) => { });
+      .catch((error) => {});
   }, []);
   // english
   let EnglishApi = EnglishUrl;
@@ -181,7 +193,7 @@ function DashboardItems() {
       .then((result) => {
         setEnglish(result.data.totalRecords);
       })
-      .catch((error) => { });
+      .catch((error) => {});
   }, []);
   // livewebsite
   let livewebsiteApi = livewebsiteUrl;
@@ -191,7 +203,7 @@ function DashboardItems() {
       .then((result) => {
         setlivewebsite(result.data.totalRecords);
       })
-      .catch((error) => { });
+      .catch((error) => {});
   }, []);
 
   //MENKA
@@ -203,7 +215,7 @@ function DashboardItems() {
       .then((result) => {
         setmenkawebsite(result.data.totalRecords);
       })
-      .catch((error) => { });
+      .catch((error) => {});
   }, []);
   //Nextjs
   let NextjswebsiteApi = NextjsUrl;
@@ -213,7 +225,7 @@ function DashboardItems() {
       .then((result) => {
         setNextjswebsite(result.data.totalRecords);
       })
-      .catch((error) => { });
+      .catch((error) => {});
   }, []);
   //AWSjs
   let AWSwebsiteApi = AWSUrl;
@@ -223,7 +235,7 @@ function DashboardItems() {
       .then((result) => {
         setAWSwebsite(result.data.totalRecords);
       })
-      .catch((error) => { });
+      .catch((error) => {});
   }, []);
   //typescript js - ✅ Fixed this section
   let TypescriptApi = TypescriptUrl;
@@ -233,7 +245,7 @@ function DashboardItems() {
       .then((result) => {
         setTypescript(result.data.totalRecords); // ✅ Fixed: Setting to Typescript state
       })
-      .catch((error) => { });
+      .catch((error) => {});
   }, []);
 
   //Angular
@@ -244,7 +256,7 @@ function DashboardItems() {
       .then((result) => {
         setAngular(result.data.totalRecords);
       })
-      .catch((error) => { });
+      .catch((error) => {});
   }, []);
 
   return (
@@ -376,6 +388,15 @@ function DashboardItems() {
         </h3>
         <h1 className="text-4xl font-bold text-purple-900">
           {SQL ?? "Loading..."}
+        </h1>
+      </div>
+      {/* SEO */}
+      <div className="p-6 text-center bg-gradient-to-r from-purple-100 to-purple-200 rounded-2xl border-2 border-purple-400 shadow-md transition hover:shadow-xl">
+        <h3 className="mb-2 text-lg font-semibold text-purple-700">
+          SEO Total Questions
+        </h3>
+        <h1 className="text-4xl font-bold text-purple-900">
+          {SEO ?? "Loading..."}
         </h1>
       </div>
       {/* Angular */}
