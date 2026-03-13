@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { saveLoginDetails } from "../slice/AdminSlice";
 
 function Login() {
-  // start false so page doesn't show full-page loader on first render
+  let baseurl = process.env.React_APP_LOGIN_URL;
   const [loading, setLoading] = useState(false);
 
   const [username, setUsername] = useState("");
@@ -25,17 +25,14 @@ function Login() {
     setLoading(true);
     setError("");
     try {
-      const res = await fetch(
-        "https://rss-feed-node-js.onrender.com/api/backend/adminAuth/login",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            adminName: username,
-            adminPassword: password,
-          }),
-        }
-      );
+      const res = await fetch(`${baseurl}/api/backend/adminAuth/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          adminName: username,
+          adminPassword: password,
+        }),
+      });
       const data = await res.json();
       if (data.success) {
         // Store admin info in Redux and cookies
@@ -63,13 +60,11 @@ function Login() {
     <div className="bg-[#F5F7FF] w-full h-[100vh] flex justify-center items-center">
       <div className="w-[500px] py-5 bg-white px-[50px]  ">
         <img src={logo} alt="logo" width={180} className="mb-5" />
-        <h3 className="text-black text-[16px] font-[400]">Sign in to continue.</h3>
+        <h3 className="text-black text-[16px] font-[400]">
+          Sign in to continue.
+        </h3>
 
-        {error && (
-          <p className="text-red-500 text-sm mt-3">
-            {error}
-          </p>
-        )}
+        {error && <p className="text-red-500 text-sm mt-3">{error}</p>}
 
         <form action="" onSubmit={handleSubmit}>
           <input
@@ -108,8 +103,19 @@ function Login() {
                   fill="none"
                   viewBox="0 0 24 24"
                 >
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                  ></path>
                 </svg>
                 <span>Logging in...</span>
               </span>
