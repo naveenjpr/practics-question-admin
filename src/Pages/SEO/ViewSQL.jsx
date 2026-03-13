@@ -13,7 +13,10 @@ export default function ViewSEO() {
   const [typescriptview, settypescriptview] = useState([]);
   const [deleteororstatus, setdeleteororstatus] = useState(false);
   const [loading, setLoading] = useState(true);
-  let Api = SEOUrl;
+  let Api =
+    "https://rss-feed-nodejs-production.up.railway.app/api/backend/SEO" ||
+    SEOUrl;
+
   let showdata = () => {
     setLoading(true);
     axios
